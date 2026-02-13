@@ -10,7 +10,7 @@ const HeroSection = () => {
         Welham Model United Nations
       </h1>
       <div className="gold-divider" />
-      <p className="mt-5 text-light-gold text-xl">28 – 30 March 2026</p>
+      <p className="mt-5 text-light-gold text-xl">28 – 30 July 2026</p>
       <CountdownTimer />
     </section>
   );
