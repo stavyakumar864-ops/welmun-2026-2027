@@ -1,45 +1,118 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { committees } from "@/data/committees";
-import { useStaggerReveal } from "@/hooks/useScrollReveal";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const },
+  },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeOut" as const },
+  },
+};
+
+const lineVariants = {
+  hidden: { scaleX: 0 },
+  visible: {
+    scaleX: 1,
+    transition: { duration: 0.8, delay: 0.5, ease: "easeOut" as const },
+  },
+};
 
 const Committees = () => {
-  const gridRef = useStaggerReveal<HTMLDivElement>(120);
-
   return (
     <PageLayout backgroundImage="/images/committees-bg.jpg">
-      <h1 className="font-display text-5xl text-primary mb-4 tracking-[6px] uppercase">
-        Committees
-      </h1>
-      <div className="gold-divider mb-16" />
+      {/* Hero Title Section */}
+      <motion.div
+        className="flex flex-col items-center justify-center min-h-[40vh] w-full"
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h1
+          variants={titleVariants}
+          className="font-display text-6xl md:text-8xl lg:text-9xl text-primary tracking-[12px] md:tracking-[20px] uppercase text-center"
+        >
+          Committees
+        </motion.h1>
+        <motion.div
+          variants={lineVariants}
+          className="w-32 md:w-48 h-[2px] mt-8 origin-center"
+          style={{
+            background:
+              "linear-gradient(to right, transparent, hsl(var(--gold)), transparent)",
+          }}
+        />
+      </motion.div>
 
-      <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-        {committees.map((c, i) => (
-          <Link
-            key={c.id}
-            to={`/committees/${c.id}`}
-            data-reveal={i}
-            className={`group relative aspect-[4/3] overflow-hidden cursor-none block img-zoom ${
-              i === committees.length - 1 && committees.length % 3 === 1
-                ? "sm:col-span-2 lg:col-span-1 lg:col-start-2"
-                : ""
-            }`}
-          >
-            <img
-              src={c.cardImage}
-              alt={c.name}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-background/50 group-hover:bg-background/30 transition-colors duration-300" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h2 className="font-display text-xl md:text-2xl text-primary text-center px-4 tracking-wider">
-                {c.shortName}
-              </h2>
-            </div>
-          </Link>
+      {/* Cards Grid */}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-6xl mt-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
+        {committees.map((c) => (
+          <motion.div key={c.id} variants={cardVariants}>
+            <Link
+              to={`/committees/${c.id}`}
+              className="group relative block aspect-[16/10] overflow-hidden cursor-none"
+            >
+              {/* Image */}
+              <motion.img
+                src={c.cardImage}
+                alt={c.name}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+                whileHover={{ scale: 1.12 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              />
+
+              {/* Default dark overlay */}
+              <div className="absolute inset-0 bg-background/40 group-hover:bg-background/70 transition-all duration-500" />
+
+              {/* Bottom gradient */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background/90 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Gold border on hover */}
+              <div className="absolute inset-0 border border-transparent group-hover:border-primary/40 transition-colors duration-500" />
+
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                <h2 className="font-display text-xl md:text-2xl text-primary tracking-[3px] uppercase transition-transform duration-500 group-hover:-translate-y-2">
+                  {c.shortName}
+                </h2>
+
+                {/* Reveal line on hover */}
+                <div className="w-0 group-hover:w-12 h-[1px] bg-primary/60 transition-all duration-500 mt-3" />
+
+                {/* Reveal subtitle on hover */}
+                <p className="text-muted-foreground text-xs md:text-sm mt-3 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100 max-w-[80%] line-clamp-2">
+                  {c.agenda}
+                </p>
+              </div>
+            </Link>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </PageLayout>
   );
 };
