@@ -8,6 +8,7 @@ import Addressals from "./pages/Addressals";
 import Registration from "./pages/Registration";
 import Schedule from "./pages/Schedule";
 import Committees from "./pages/Committees";
+import CommitteeDetail from "./pages/CommitteeDetail";
 import ConferenceDetails from "./pages/ConferenceDetails";
 import PhotoGallery from "./pages/PhotoGallery";
 import Contact from "./pages/Contact";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/registration" element={<Registration />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/committees" element={<Committees />} />
+          <Route path="/committees/:id" element={<CommitteeDetail />} />
           <Route path="/conference-details" element={<ConferenceDetails />} />
           <Route path="/gallery" element={<PhotoGallery />} />
           <Route path="/contact" element={<Contact />} />
