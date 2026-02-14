@@ -33,7 +33,7 @@ const CountdownTimer = () => {
       {boxes.map((b, i) => (
         <span key={b.label} className="flex items-center gap-3 md:gap-5">
           <span className="text-center">
-            <span className="text-primary text-2xl md:text-4xl font-display leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <span className="text-primary text-3xl md:text-5xl font-display leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
               {b.val}
             </span>
             <span className="text-[10px] md:text-xs text-light-gold ml-1">{b.label}</span>
