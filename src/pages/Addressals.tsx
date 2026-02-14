@@ -1,5 +1,6 @@
 import PageLayout from "@/components/PageLayout";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import secGenPhoto from "@/assets/sec-gen.png";
 
 const Addressals = () => {
   const principalRef = useScrollReveal<HTMLElement>(0.1);
@@ -82,7 +83,7 @@ const Addressals = () => {
           </div>
           <div className="flex flex-col items-center gap-3 shrink-0">
             <img
-              src="https://static.wixstatic.com/media/9bbbe8_57bdd2e6b13a4e78aff920c9bfe4531d~mv2.jpg/v1/crop/x_36,y_0,w_1799,h_1871/fill/w_273,h_284,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5587_edited_edited.jpg"
+              src={secGenPhoto}
               alt="Atharva Agarwal"
               className="w-56 h-56 object-cover rounded-full border-2 border-primary/30"
               loading="lazy"
