@@ -3,6 +3,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import secGenPhoto from "@/assets/sec-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
 import dirGenPhoto from "@/assets/dir-gen.png";
+import techDirector1Photo from "@/assets/tech-director-1.png";
 
 const members = [
   { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
@@ -11,8 +12,8 @@ const members = [
 ];
 
 const techDirectors = [
-  { role: "Technical Director 1", img: "https://www.welhammun.org/assets/images/tech1.jpg" },
-  { role: "Technical Director 2", img: "https://www.welhammun.org/assets/images/tech2.jpg" },
+  { role: "Technical Director 1", name: "Arnav Mittal", img: techDirector1Photo },
+  { role: "Technical Director 2", name: "", img: "https://www.welhammun.org/assets/images/tech2.jpg" },
 ];
 
 const SecretariatSection = () => {
@@ -52,8 +53,9 @@ const SecretariatSection = () => {
               className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
               onClick={() => setModalRole(t.role)}
             >
-              <img src={t.img} alt={t.role} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
-              <h3 className="font-display text-xl text-primary">{t.role}</h3>
+              <img src={t.img} alt={t.name || t.role} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
+              <h3 className="font-display text-xl text-primary">{t.name || t.role}</h3>
+              <p className="text-muted-foreground text-sm mt-1">{t.role}</p>
             </div>
           ))}
         </div>
