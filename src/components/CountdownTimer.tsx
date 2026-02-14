@@ -22,31 +22,27 @@ const CountdownTimer = () => {
   }, []);
 
   const boxes = [
-    { val: time.d, label: "DAYS" },
-    { val: time.h, label: "HOURS" },
-    { val: time.m, label: "MINUTES" },
-    { val: time.s, label: "SECONDS" },
+    { val: time.d, label: "D" },
+    { val: time.h, label: "H" },
+    { val: time.m, label: "M" },
+    { val: time.s, label: "S" },
   ];
 
   return (
-    <div className="mt-10 px-10 py-6 bg-background/60 backdrop-blur-sm">
-      <div className="flex gap-10 md:gap-16">
-        {boxes.map((b, i) => (
-          <div key={b.label} className="flex items-baseline gap-10 md:gap-16">
-            <div className="text-center">
-              <span className="text-primary text-4xl md:text-6xl font-display leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
-                {b.val}
-              </span>
-              <p className="text-xs md:text-sm text-light-gold mt-2 tracking-[3px]">
-                {b.label}
-              </p>
-            </div>
-            {i < boxes.length - 1 && (
-              <span className="text-primary/40 text-4xl md:text-6xl font-display select-none">:</span>
-            )}
-          </div>
-        ))}
-      </div>
+    <div className="mt-8 px-6 py-4 bg-background/50 backdrop-blur-sm inline-flex items-center gap-3 md:gap-5">
+      {boxes.map((b, i) => (
+        <span key={b.label} className="flex items-center gap-3 md:gap-5">
+          <span className="text-center">
+            <span className="text-primary text-2xl md:text-4xl font-display leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+              {b.val}
+            </span>
+            <span className="text-[10px] md:text-xs text-light-gold ml-1">{b.label}</span>
+          </span>
+          {i < boxes.length - 1 && (
+            <span className="text-primary/30 text-2xl md:text-4xl font-display select-none">:</span>
+          )}
+        </span>
+      ))}
     </div>
   );
 };
