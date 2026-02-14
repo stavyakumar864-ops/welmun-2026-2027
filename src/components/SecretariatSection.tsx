@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const members = [
-  { role: "Secretary General", img: "https://www.welhammun.org/assets/images/sec1.jpg", area: "sg" },
-  { role: "Deputy Secretary General", img: "https://www.welhammun.org/assets/images/sec2.jpg", area: "ds" },
-  { role: "Director General", img: "https://www.welhammun.org/assets/images/sec3.jpg", area: "dg" },
-  { role: "Under Secretary", img: "https://www.welhammun.org/assets/images/sec4.jpg", area: "us" },
+  { role: "Secretary General", img: "https://www.welhammun.org/assets/images/sec2.jpg" },
+  { role: "Director General", img: "https://www.welhammun.org/assets/images/sec3.jpg" },
+  { role: "Under Secretary", img: "https://www.welhammun.org/assets/images/sec4.jpg" },
 ];
 
 const techDirectors = [
@@ -24,18 +23,11 @@ const SecretariatSection = () => {
       <section ref={secRef} id="secretariat" className="min-h-screen flex flex-col justify-center items-center px-[10%] py-24 reveal-section">
         <h2 className="font-display text-4xl text-primary">Secretariat</h2>
         <div className="gold-divider" />
-        <div
-          className="w-full mt-16 grid gap-12"
-          style={{
-            gridTemplateAreas: `"sg sg sg" "ds dg us"`,
-            gridTemplateColumns: "1fr 1fr 1fr",
-          }}
-        >
+        <div className="w-full mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
           {members.map((m) => (
             <div
               key={m.role}
               className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
-              style={{ gridArea: m.area }}
               onClick={() => setModalRole(m.role)}
             >
               <img src={m.img} alt={m.role} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
