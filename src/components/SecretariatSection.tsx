@@ -4,6 +4,7 @@ import secGenPhoto from "@/assets/sec-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
 import dirGenPhoto from "@/assets/dir-gen.png";
 import techDirector1Photo from "@/assets/tech-director-1.png";
+import techDirector2Photo from "@/assets/tech-director-2.png";
 
 const members = [
   { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
@@ -13,7 +14,7 @@ const members = [
 
 const techDirectors = [
   { role: "Technical Director 1", name: "Arnav Mittal", img: techDirector1Photo },
-  { role: "Technical Director 2", name: "", img: "https://www.welhammun.org/assets/images/tech2.jpg" },
+  { role: "Technical Director 2", name: "Stavya Kumar", img: techDirector2Photo },
 ];
 
 const SecretariatSection = () => {
