@@ -1,10 +1,15 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import { committees } from "@/data/committees";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const CommitteeDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const committee = committees.find((c) => c.id === id);
+  const navigate = useNavigate();
+  const currentIndex = committees.findIndex((c) => c.id === id);
+  const committee = currentIndex !== -1 ? committees[currentIndex] : null;
+  const prevCommittee = currentIndex > 0 ? committees[currentIndex - 1] : null;
+  const nextCommittee = currentIndex < committees.length - 1 ? committees[currentIndex + 1] : null;
 
   if (!committee) {
     return (
@@ -25,6 +30,28 @@ const CommitteeDetail = () => {
       >
         ← Back to Committees
       </Link>
+
+      {/* Prev / Next navigation */}
+      <div className="flex justify-between w-full max-w-5xl mb-8">
+        {prevCommittee ? (
+          <button
+            onClick={() => navigate(`/committees/${prevCommittee.id}`)}
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors cursor-none"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            {prevCommittee.shortName}
+          </button>
+        ) : <span />}
+        {nextCommittee ? (
+          <button
+            onClick={() => navigate(`/committees/${nextCommittee.id}`)}
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors cursor-none"
+          >
+            {nextCommittee.shortName}
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        ) : <span />}
+      </div>
 
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start gap-8 w-full max-w-5xl mb-12">

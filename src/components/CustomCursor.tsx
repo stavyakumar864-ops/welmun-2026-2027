@@ -6,44 +6,44 @@ interface CustomCursorProps {
 
 const CustomCursor = ({ isIntroVisible }: CustomCursorProps) => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number>(0);
+  const posRef = useRef({ x: 0, y: 0 });
+  const clickableRef = useRef(false);
 
   useEffect(() => {
-    const cursor = cursorRef.current;
-    if (!cursor) return;
-
     const handleMouseMove = (e: MouseEvent) => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-
+      posRef.current.x = e.clientX;
+      posRef.current.y = e.clientY;
       const target = e.target as HTMLElement;
-      const clickable = target.closest("a, .card-hover, button, .swipe-btn");
-
-      if (isIntroVisible) {
-        cursor.style.borderColor = "hsl(15, 30%, 12%)";
-        cursor.style.transform = clickable
-          ? "translate(-50%,-50%) scale(0.6)"
-          : "translate(-50%,-50%) scale(1)";
-      } else {
-        cursor.style.borderColor = "hsl(42, 45%, 56%)";
-        cursor.style.transform = clickable
-          ? "translate(-50%,-50%) scale(0.6)"
-          : "translate(-50%,-50%) scale(1)";
-      }
+      clickableRef.current = !!target.closest("a, .card-hover, button, .swipe-btn");
     };
 
-    document.addEventListener("mousemove", handleMouseMove);
-    return () => document.removeEventListener("mousemove", handleMouseMove);
-  }, [isIntroVisible]);
+    document.addEventListener("mousemove", handleMouseMove, { passive: true });
+
+    const animate = () => {
+      const cursor = cursorRef.current;
+      if (cursor) {
+        cursor.style.transform = `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0) translate(-50%,-50%) ${clickableRef.current ? "scale(0.6)" : "scale(1)"}`;
+      }
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
     <div
       ref={cursorRef}
-      className="fixed w-[18px] h-[18px] border-2 rounded-full pointer-events-none z-[9999]"
+      className="fixed top-0 left-0 w-[18px] h-[18px] border-2 rounded-full pointer-events-none z-[9999]"
       style={{
         borderColor: isIntroVisible ? "hsl(15, 30%, 12%)" : "hsl(42, 45%, 56%)",
         backgroundColor: "transparent",
-        transform: "translate(-50%,-50%)",
-        transition: "0.05s ease, transform 0.1s ease, border-color 0.2s ease",
+        willChange: "transform",
+        transition: "border-color 0.2s ease",
       }}
     />
   );

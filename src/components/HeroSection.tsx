@@ -6,19 +6,6 @@ const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center items-center px-[5%] md:px-[8%] lg:px-[10%] py-24 overflow-hidden"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('/images/hero-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 z-[1] bg-background/70" />
-
       {/* Content */}
       <div className="relative z-[2] flex flex-col items-center">
         <h1 className="font-display text-5xl md:text-7xl text-center text-primary">
