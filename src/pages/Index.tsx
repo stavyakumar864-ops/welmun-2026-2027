@@ -19,14 +19,11 @@ const Index = () => {
 
   return (
     <>
-      {/* Schedule banner fixed at the bottom, revealed when content scrolls away */}
-      <ScheduleBanner />
-      {/* Main content sits above the fixed banner */}
+      <CustomCursor isIntroVisible={introVisible} />
+      <ParticleCanvas />
+      {introVisible && <IntroScreen onEnter={handleEnter} />}
+      <Navbar />
       <div className="relative z-10">
-        <CustomCursor isIntroVisible={introVisible} />
-        <ParticleCanvas />
-        {introVisible && <IntroScreen onEnter={handleEnter} />}
-        <Navbar />
         <HeroSection />
         <div className="relative">
           <div
@@ -44,9 +41,8 @@ const Index = () => {
             <SecretariatSection />
           </div>
         </div>
+        <ScheduleBanner />
       </div>
-      {/* Spacer: when user scrolls past content, this transparent space reveals the fixed ScheduleBanner */}
-      <div className="relative z-0 h-screen" />
     </>
   );
 };
