@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const ScheduleBanner = () => {
-  const ref = useScrollReveal<HTMLElement>(0.2);
-
   return (
     <section
-      ref={ref}
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden reveal-section"
+      className="fixed inset-0 flex flex-col justify-center items-center overflow-hidden"
       style={{
         background: "linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background)) 45%, hsl(var(--muted)) 55%, hsl(var(--muted)) 100%)",
       }}

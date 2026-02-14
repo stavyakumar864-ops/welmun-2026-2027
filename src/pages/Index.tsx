@@ -19,28 +19,32 @@ const Index = () => {
 
   return (
     <>
-      <CustomCursor isIntroVisible={introVisible} />
-      <ParticleCanvas />
-      {introVisible && <IntroScreen onEnter={handleEnter} />}
-      <Navbar />
+      <ScheduleBanner />
       <div className="relative z-10">
-        <HeroSection />
-        <div className="relative">
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundImage: "url(/images/home-bg.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 bg-background/80" />
-          </div>
-          <div className="relative z-10">
-            <SecretariatSection />
+        <CustomCursor isIntroVisible={introVisible} />
+        <ParticleCanvas />
+        {introVisible && <IntroScreen onEnter={handleEnter} />}
+        <Navbar />
+        <div className="relative bg-background">
+          <HeroSection />
+          <div className="relative">
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: "url(/images/home-bg.jpg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="absolute inset-0 bg-background/80" />
+            </div>
+            <div className="relative z-10">
+              <SecretariatSection />
+            </div>
           </div>
         </div>
-        <ScheduleBanner />
+        {/* Spacer to reveal the fixed ScheduleBanner behind */}
+        <div className="h-screen" />
       </div>
     </>
   );
