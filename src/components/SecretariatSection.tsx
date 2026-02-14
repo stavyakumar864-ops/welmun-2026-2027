@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import secGenPhoto from "@/assets/sec-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
+import dirGenPhoto from "@/assets/dir-gen.png";
 
 const members = [
   { role: "Secretary General", img: secGenPhoto },
-  { role: "Director General", img: "https://www.welhammun.org/assets/images/sec3.jpg" },
+  { role: "Director General", img: dirGenPhoto },
   { role: "Under Secretary", img: underSecPhoto },
 ];
 
