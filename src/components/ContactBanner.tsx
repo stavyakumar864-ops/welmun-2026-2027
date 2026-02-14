@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const ContactBanner = () => {
   return (
     <section
-      className="fixed inset-0 flex flex-col justify-center items-center overflow-hidden"
+      className="w-full h-full flex flex-col justify-center items-center overflow-hidden"
       style={{
         background: "linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--muted)) 45%, hsl(var(--background)) 55%, hsl(var(--background)) 100%)",
       }}

@@ -20,14 +20,23 @@ const Index = () => {
 
   return (
     <>
-      {/* Contact banner — lowest layer, revealed last */}
-      <ContactBanner />
-      {/* Schedule banner — middle layer, revealed after main content */}
-      <div className="relative z-[1]" style={{ clipPath: "inset(0)" }}>
-        <ScheduleBanner />
+      {/* Custom cursor — outside all clipped containers so it's always visible */}
+      <CustomCursor isIntroVisible={introVisible} />
+
+      {/* Contact banner — lowest fixed layer (z-0) */}
+      <div className="fixed inset-0 z-0">
+        <ContactBanner />
+      </div>
+
+      {/* Schedule layer — revealed after main content scrolls away */}
+      <div className="relative z-[2]" style={{ clipPath: "inset(0)" }}>
+        {/* Schedule banner fixed inside this clipped container */}
+        <div className="fixed inset-0 z-0">
+          <ScheduleBanner />
+        </div>
+
         {/* Main content — top layer */}
         <div className="relative z-10" style={{ clipPath: "inset(0)" }}>
-          <CustomCursor isIntroVisible={introVisible} />
           <ParticleCanvas />
           {introVisible && <IntroScreen onEnter={handleEnter} />}
           <Navbar />
@@ -50,10 +59,10 @@ const Index = () => {
           </div>
         </div>
         {/* Spacer reveals the fixed ScheduleBanner */}
-        <div className="relative z-0 h-screen" />
+        <div className="h-screen" />
       </div>
       {/* Spacer reveals the fixed ContactBanner */}
-      <div className="relative z-0 h-screen" />
+      <div className="h-screen" />
     </>
   );
 };
