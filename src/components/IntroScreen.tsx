@@ -35,13 +35,24 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
     };
   }, [handleEnter]);
 
+  // Lock body scroll while intro is visible
+  useEffect(() => {
+    if (!hidden) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [hidden]);
+
   // Handle scroll wheel
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
       if (e.deltaY > 0) handleEnter();
     };
     if (!hiding && !hidden) {
-      document.addEventListener("wheel", handleWheel, { once: true });
+      document.addEventListener("wheel", handleWheel, { passive: false });
     }
     return () => document.removeEventListener("wheel", handleWheel);
   }, [hiding, hidden, handleEnter]);
