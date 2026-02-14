@@ -30,7 +30,7 @@ const Registration = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <PageLayout backgroundImage="/images/addressals-bg.jpg">
+    <PageLayout backgroundImage="/images/registration-bg.png">
       <div ref={headerRef} className="reveal-section flex flex-col items-center mb-12">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
