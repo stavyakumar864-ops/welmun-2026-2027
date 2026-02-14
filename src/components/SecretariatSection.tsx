@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const members = [
   { role: "Secretary General", img: "https://www.welhammun.org/assets/images/sec1.jpg", area: "sg" },
@@ -16,7 +16,7 @@ const techDirectors = [
 const SecretariatSection = () => {
   const [modalRole, setModalRole] = useState<string | null>(null);
   const secRef = useScrollReveal<HTMLElement>(0.1);
-  const techRef = useStaggerReveal<HTMLElement>(150);
+  const techRef = useScrollReveal<HTMLElement>(0.1);
 
   return (
     <>
