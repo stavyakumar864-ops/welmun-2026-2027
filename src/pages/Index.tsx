@@ -22,7 +22,7 @@ const Index = () => {
       {/* Schedule banner fixed behind everything */}
       <ScheduleBanner />
       {/* Main content on top */}
-      <div className="relative z-10">
+      <div className="relative z-10" style={{ clipPath: "inset(0)" }}>
         <CustomCursor isIntroVisible={introVisible} />
         <ParticleCanvas />
         {introVisible && <IntroScreen onEnter={handleEnter} />}
