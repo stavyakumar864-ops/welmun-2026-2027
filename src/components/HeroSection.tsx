@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CountdownTimer from "./CountdownTimer";
 import { motion } from "framer-motion";
 
@@ -59,6 +60,21 @@ const HeroSection = () => {
         <h2 className="font-display text-3xl md:text-5xl text-primary leading-tight uppercase tracking-wide">
           Welham<br />Boys'<br />School
         </h2>
+      </motion.div>
+
+      {/* Bottom center — Schedule button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" as const }}
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 z-10"
+      >
+        <Link
+          to="/schedule"
+          className="px-8 py-3 border border-primary text-primary font-display text-sm md:text-base tracking-[4px] uppercase hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-none"
+        >
+          Schedule
+        </Link>
       </motion.div>
 
       {/* Bottom right — Date */}

@@ -6,7 +6,7 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "Addressals", to: "/addressals" },
   { label: "Registration", to: "/registration" },
-  { label: "Schedule", to: "/schedule" },
+  
   { label: "Committees", to: "/committees" },
   { label: "Conference Details", to: "/conference-details" },
   { label: "Photo Gallery", to: "/gallery" },
