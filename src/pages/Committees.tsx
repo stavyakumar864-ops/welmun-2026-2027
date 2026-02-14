@@ -10,15 +10,20 @@ const Committees = () => (
     <div className="gold-divider mb-16" />
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-      {committees.map((c) => (
+      {committees.map((c, i) => (
         <Link
           key={c.id}
           to={`/committees/${c.id}`}
-          className="group relative aspect-[4/3] overflow-hidden cursor-none block"
+          className={`group relative aspect-[4/3] overflow-hidden cursor-none block ${
+            i === committees.length - 1 && committees.length % 3 === 1
+              ? "sm:col-span-2 lg:col-span-1 lg:col-start-2"
+              : ""
+          }`}
         >
           <img
             src={c.cardImage}
             alt={c.name}
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-background/50 group-hover:bg-background/30 transition-colors duration-300" />
