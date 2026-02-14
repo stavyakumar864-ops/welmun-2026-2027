@@ -29,12 +29,18 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <div className="flex gap-10 text-3xl mt-10">
+    <div className="flex gap-6 md:gap-10 mt-10">
       {boxes.map((b) => (
-        <div key={b.label} className="text-center text-primary">
-          {b.val}
-          <br />
-          <span className="text-sm text-light-gold">{b.label}</span>
+        <div
+          key={b.label}
+          className="flex flex-col items-center justify-center w-20 h-20 md:w-28 md:h-28 border-2 border-primary/80 text-center"
+        >
+          <span className="text-primary text-3xl md:text-5xl font-display leading-none">
+            {b.val}
+          </span>
+          <span className="text-xs md:text-sm text-light-gold mt-1 tracking-wider">
+            {b.label}
+          </span>
         </div>
       ))}
     </div>
