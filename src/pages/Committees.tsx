@@ -3,22 +3,6 @@ import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { committees } from "@/data/committees";
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
-
 const Committees = () => {
   return (
     <PageLayout backgroundImage="/images/committees-bg.jpg">
@@ -41,41 +25,55 @@ const Committees = () => {
       />
 
       {/* Cards Grid */}
-      <motion.div
+      <div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-6xl"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.05 }}
+        style={{ perspective: "1200px" }}
       >
-        {committees.map((c) => (
-          <motion.div key={c.id} variants={cardVariants}>
-            <Link
-              to={`/committees/${c.id}`}
-              className="group relative block aspect-[16/10] overflow-hidden cursor-none"
+        {committees.map((c, i) => {
+          const isLast = i === committees.length - 1;
+          const isOddTotal = committees.length % 3 === 1;
+          const centerLast = isLast && isOddTotal;
+
+          return (
+            <motion.div
+              key={c.id}
+              initial={{ opacity: 0, rotateX: 65, y: 80, scale: 0.85 }}
+              whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{
+                duration: 0.8,
+                delay: (i % 3) * 0.12,
+                ease: [0.23, 1, 0.32, 1],
+              }}
+              style={{ transformOrigin: "bottom center" }}
+              className={centerLast ? "sm:col-span-2 lg:col-span-1 lg:col-start-2" : ""}
             >
-              {/* Image with hover zoom */}
-              <img
-                src={c.cardImage}
-                alt={c.name}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
+              <Link
+                to={`/committees/${c.id}`}
+                className="group relative block aspect-[16/10] overflow-hidden cursor-none"
+              >
+                <img
+                  src={c.cardImage}
+                  alt={c.name}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
 
-              {/* Dark overlay — appears on hover */}
-              <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-all duration-500" />
+                {/* Dark overlay on hover */}
+                <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-all duration-500" />
 
-              {/* Committee name — hidden by default, revealed on hover */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <h2 className="font-display text-2xl md:text-3xl text-primary tracking-[4px] uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  {c.shortName}
-                </h2>
-                <div className="w-0 group-hover:w-16 h-[1px] bg-primary/50 transition-all duration-500 delay-100 mt-3" />
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+                {/* Name on hover */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <h2 className="font-display text-2xl md:text-3xl text-primary tracking-[4px] uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    {c.shortName}
+                  </h2>
+                  <div className="w-0 group-hover:w-16 h-[1px] bg-primary/50 transition-all duration-500 delay-100 mt-3" />
+                </div>
+              </Link>
+            </motion.div>
+          );
+        })}
+      </div>
     </PageLayout>
   );
 };
