@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center items-center px-[10%] py-24"
+      className="min-h-screen flex flex-col justify-center items-center px-[5%] md:px-[8%] lg:px-[10%] py-24"
     >
       <h1 className="font-display text-5xl md:text-7xl text-center text-primary">
         Welham Model United Nations

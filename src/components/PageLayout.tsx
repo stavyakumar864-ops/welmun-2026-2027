@@ -12,7 +12,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
       <CustomCursor isIntroVisible={false} />
       <ParticleCanvas />
       <Navbar />
-      <main className="pt-20 min-h-screen px-[10%] py-24 flex flex-col items-center">
+      <main className="pt-20 min-h-screen px-[5%] md:px-[8%] lg:px-[10%] py-24 flex flex-col items-center">
         {children}
       </main>
     </>
