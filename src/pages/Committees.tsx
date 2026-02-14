@@ -4,7 +4,7 @@ import PageLayout from "@/components/PageLayout";
 import { committees } from "@/data/committees";
 
 // Custom order: UNSC, DISEC, UNHCR | IPC (center) | ECOSOC, Lok Sabha, Roman Senate
-const orderedIds = ["unsc", "disec", "unhcr", "ipc", "ecosoc", "lok-sabha", "roman-senate"];
+const orderedIds = ["unsc", "disec", "unhcr", "ecosoc", "lok-sabha", "roman-senate", "ipc"];
 const orderedCommittees = orderedIds
   .map((id) => committees.find((c) => c.id === id))
   .filter(Boolean) as typeof committees;
