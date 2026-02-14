@@ -21,7 +21,6 @@ const PageLayout = memo(({ children, backgroundImage }: PageLayoutProps) => {
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundAttachment: "fixed",
           }}
         >
           <div className="absolute inset-0 bg-background/80" />

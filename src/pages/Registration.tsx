@@ -56,7 +56,7 @@ const Registration = () => {
 
         {/* Right Side Nav */}
         <nav className="hidden lg:block w-52 shrink-0">
-          <div className="sticky top-28 space-y-1 bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-primary/20">
+          <div className="sticky top-28 space-y-1 bg-background/95 rounded-xl p-4 border border-primary/20">
             <p className="font-display text-xs text-primary/60 uppercase tracking-[3px] mb-4">Sections</p>
             {sections.map(({ id, label, icon: Icon, path }) => (
               <button

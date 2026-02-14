@@ -29,11 +29,11 @@ const CountdownTimer = () => {
   ];
 
   return (
-    <div className="mt-8 px-6 py-4 bg-background/50 backdrop-blur-sm inline-flex items-center gap-3 md:gap-5">
+    <div className="mt-8 px-6 py-4 bg-background/60 inline-flex items-center gap-3 md:gap-5">
       {boxes.map((b, i) => (
         <span key={b.label} className="flex items-center gap-3 md:gap-5">
           <span className="text-center">
-            <span className="text-primary text-3xl md:text-5xl font-display leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            <span className="text-primary text-3xl md:text-5xl font-display leading-none">
               {b.val}
             </span>
             <span className="text-[10px] md:text-xs text-light-gold ml-1">{b.label}</span>

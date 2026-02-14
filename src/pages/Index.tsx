@@ -43,12 +43,11 @@ const Index = () => {
           <HeroSection />
           <div className="relative">
             <div
-              className="fixed inset-0 z-0"
+              className="absolute inset-0 z-0"
               style={{
                 backgroundImage: "url(/images/home-bg.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundAttachment: "fixed",
               }}
             >
               <div className="absolute inset-0 bg-background/80" />
