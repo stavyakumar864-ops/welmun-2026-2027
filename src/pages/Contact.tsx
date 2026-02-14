@@ -99,26 +99,25 @@ const Contact = () => {
             <p className="text-muted-foreground text-lg">0135-2657120</p>
           </div>
 
-          {/* Secretary General */}
-          <div className="text-center mt-8">
-            <h2 className="font-display text-2xl text-primary underline mb-3">Secretary-General</h2>
-            <p className="text-muted-foreground text-lg">Atharva Agarwal</p>
-            <p className="text-muted-foreground text-lg">+91-8709633816</p>
-            <a href="mailto:secretarygeneral@welhamboys.org" className="text-primary hover:underline cursor-none text-lg">
-              secretarygeneral@welhamboys.org
-            </a>
-          </div>
         </div>
       </div>
 
-      {/* Conference Director */}
-      <div ref={bottomRef} className="w-full max-w-5xl mt-16 reveal-section">
+      {/* Conference Director + Secretary General side by side */}
+      <div ref={bottomRef} className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 reveal-section">
         <div className="text-center">
           <h2 className="font-display text-2xl text-primary underline mb-3">Conference Director</h2>
           <p className="text-muted-foreground text-lg">Ms. Kiran Tripathi</p>
           <p className="text-muted-foreground text-lg">+91-7409809908</p>
           <a href="mailto:kirantripathi@welhamboys.org" className="text-primary hover:underline cursor-none text-lg">
             kirantripathi@welhamboys.org
+          </a>
+        </div>
+        <div className="text-center">
+          <h2 className="font-display text-2xl text-primary underline mb-3">Secretary-General</h2>
+          <p className="text-muted-foreground text-lg">Atharva Agarwal</p>
+          <p className="text-muted-foreground text-lg">+91-8709633816</p>
+          <a href="mailto:secretarygeneral@welhamboys.org" className="text-primary hover:underline cursor-none text-lg">
+            secretarygeneral@welhamboys.org
           </a>
         </div>
       </div>
