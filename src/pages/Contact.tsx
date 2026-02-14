@@ -114,7 +114,7 @@ const Contact = () => {
         </div>
         <div className="text-center">
           <h2 className="font-display text-2xl text-primary underline mb-3">Secretary-General</h2>
-          <p className="text-muted-foreground text-lg">Atharva Agarwal</p>
+          <p className="text-muted-foreground text-lg">Ahan Sparsh</p>
           <p className="text-muted-foreground text-lg">+91-8709633816</p>
           <a href="mailto:secretarygeneral@welhamboys.org" className="text-primary hover:underline cursor-none text-lg">
             secretarygeneral@welhamboys.org

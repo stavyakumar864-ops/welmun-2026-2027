@@ -57,7 +57,7 @@ const Addressals = () => {
               Power, when wielded wisely, is a force for progress. This reminds me of a Secretary-General's address I read in ninth grade, which stated, "When the power of love overcomes the love for power, the world will know peace." Many dismiss this as an unattainable utopia, but I beg to differ. If there is one universal truth, it is that change is inevitable. And I believe, with every fiber of my being, that our generation not only possesses the potential but also the resolve to be the harbingers of that change.
             </p>
             <p>
-              A little about myself — I am Atharva Agrawal, a firm believer in the power of perseverance and purpose. I am someone from a humble background, studies the art of humble politics and tries to live a not so humble life, and it hasn't always been kind. There have been days when the weight of the world felt too heavy to bear, moments when silence echoed louder than words, and nights spent wondering if things would ever truly get better. I have seen dreams crumble, relationships falter, and hope flicker in the darkest corners of my mind. But even in those moments, I held on. Not because I had to — but because I chose to.
+              A little about myself — I am Ahan Sparsh, a firm believer in the power of perseverance and purpose. I am someone from a humble background, studies the art of humble politics and tries to live a not so humble life, and it hasn't always been kind. There have been days when the weight of the world felt too heavy to bear, moments when silence echoed louder than words, and nights spent wondering if things would ever truly get better. I have seen dreams crumble, relationships falter, and hope flicker in the darkest corners of my mind. But even in those moments, I held on. Not because I had to — but because I chose to.
             </p>
             <p>
               And that's what I want WELMUN to mean to you. A space where even if the gods are against you, you don't go down without a fight. A place where resilience isn't a virtue — it's a way of life. A platform where your voice matters, and where disagreement is not destruction, but dialogue.
@@ -76,7 +76,7 @@ const Addressals = () => {
               Let your voice echo. Let your truth matter. Let the world listen.
             </p>
             <p className="mt-4">
-              Atharva Agrawal<br />
+              Ahan Sparsh<br />
               Secretary-General,<br />
               Welham Boys' School Model United Nations Conference
             </p>
@@ -84,11 +84,11 @@ const Addressals = () => {
           <div className="flex flex-col items-center gap-3 shrink-0">
             <img
               src={secGenPhoto}
-              alt="Atharva Agarwal"
+              alt="Ahan Sparsh"
               className="w-56 h-56 object-cover rounded-full border-2 border-primary/30"
               loading="lazy"
             />
-            <h3 className="font-display text-xl text-primary font-bold">Atharva Agarwal</h3>
+            <h3 className="font-display text-xl text-primary font-bold">Ahan Sparsh</h3>
             <p className="text-primary italic">Secretary-General</p>
           </div>
         </div>
