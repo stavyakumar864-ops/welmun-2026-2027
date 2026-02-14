@@ -13,6 +13,7 @@ import RegistrationFees from "./pages/registration/RegistrationFees";
 import RegistrationHotels from "./pages/registration/RegistrationHotels";
 import RegistrationDownloads from "./pages/registration/RegistrationDownloads";
 import RegistrationFAQs from "./pages/registration/RegistrationFAQs";
+import RegistrationKameraObscura from "./pages/registration/RegistrationKameraObscura";
 import Schedule from "./pages/Schedule";
 import Committees from "./pages/Committees";
 import CommitteeDetail from "./pages/CommitteeDetail";
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="fees" element={<RegistrationFees />} />
             <Route path="hotels" element={<RegistrationHotels />} />
             <Route path="downloads" element={<RegistrationDownloads />} />
+            <Route path="kamera-obscura" element={<RegistrationKameraObscura />} />
             <Route path="faqs" element={<RegistrationFAQs />} />
           </Route>
           <Route path="/schedule" element={<Schedule />} />

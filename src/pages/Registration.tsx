@@ -10,6 +10,7 @@ import {
   HelpCircle,
   Download,
   Hotel,
+  Camera,
 } from "lucide-react";
 
 const sections = [
@@ -19,6 +20,7 @@ const sections = [
   { id: "fees", label: "Fees & Payment", icon: CreditCard, path: "/registration/fees" },
   { id: "hotels", label: "Hotels", icon: Hotel, path: "/registration/hotels" },
   { id: "downloads", label: "Downloads", icon: Download, path: "/registration/downloads" },
+  { id: "kamera", label: "Kamera Obscura", icon: Camera, path: "/registration/kamera-obscura" },
   { id: "faqs", label: "FAQs", icon: HelpCircle, path: "/registration/faqs" },
 ];
 
