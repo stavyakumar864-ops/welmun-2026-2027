@@ -64,12 +64,11 @@ const Committees = () => {
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-all duration-500" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <h2 className="font-display text-2xl md:text-3xl text-primary tracking-[4px] uppercase translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="absolute inset-0 bg-background/40 group-hover:bg-background/60 transition-all duration-500" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                  <h2 className="font-display text-2xl md:text-3xl text-primary tracking-[4px] uppercase">
                     {c.shortName}
                   </h2>
-                  <div className="w-0 group-hover:w-16 h-[1px] bg-primary/50 transition-all duration-500 delay-100 mt-3" />
                 </div>
               </Link>
             </motion.div>
