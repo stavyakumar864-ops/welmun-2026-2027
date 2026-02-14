@@ -49,24 +49,26 @@ const Navbar = () => {
       </button>
 
       {/* Mobile/Tablet menu overlay */}
-      {menuOpen && (
-        <div className="fixed inset-0 top-0 left-0 w-full h-full bg-background/98 backdrop-blur-md z-[105] flex flex-col items-center justify-center gap-6 lg:hidden">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              onClick={() => setMenuOpen(false)}
-              className={`font-display text-2xl cursor-none transition-colors ${
-                location.pathname === link.to
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-primary"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
+      <div
+        className={`fixed inset-0 w-full h-screen bg-background z-[105] flex flex-col items-center justify-center gap-5 lg:hidden transition-all duration-300 ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {navLinks.map((link) => (
+          <Link
+            key={link.label}
+            to={link.to}
+            onClick={() => setMenuOpen(false)}
+            className={`font-display text-xl sm:text-2xl cursor-none transition-colors no-underline ${
+              location.pathname === link.to
+                ? "text-primary"
+                : "text-muted-foreground hover:text-primary"
+            }`}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 };
