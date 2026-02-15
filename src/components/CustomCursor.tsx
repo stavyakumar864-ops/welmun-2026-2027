@@ -40,7 +40,7 @@ const CustomCursor = memo(({ isIntroVisible }: CustomCursorProps) => {
       ref={cursorRef}
       className="fixed top-0 left-0 w-[18px] h-[18px] border-2 rounded-full pointer-events-none z-[9999]"
       style={{
-        borderColor: isIntroVisible ? "hsl(15,30%,12%)" : "hsl(40,40%,80%)",
+        borderColor: isIntroVisible ? "hsl(40,40%,80%)" : "hsl(15,30%,12%)",
         willChange: "transform",
         transition: "border-color 0.2s",
         transform: "translate3d(-50px,-50px,0)",
