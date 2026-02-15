@@ -47,7 +47,7 @@ const Schedule = () => {
   const ref = useStaggerReveal<HTMLDivElement>(200);
 
   return (
-    <PageLayout>
+    <PageLayout backgroundImage="/images/schedule-bg.png">
       <h1 className="font-display text-5xl text-primary mb-4">Conference Schedule</h1>
       <div className="gold-divider" />
 
