@@ -27,7 +27,6 @@ const CommitteeIntro = ({ committeeId, committeeName }: CommitteeIntroProps) => 
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSrc = committeeVideos[committeeId];
 
-  // Loop the video so it keeps playing when user scrolls back up
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.loop = true;
@@ -37,7 +36,7 @@ const CommitteeIntro = ({ committeeId, committeeName }: CommitteeIntroProps) => 
   if (!videoSrc) return null;
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center bg-background overflow-hidden">
+    <div className="fixed inset-0 z-0 flex items-center justify-center bg-background">
       <video
         ref={videoRef}
         src={videoSrc}
