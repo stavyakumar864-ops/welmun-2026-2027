@@ -68,16 +68,16 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
       }}
     >
       <h1
-        className="font-display text-5xl md:text-8xl tracking-[8px] whitespace-nowrap overflow-hidden border-r-4"
+        className="font-display text-5xl md:text-8xl tracking-[6px] whitespace-nowrap overflow-hidden border-r-4"
         style={{
           color: "hsl(15, 30%, 12%)",
           borderColor: "hsl(15, 30%, 12%)",
           width: 0,
-          animation: "typing 1.2s steps(14) forwards, blink 0.5s infinite",
+          animation: "typing 1.8s steps(12) forwards, blink 0.5s infinite",
           textShadow: "0 0 40px hsl(15 30% 12% / 0.3)",
         }}
       >
-        WELMUN 2026
+        WELMUN '26
       </h1>
       <div className="mt-12 flex flex-col items-center gap-3">
         <button
@@ -85,7 +85,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="swipe-btn tracking-[3px] text-sm font-medium opacity-0 cursor-none"
           style={{
             color: "hsl(15, 30%, 12%)",
-            animation: "fadeIn 1s forwards 1.5s",
+            animation: "fadeIn 1s forwards 2.1s",
           }}
         >
           SCROLL DOWN
