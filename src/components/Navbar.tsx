@@ -1,7 +1,7 @@
 import { useState, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import welhamLogo from "@/assets/welham-logo.png";
+import welhamCrest from "@/assets/welham-school-crest.png";
 import welmunCrest from "@/assets/welmun-crest.png";
 
 const navLinks = [
@@ -26,10 +26,9 @@ const Navbar = memo(() => {
       {/* Welham school logo — left */}
       <Link to="/" className="cursor-none shrink-0">
         <img
-          src={welhamLogo}
+          src={welhamCrest}
           alt="Welham Boys' School"
-          className="h-14 w-14 object-contain"
-          style={{ filter: crestFilter }}
+          className="h-16 w-16 object-contain"
         />
       </Link>
 
@@ -53,7 +52,7 @@ const Navbar = memo(() => {
       <img
         src={welmunCrest}
         alt="WELMUN Crest"
-        className="hidden lg:block h-14 w-14 object-contain shrink-0"
+        className="hidden lg:block h-16 w-16 object-contain shrink-0"
         style={{ filter: crestFilter }}
       />
 
