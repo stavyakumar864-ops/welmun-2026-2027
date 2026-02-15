@@ -63,7 +63,7 @@ const Committees = () => {
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                   <h2
                     className="font-display text-2xl md:text-3xl text-primary tracking-[4px] uppercase"
-                    style={{ textShadow: "0 2px 12px hsl(15 30% 12% / 0.9), 0 0 30px hsl(15 30% 12% / 0.6)" }}
+                    style={{ textShadow: "0 2px 12px hsl(220 40% 13% / 0.9), 0 0 30px hsl(220 40% 13% / 0.6)" }}
                   >
                     {c.shortName}
                   </h2>

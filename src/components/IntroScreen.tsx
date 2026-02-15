@@ -63,18 +63,18 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
     <div
       className="fixed inset-0 z-[10000] flex flex-col items-center justify-center transition-transform duration-1000"
       style={{
-        backgroundColor: "hsl(42, 30%, 55%)",
+        backgroundColor: "hsl(220, 40%, 13%)",
         transform: hiding ? "translateY(-100%)" : "translateY(0)",
       }}
     >
       <h1
         className="font-display text-5xl md:text-8xl tracking-[6px] whitespace-nowrap overflow-hidden border-r-4"
         style={{
-          color: "hsl(15, 30%, 12%)",
-          borderColor: "hsl(15, 30%, 12%)",
+          color: "hsl(42, 70%, 55%)",
+          borderColor: "hsl(42, 70%, 55%)",
           width: 0,
           animation: "typing 1.8s steps(12) forwards, blink 0.5s infinite",
-          textShadow: "0 0 40px hsl(15 30% 12% / 0.3)",
+          textShadow: "0 0 40px hsl(42 70% 55% / 0.3)",
         }}
       >
         WELMUN 26'
@@ -84,7 +84,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           onClick={handleEnter}
           className="swipe-btn tracking-[3px] text-sm font-medium opacity-0 cursor-none"
           style={{
-            color: "hsl(15, 30%, 12%)",
+            color: "hsl(42, 70%, 55%)",
             animation: "fadeIn 1s forwards 2.1s",
           }}
         >
@@ -93,7 +93,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
         <span
           className="text-3xl"
           style={{
-            color: "hsl(15, 30%, 12%)",
+            color: "hsl(42, 70%, 55%)",
             animation: "bounce-arrow 1.5s infinite",
           }}
         >

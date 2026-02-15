@@ -75,7 +75,7 @@ const CommitteeIntro = ({ committeeId, committeeName, onComplete }: CommitteeInt
             transition={{ duration: 0.8, delay: 0.5 }}
             className="relative z-10 font-display text-5xl md:text-7xl lg:text-8xl text-primary tracking-[8px] uppercase text-center"
             style={{
-              textShadow: "0 4px 20px hsl(15 30% 12% / 0.8), 0 0 60px hsl(15 30% 12% / 0.5)",
+              textShadow: "0 4px 20px hsl(220 40% 13% / 0.8), 0 0 60px hsl(220 40% 13% / 0.5)",
             }}
           >
             {committeeName}
