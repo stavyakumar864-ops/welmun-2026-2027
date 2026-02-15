@@ -39,7 +39,7 @@ const Navbar = memo(() => {
                 <img
                   src={welmunCrest}
                   alt=""
-                  className="h-5 w-5 object-contain"
+                  className="h-8 w-8 object-contain ml-4"
                   style={{
                     filter: "brightness(0) saturate(100%) invert(68%) sepia(30%) saturate(400%) hue-rotate(10deg) brightness(90%)",
                   }}
