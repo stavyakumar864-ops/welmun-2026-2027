@@ -38,17 +38,17 @@ const Navbar = memo(() => {
             </Link>
           </li>
         ))}
-        <li className="ml-4">
-          <img
-            src={welmunCrest}
-            alt="WELMUN Crest"
-            className="h-12 w-12 object-contain opacity-90"
-            style={{
-              filter: "brightness(0) saturate(100%) invert(75%) sepia(40%) saturate(500%) hue-rotate(10deg) brightness(95%)",
-            }}
-          />
-        </li>
       </ul>
+
+      {/* Crest logo — far right on desktop */}
+      <img
+        src={welmunCrest}
+        alt="WELMUN Crest"
+        className="hidden lg:block h-14 w-14 object-contain"
+        style={{
+          filter: "brightness(0) saturate(100%) invert(75%) sepia(50%) saturate(600%) hue-rotate(10deg) brightness(100%) contrast(110%)",
+        }}
+      />
 
       {/* Hamburger button */}
       <button
