@@ -10,7 +10,7 @@ const navLinks = [
   
   { label: "Committees", to: "/committees" },
   { label: "Conference Details", to: "/conference-details" },
-  { label: "Photo Gallery", to: "/gallery", showCrest: true },
+  { label: "Photo Gallery", to: "/gallery" },
   
 ];
 
@@ -25,29 +25,29 @@ const Navbar = memo(() => {
       </Link>
 
       {/* Desktop nav */}
-      <ul className="hidden lg:flex gap-7 flex-wrap list-none">
+      <ul className="hidden lg:flex gap-7 flex-wrap list-none items-center">
         {navLinks.map((link) => (
           <li key={link.label}>
             <Link
               to={link.to}
-              className={`relative text-primary no-underline cursor-none text-sm flex items-center gap-1.5 after:content-[''] after:absolute after:h-[2px] after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full ${
+              className={`relative text-primary no-underline cursor-none text-sm after:content-[''] after:absolute after:h-[2px] after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full ${
                 location.pathname === link.to ? "after:w-full" : "after:w-0"
               }`}
             >
               {link.label}
-              {(link as any).showCrest && (
-                <img
-                  src={welmunCrest}
-                  alt=""
-                  className="h-8 w-8 object-contain ml-4"
-                  style={{
-                    filter: "brightness(0) saturate(100%) invert(68%) sepia(30%) saturate(400%) hue-rotate(10deg) brightness(90%)",
-                  }}
-                />
-              )}
             </Link>
           </li>
         ))}
+        <li>
+          <img
+            src={welmunCrest}
+            alt="WELMUN Crest"
+            className="h-10 w-10 object-contain"
+            style={{
+              filter: "brightness(0) saturate(100%) invert(68%) sepia(30%) saturate(400%) hue-rotate(10deg) brightness(90%)",
+            }}
+          />
+        </li>
       </ul>
 
       {/* Hamburger button */}
