@@ -67,18 +67,20 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
         transform: hiding ? "translateY(-100%)" : "translateY(0)",
       }}
     >
-      <h1
-        className="font-display text-5xl md:text-8xl tracking-[6px] whitespace-nowrap overflow-hidden border-r-4"
-        style={{
-          color: "hsl(20, 30%, 18%)",
-          borderColor: "hsl(20, 30%, 18%)",
-          width: 0,
-          animation: "typing 1.8s steps(12) forwards, blink 0.5s infinite",
-          textShadow: "0 0 40px hsl(20 30% 18% / 0.3)",
-        }}
-      >
-        WELMUN 26'
-      </h1>
+      <div className="flex justify-center">
+        <h1
+          className="font-display text-5xl md:text-8xl tracking-[6px] whitespace-nowrap overflow-hidden border-r-4"
+          style={{
+            color: "hsl(20, 30%, 18%)",
+            borderColor: "hsl(20, 30%, 18%)",
+            width: 0,
+            animation: "typing 1.8s steps(12) forwards, blink 0.5s infinite",
+            textShadow: "0 0 40px hsl(20 30% 18% / 0.3)",
+          }}
+        >
+          WELMUN 26'
+        </h1>
+      </div>
       <div className="mt-12 flex flex-col items-center gap-3">
         <button
           onClick={handleEnter}
