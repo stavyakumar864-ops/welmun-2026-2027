@@ -1,6 +1,7 @@
 import { useState, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import elephantLogo from "@/assets/welham-elephant.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -20,9 +21,14 @@ const Navbar = memo(() => {
 
   return (
     <nav className="fixed w-full px-[5%] lg:px-[8%] py-5 flex justify-between items-center bg-background/95 z-[100]">
-      <Link to="/" className="font-display text-2xl font-bold text-primary cursor-none no-underline">
-        WELMUN
-      </Link>
+      <div className="flex items-center gap-3">
+        <Link to="/" className="cursor-none">
+          <img src={elephantLogo} alt="Welham Logo" className="h-10 w-auto" />
+        </Link>
+        <Link to="/" className="font-display text-2xl font-bold text-primary cursor-none no-underline">
+          WELMUN
+        </Link>
+      </div>
 
       {/* Desktop nav */}
       <ul className="hidden lg:flex gap-7 flex-wrap list-none">
