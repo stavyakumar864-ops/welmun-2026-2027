@@ -18,6 +18,7 @@ import Schedule from "./pages/Schedule";
 import Committees from "./pages/Committees";
 import CommitteeDetail from "./pages/CommitteeDetail";
 import ConferenceDetails from "./pages/ConferenceDetails";
+import ImportantDownloads from "./pages/ImportantDownloads";
 import PhotoGallery from "./pages/PhotoGallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -49,6 +50,7 @@ const App = () => (
           <Route path="/committees" element={<Committees />} />
           <Route path="/committees/:id" element={<CommitteeDetail />} />
           <Route path="/conference-details" element={<ConferenceDetails />} />
+          <Route path="/downloads" element={<ImportantDownloads />} />
           <Route path="/gallery" element={<PhotoGallery />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
