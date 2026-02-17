@@ -29,10 +29,10 @@ const SecretariatSection = () => {
       <section ref={secRef} id="secretariat" className="min-h-screen flex flex-col justify-center items-center px-[10%] py-24 reveal-section">
         <h2 className="font-display text-4xl text-primary">Secretariat</h2>
         <div className="gold-divider" />
-        {/* Secretary General - centered above */}
-        <div className="flex justify-center mb-12">
+        {/* Secretary General - centered, slightly above */}
+        <div className="flex justify-center mt-16 mb-6">
           <div
-            className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden max-w-sm w-full"
+            className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden max-w-xs w-full"
             onClick={() => setModalRole(secGen.role)}
           >
             <img src={secGen.img} alt={secGen.name} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
@@ -41,12 +41,12 @@ const SecretariatSection = () => {
           </div>
         </div>
 
-        {/* Other members below */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
+        {/* Other members in a single row */}
+        <div className="w-full flex justify-center gap-12 flex-wrap">
           {otherMembers.map((m) => (
             <div
               key={m.role}
-              className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
+              className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden max-w-xs w-full"
               onClick={() => setModalRole(m.role)}
             >
               <img src={m.img} alt={m.name} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
