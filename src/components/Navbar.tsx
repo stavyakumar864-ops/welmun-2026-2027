@@ -21,10 +21,10 @@ const Navbar = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full pl-2 pr-2 lg:pl-4 lg:pr-4 py-5 flex justify-between items-center bg-background/95 z-[100]">
+    <nav className="fixed w-full pl-2 pr-2 lg:pl-4 lg:pr-4 py-3 flex justify-between items-center bg-background/95 z-[100]">
       <div className="flex items-center gap-3">
         <Link to="/" className="cursor-none">
-          <img src={elephantLogo} alt="Welham Logo" className="h-10 w-auto" />
+          <img src={elephantLogo} alt="Welham Logo" className="h-14 w-auto" />
         </Link>
         <Link to="/" className="font-display text-2xl font-bold text-primary cursor-none no-underline">
           WELMUN
@@ -32,7 +32,7 @@ const Navbar = memo(() => {
       </div>
 
       {/* Desktop nav */}
-      <ul className="hidden lg:flex gap-7 flex-wrap list-none">
+      <ul className="hidden lg:flex gap-7 flex-wrap list-none mx-auto">
         {navLinks.map((link) => (
           <li key={link.label}>
             <Link
@@ -56,7 +56,7 @@ const Navbar = memo(() => {
         >
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
-        <img src={hdLogo} alt="HD Logo" className="h-10 w-auto" />
+        <img src={hdLogo} alt="HD Logo" className="h-14 w-auto" />
       </div>
 
       {/* Mobile/Tablet menu overlay */}
