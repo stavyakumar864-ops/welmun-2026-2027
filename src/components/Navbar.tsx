@@ -57,7 +57,7 @@ const Navbar = memo(() => {
         >
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
-        <img src={hdLogo} alt="HD Logo" className="h-14 w-auto" />
+        <img src={hdLogo} alt="HD Logo" className="h-20 w-auto" />
       </div>
 
       {/* Mobile/Tablet menu overlay */}
