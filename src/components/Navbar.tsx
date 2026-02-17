@@ -2,6 +2,7 @@ import { useState, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import elephantLogo from "@/assets/welham-elephant.png";
+import hdLogo from "@/assets/hd-white.png";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -20,7 +21,7 @@ const Navbar = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full pl-2 pr-[5%] lg:pl-4 lg:pr-[8%] py-5 flex justify-between items-center bg-background/95 z-[100]">
+    <nav className="fixed w-full pl-2 pr-2 lg:pl-4 lg:pr-4 py-5 flex justify-between items-center bg-background/95 z-[100]">
       <div className="flex items-center gap-3">
         <Link to="/" className="cursor-none">
           <img src={elephantLogo} alt="Welham Logo" className="h-10 w-auto" />
@@ -46,14 +47,17 @@ const Navbar = memo(() => {
         ))}
       </ul>
 
-      {/* Hamburger button */}
-      <button
-        className="lg:hidden text-primary cursor-none z-[110]"
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
-      >
-        {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button>
+      <div className="flex items-center gap-3">
+        {/* Hamburger button */}
+        <button
+          className="lg:hidden text-primary cursor-none z-[110]"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+        <img src={hdLogo} alt="HD Logo" className="h-10 w-auto" />
+      </div>
 
       {/* Mobile/Tablet menu overlay */}
       <div
