@@ -42,7 +42,7 @@ const SecretariatSection = () => {
         </div>
 
         {/* Other members in a single row */}
-        <div className="w-full flex justify-center gap-24 flex-wrap">
+        <div className="w-full flex justify-center gap-40 flex-wrap">
           {otherMembers.map((m) => (
             <div
               key={m.role}
