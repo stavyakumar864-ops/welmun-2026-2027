@@ -6,8 +6,9 @@ import dirGenPhoto from "@/assets/dir-gen.png";
 import techDirector1Photo from "@/assets/tech-director-1.png";
 import techDirector2Photo from "@/assets/tech-director-2.png";
 
-const members = [
-  { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
+const secGen = { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto };
+
+const otherMembers = [
   { role: "Director General", name: "Tanveer S. Madan", img: dirGenPhoto },
   { role: "Under Secretary", name: "Koustabh Gupta", img: underSecPhoto },
 ];
@@ -28,8 +29,21 @@ const SecretariatSection = () => {
       <section ref={secRef} id="secretariat" className="min-h-screen flex flex-col justify-center items-center px-[10%] py-24 reveal-section">
         <h2 className="font-display text-4xl text-primary">Secretariat</h2>
         <div className="gold-divider" />
-        <div className="w-full mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-          {members.map((m) => (
+        {/* Secretary General - centered above */}
+        <div className="flex justify-center mb-12">
+          <div
+            className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden max-w-sm w-full"
+            onClick={() => setModalRole(secGen.role)}
+          >
+            <img src={secGen.img} alt={secGen.name} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
+            <h3 className="font-display text-xl text-primary">{secGen.name}</h3>
+            <p className="text-muted-foreground text-sm mt-1">{secGen.role}</p>
+          </div>
+        </div>
+
+        {/* Other members below */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
+          {otherMembers.map((m) => (
             <div
               key={m.role}
               className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
