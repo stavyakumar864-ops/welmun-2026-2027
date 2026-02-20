@@ -25,7 +25,7 @@ const ContactBanner = () => {
             <p className="font-display text-lg text-primary uppercase tracking-wider">Welham Boys' School</p>
             <p className="text-muted-foreground">5, Circular Road Dalanwala</p>
             <p className="text-muted-foreground">Dehradun – 248001</p>
-            <p className="text-muted-foreground">Tel: +91-7409809908</p>
+            <p className="text-muted-foreground">Tel: +91-6204027206</p>
             <a href="mailto:secretarygeneral@welhamboys.org" className="text-primary hover:underline cursor-none">
               secretarygeneral@welhamboys.org
             </a>
