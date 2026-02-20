@@ -31,16 +31,16 @@ const ContactBanner = () => {
             </a>
           </div>
           <div className="flex gap-5 items-center">
-            <a href="https://www.instagram.com/welaboratorium/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
+            <a href="https://www.instagram.com/welhamboysschool/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
               <Instagram className="w-6 h-6" />
             </a>
-            <a href="https://www.facebook.com/welhamboysschool/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
+            <a href="https://www.facebook.com/WelhamBoys/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
               <Facebook className="w-6 h-6" />
             </a>
-            <a href="https://www.linkedin.com/school/welham-boys-school/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
+            <a href="https://in.linkedin.com/school/welham-boys-school/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
               <Linkedin className="w-6 h-6" />
             </a>
-            <a href="https://www.youtube.com/@WelhamBoysSchool" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
+            <a href="https://www.youtube.com/channel/UCQ_6roDP5aOZ99QdrjGVsHA" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/70 transition-colors cursor-none">
               <Youtube className="w-6 h-6" />
             </a>
           </div>
