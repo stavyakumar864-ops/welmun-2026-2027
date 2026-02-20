@@ -68,7 +68,9 @@ const SecretariatSection = () => {
               className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
               onClick={() => setModalRole(t.role)}
             >
-              <img src={t.img} alt={t.name} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
+              <div className="w-full h-[300px] bg-muted/30 mb-5 flex items-center justify-center">
+                <span className="text-muted-foreground/50 font-display text-lg">Coming Soon</span>
+              </div>
               <h3 className="font-display text-xl text-primary">{t.name || t.role}</h3>
               <p className="text-muted-foreground text-sm mt-1">{t.role}</p>
             </div>
