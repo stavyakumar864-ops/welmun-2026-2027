@@ -1,5 +1,7 @@
+import { useState, useCallback } from "react";
 import PageLayout from "@/components/PageLayout";
 import { useStaggerReveal } from "@/hooks/useScrollReveal";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const photos = [
   { src: "https://static.wixstatic.com/media/9bbbe8_ff32436f4a324f8684cadec9d813af31~mv2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/9bbbe8_ff32436f4a324f8684cadec9d813af31~mv2.jpg", col: 2, row: 2 },
@@ -31,10 +33,36 @@ const photos = [
   { src: "https://static.wixstatic.com/media/9bbbe8_d9488c3999be40e7b5baae5e159f5a45~mv2.jpg/v1/fill/w_480,h_320,q_90,enc_avif,quality_auto/9bbbe8_d9488c3999be40e7b5baae5e159f5a45~mv2.jpg", col: 1, row: 1 },
   { src: "https://static.wixstatic.com/media/9bbbe8_2537dd61df534831a902806a65c27dd7~mv2_d_5472_3648_s_4_2.jpg/v1/fill/w_480,h_320,q_90,enc_avif,quality_auto/9bbbe8_2537dd61df534831a902806a65c27dd7~mv2_d_5472_3648_s_4_2.jpg", col: 2, row: 2 },
   { src: "https://static.wixstatic.com/media/9bbbe8_bac18256c0854f64a080d8ced4219221~mv2_d_5472_3648_s_4_2.jpg/v1/fill/w_960,h_640,q_90,enc_avif,quality_auto/9bbbe8_bac18256c0854f64a080d8ced4219221~mv2_d_5472_3648_s_4_2.jpg", col: 1, row: 1 },
+  // Additional photos from source
+  { src: "https://static.wixstatic.com/media/9bbbe8_5e71e1bcf8da459b8c4045746db08822~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/9bbbe8_5e71e1bcf8da459b8c4045746db08822~mv2.jpg", col: 1, row: 2 },
 ];
+
+// Helper to get high-res version of an image URL
+const getHighRes = (src: string) =>
+  src.replace(/\/fill\/w_\d+,h_\d+/, "/fill/w_1920,h_1280").replace(/\/fit\/w_\d+,h_\d+/, "/fit/w_1920,h_1280");
 
 const PhotoGallery = () => {
   const ref = useStaggerReveal<HTMLDivElement>(60);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = (i: number) => setLightboxIndex(i);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const goNext = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (lightboxIndex !== null) setLightboxIndex((lightboxIndex + 1) % photos.length);
+    },
+    [lightboxIndex]
+  );
+
+  const goPrev = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (lightboxIndex !== null) setLightboxIndex((lightboxIndex - 1 + photos.length) % photos.length);
+    },
+    [lightboxIndex]
+  );
 
   return (
     <PageLayout>
@@ -55,11 +83,12 @@ const PhotoGallery = () => {
           <div
             key={i}
             data-reveal={i}
-            className="img-zoom overflow-hidden relative group"
+            className="img-zoom overflow-hidden relative group cursor-pointer"
             style={{
               gridColumn: `span ${photo.col}`,
               gridRow: `span ${photo.row}`,
             }}
+            onClick={() => openLightbox(i)}
           >
             <img
               src={photo.src}
@@ -71,6 +100,56 @@ const PhotoGallery = () => {
           </div>
         ))}
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-[300] flex items-center justify-center bg-black/90 cursor-none"
+          style={{ animation: "fadeIn 0.3s ease-out" }}
+          onClick={closeLightbox}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 z-10 text-white/70 hover:text-white transition-colors p-2"
+            aria-label="Close lightbox"
+          >
+            <X size={32} />
+          </button>
+
+          {/* Previous button */}
+          <button
+            onClick={goPrev}
+            className="absolute left-4 z-10 text-white/70 hover:text-white transition-colors p-2"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft size={40} />
+          </button>
+
+          {/* Image */}
+          <img
+            src={getHighRes(photos[lightboxIndex].src)}
+            alt={`WELMUN Gallery ${lightboxIndex + 1}`}
+            className="max-w-[90vw] max-h-[85vh] object-contain select-none"
+            style={{ animation: "fadeIn 0.2s ease-out" }}
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Next button */}
+          <button
+            onClick={goNext}
+            className="absolute right-4 z-10 text-white/70 hover:text-white transition-colors p-2"
+            aria-label="Next photo"
+          >
+            <ChevronRight size={40} />
+          </button>
+
+          {/* Counter */}
+          <div className="absolute bottom-4 text-white/50 text-sm">
+            {lightboxIndex + 1} / {photos.length}
+          </div>
+        </div>
+      )}
     </PageLayout>
   );
 };
