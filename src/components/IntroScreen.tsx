@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import welmunCrest from "@/assets/welmun-crest.png";
+import hdLogo from "@/assets/hd-white.png";
 
 interface IntroScreenProps {
   onEnter: () => void;
@@ -64,12 +64,12 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
     <div
       className="fixed inset-0 z-[10000] flex flex-col items-center justify-center"
       style={{
-        backgroundColor: "hsl(20, 30%, 18%)",
+        backgroundColor: "hsl(40, 20%, 90%)",
       }}
     >
       {/* Logo that zooms in */}
       <div
-        className="flex flex-col items-center justify-center transition-all"
+        className="flex flex-col items-center justify-center"
         style={{
           transform: phase === "morphing" ? "scale(15)" : "scale(1)",
           opacity: phase === "morphing" ? 0 : 1,
@@ -77,28 +77,30 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
         }}
       >
         <img
-          src={welmunCrest}
-          alt="WELMUN Crest"
-          className="w-32 h-32 md:w-48 md:h-48 mb-8 object-contain"
+          src={hdLogo}
+          alt="WELMUN Logo"
+          className="w-40 h-40 md:w-56 md:h-56 mb-8 object-contain"
           style={{
             opacity: 0,
             animation: "introLogoFadeIn 1s ease-out 0.3s forwards",
-            filter: "drop-shadow(0 0 40px hsl(40 20% 90% / 0.3))",
+            filter: "drop-shadow(0 0 40px hsl(20 30% 18% / 0.3)) invert(1)",
           }}
         />
         <h1
-          className="font-display text-5xl md:text-8xl tracking-[6px] text-primary"
+          className="font-display text-5xl md:text-8xl tracking-[6px]"
           style={{
+            color: "hsl(20, 30%, 18%)",
             opacity: 0,
             animation: "introLogoFadeIn 1s ease-out 0.8s forwards",
-            textShadow: "0 0 40px hsl(40 20% 90% / 0.3)",
+            textShadow: "0 0 40px hsl(20 30% 18% / 0.2)",
           }}
         >
           WELMUN
         </h1>
         <p
-          className="mt-3 text-primary/70 text-lg md:text-2xl font-display italic tracking-wider"
+          className="mt-3 text-lg md:text-2xl font-display italic tracking-wider"
           style={{
+            color: "hsl(20, 30%, 18%, 0.7)",
             opacity: 0,
             animation: "introLogoFadeIn 0.8s ease-out 1.3s forwards",
           }}
@@ -117,8 +119,9 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
       >
         <button
           onClick={handleEnter}
-          className="tracking-[3px] text-sm font-medium cursor-none text-primary/80"
+          className="tracking-[3px] text-sm font-medium cursor-none"
           style={{
+            color: "hsl(20, 30%, 18%)",
             opacity: 0,
             animation: "introLogoFadeIn 0.6s ease-out 2s forwards",
           }}
@@ -126,11 +129,12 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           SCROLL DOWN
         </button>
         <span
-          className="text-3xl text-primary/80"
           style={{
+            color: "hsl(20, 30%, 18%)",
             opacity: 0,
             animation: "introLogoFadeIn 0.6s ease-out 2s forwards",
           }}
+          className="text-3xl"
         >
           <span style={{ animation: "bounce-arrow 1.5s infinite", display: "inline-block" }}>↓</span>
         </span>
