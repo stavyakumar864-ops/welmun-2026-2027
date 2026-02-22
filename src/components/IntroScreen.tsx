@@ -61,12 +61,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
   if (phase === "done") return null;
 
   return (
-    <div
-      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center"
-      style={{
-        backgroundColor: "hsl(40, 20%, 90%)",
-      }}
-    >
+    <div className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-background">
       {/* Logo that zooms in */}
       <div
         className="flex flex-col items-center justify-center"
@@ -83,24 +78,22 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           style={{
             opacity: 0,
             animation: "introLogoFadeIn 1s ease-out 0.3s forwards",
-            filter: "drop-shadow(0 0 40px hsl(20 30% 18% / 0.3)) invert(1)",
+            filter: "drop-shadow(0 0 40px hsl(40 20% 90% / 0.3))",
           }}
         />
         <h1
-          className="font-display text-5xl md:text-8xl tracking-[6px]"
+          className="font-display text-5xl md:text-8xl tracking-[6px] text-primary"
           style={{
-            color: "hsl(20, 30%, 18%)",
             opacity: 0,
             animation: "introLogoFadeIn 1s ease-out 0.8s forwards",
-            textShadow: "0 0 40px hsl(20 30% 18% / 0.2)",
+            textShadow: "0 0 40px hsl(40 20% 90% / 0.2)",
           }}
         >
           WELMUN
         </h1>
         <p
-          className="mt-3 text-lg md:text-2xl font-display italic tracking-wider"
+          className="mt-3 text-lg md:text-2xl font-display italic tracking-wider text-muted-foreground"
           style={{
-            color: "hsl(20, 30%, 18%, 0.7)",
             opacity: 0,
             animation: "introLogoFadeIn 0.8s ease-out 1.3s forwards",
           }}
@@ -111,7 +104,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
 
       {/* Scroll hint */}
       <div
-        className="absolute bottom-12 flex flex-col items-center gap-3"
+        className="absolute bottom-6 flex flex-col items-center gap-2"
         style={{
           opacity: phase === "morphing" ? 0 : undefined,
           transition: "opacity 0.3s",
@@ -119,9 +112,8 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
       >
         <button
           onClick={handleEnter}
-          className="tracking-[3px] text-sm font-medium cursor-none"
+          className="tracking-[3px] text-sm font-medium cursor-none text-primary"
           style={{
-            color: "hsl(20, 30%, 18%)",
             opacity: 0,
             animation: "introLogoFadeIn 0.6s ease-out 2s forwards",
           }}
@@ -130,11 +122,10 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
         </button>
         <span
           style={{
-            color: "hsl(20, 30%, 18%)",
             opacity: 0,
             animation: "introLogoFadeIn 0.6s ease-out 2s forwards",
           }}
-          className="text-3xl"
+          className="text-3xl text-primary"
         >
           <span style={{ animation: "bounce-arrow 1.5s infinite", display: "inline-block" }}>↓</span>
         </span>
