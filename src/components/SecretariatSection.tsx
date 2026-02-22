@@ -27,7 +27,7 @@ const SecretariatSection = () => {
     <>
       {/* Secretariat */}
       <section ref={secRef} id="secretariat" className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-[5%] md:px-[10%] py-16 md:py-24 reveal-section">
-        <h2 className="font-display text-4xl text-primary">Secretariat</h2>
+        <h2 className="font-display text-4xl text-primary sticky top-20 z-20 bg-background/80 backdrop-blur-sm w-full text-center py-4">Secretariat</h2>
         <div className="gold-divider" />
         {/* All three in one row, Sec Gen slightly raised */}
         <div className="w-full grid grid-cols-3 gap-4 sm:gap-6 md:gap-10 lg:gap-16 mt-12 max-w-5xl mx-auto">
@@ -65,7 +65,7 @@ const SecretariatSection = () => {
 
       {/* Tech Directors */}
       <section ref={techRef} id="tech-directors" className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-[5%] md:px-[10%] py-16 md:py-24 reveal-section">
-        <h2 className="font-display text-4xl text-primary">Technical Directors</h2>
+        <h2 className="font-display text-4xl text-primary sticky top-20 z-20 bg-background/80 backdrop-blur-sm w-full text-center py-4">Technical Directors</h2>
         <div className="gold-divider" />
         <div className="w-full mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
           {techDirectors.map((t) => (
