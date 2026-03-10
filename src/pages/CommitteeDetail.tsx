@@ -216,7 +216,7 @@ const CommitteeDetail = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-32 h-32 object-cover rounded-full"
+                      className="w-28 h-36 object-cover rounded-sm border border-primary/20"
                       loading="lazy"
                     />
                     <p className="text-primary text-sm font-medium leading-tight">{member.name}</p>
