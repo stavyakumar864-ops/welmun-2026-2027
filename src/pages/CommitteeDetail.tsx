@@ -89,50 +89,73 @@ const CommitteeDetail = () => {
             </div>
           </div>
 
-          {/* Layout: Photos | Content */}
-          <div ref={headerRef} className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-12 items-start mb-16 reveal-section">
-            {/* Left — Chair & Vice Chair Photos + Logo */}
-            <div className="flex flex-col items-center gap-6 lg:min-w-[280px]">
-              <img
-                src={committee.logo}
-                alt={committee.name}
-                className="w-36 h-auto object-contain mb-2"
-              />
-              <div className="flex gap-4">
-                {committee.eb[0] && (
-                  <div className="flex flex-col items-center gap-2">
-                    <img
-                      src={committee.eb[0].image}
-                      alt={committee.eb[0].name}
-                      className="w-32 h-44 lg:w-36 lg:h-48 object-cover rounded-sm border border-primary/30"
-                    />
-                    <p className="text-primary font-display text-sm font-medium text-center leading-tight">
-                      {committee.eb[0].name}
-                    </p>
-                    <p className="text-accent italic text-xs text-center">
-                      {committee.eb[0].role}
-                    </p>
-                  </div>
-                )}
-                {committee.eb[1] && (
-                  <div className="flex flex-col items-center gap-2">
-                    <img
-                      src={committee.eb[1].image}
-                      alt={committee.eb[1].name}
-                      className="w-32 h-44 lg:w-36 lg:h-48 object-cover rounded-sm border border-primary/30"
-                    />
-                    <p className="text-primary font-display text-sm font-medium text-center leading-tight">
-                      {committee.eb[1].name}
-                    </p>
-                    <p className="text-accent italic text-xs text-center">
-                      {committee.eb[1].role}
-                    </p>
-                  </div>
-                )}
+          {/* Logo + Committee Name */}
+          <div ref={headerRef} className="w-full max-w-6xl flex flex-col items-center mb-12 reveal-section">
+            <img
+              src={committee.logo}
+              alt={committee.name}
+              className="w-36 h-auto object-contain mb-4"
+            />
+            <h1 className="font-display text-3xl md:text-4xl text-primary mb-2 text-center">
+              {committee.name}
+            </h1>
+            {committee.agenda && (
+              <p className="text-muted-foreground italic mb-2 text-center">
+                Agenda: "{committee.agenda}"
+              </p>
+            )}
+            {committee.freezeDate && (
+              <p className="text-muted-foreground mb-4 text-center">
+                <span className="text-primary font-medium">Freeze Date: </span>
+                {committee.freezeDate}
+              </p>
+            )}
+            {committee.note && (
+              <p className="text-accent font-medium mb-4 text-center">{committee.note}</p>
+            )}
+          </div>
+
+          {/* Chair — Text — Vice Chair layout */}
+          <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-[200px_1fr_200px] gap-6 lg:gap-10 items-start mb-16">
+            {/* Left — Chairperson */}
+            {committee.eb[0] && (
+              <div className="flex flex-col items-center gap-3">
+                <img
+                  src={committee.eb[0].image}
+                  alt={committee.eb[0].name}
+                  className="w-40 h-52 object-cover rounded-sm border-2 border-primary/50 shadow-[0_0_15px_hsl(var(--primary)/0.2)]"
+                />
+                <p className="text-primary font-display text-sm font-medium text-center leading-tight">
+                  {committee.eb[0].name}
+                </p>
+                <p className="text-accent italic text-xs text-center">
+                  {committee.eb[0].role}
+                </p>
+              </div>
+            )}
+
+            {/* Center — Chair's Letter + Resource links */}
+            <div className="flex flex-col">
+              <div className="space-y-5 text-muted-foreground leading-relaxed">
+                {committee.chairLetter.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+                <p className="mt-4">
+                  {committee.chairName}
+                  <br />
+                  {committee.chairRole}, {committee.name}
+                  <br />
+                  <a
+                    href={`mailto:${committee.chairEmail}`}
+                    className="text-primary hover:underline cursor-none"
+                  >
+                    {committee.chairEmail}
+                  </a>
+                </p>
               </div>
 
               {/* Resource buttons */}
-              <div className="flex flex-col gap-3 w-full mt-2">
+              <div className="flex flex-wrap gap-3 mt-6">
                 {committee.bgLink && (
                   <a
                     href={committee.bgLink}
@@ -166,60 +189,38 @@ const CommitteeDetail = () => {
               </div>
             </div>
 
-            {/* Right — Name, Agenda, Letter */}
-            <div className="flex flex-col">
-              <h1 className="font-display text-3xl md:text-4xl text-primary mb-4">
-                {committee.name}
-              </h1>
-              {committee.agenda && (
-                <p className="text-muted-foreground italic mb-3">
-                  Agenda: "{committee.agenda}"
+            {/* Right — Vice Chairperson */}
+            {committee.eb[1] ? (
+              <div className="flex flex-col items-center gap-3">
+                <img
+                  src={committee.eb[1].image}
+                  alt={committee.eb[1].name}
+                  className="w-40 h-52 object-cover rounded-sm border-2 border-primary/50 shadow-[0_0_15px_hsl(var(--primary)/0.2)]"
+                />
+                <p className="text-primary font-display text-sm font-medium text-center leading-tight">
+                  {committee.eb[1].name}
                 </p>
-              )}
-              {committee.freezeDate && (
-                <p className="text-muted-foreground mb-6">
-                  <span className="text-primary font-medium">Freeze Date : </span>
-                  {committee.freezeDate}
-                </p>
-              )}
-              {committee.note && (
-                <p className="text-accent font-medium mb-4">{committee.note}</p>
-              )}
-
-              <div className="space-y-5 text-muted-foreground leading-relaxed">
-                {committee.chairLetter.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-                <p className="mt-4">
-                  {committee.chairName}
-                  <br />
-                  {committee.chairRole}, {committee.name}
-                  <br />
-                  <a
-                    href={`mailto:${committee.chairEmail}`}
-                    className="text-primary hover:underline cursor-none"
-                  >
-                    {committee.chairEmail}
-                  </a>
+                <p className="text-accent italic text-xs text-center">
+                  {committee.eb[1].role}
                 </p>
               </div>
-            </div>
+            ) : <div />}
           </div>
 
-          {/* Executive Board — all members */}
-          {committee.eb.length > 0 && (
+          {/* Executive Board — remaining members */}
+          {committee.eb.length > 2 && (
             <div className="w-full max-w-6xl">
-              <h2 className="font-display text-2xl text-primary mb-8">Executive Board</h2>
-              <div ref={ebRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                {committee.eb.map((member, i) => (
-                  <div key={member.name} data-reveal={i} className="flex flex-col items-center text-center gap-2">
+              <h2 className="font-display text-2xl text-primary mb-8 text-center">Executive Board</h2>
+              <div ref={ebRef} className="flex flex-wrap justify-center gap-8">
+                {committee.eb.slice(2).map((member, i) => (
+                  <div key={member.name} data-reveal={i} className="flex flex-col items-center text-center gap-3 w-36">
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-28 h-36 object-cover rounded-sm border border-primary/20"
+                      className="w-32 h-44 object-cover rounded-sm border-2 border-primary/40 shadow-[0_0_12px_hsl(var(--primary)/0.15)]"
                       loading="lazy"
                     />
-                    <p className="text-primary text-sm font-medium leading-tight">{member.name}</p>
+                    <p className="text-primary text-sm font-display font-medium leading-tight">{member.name}</p>
                     <p className="text-accent text-xs italic">{member.role}</p>
                   </div>
                 ))}
