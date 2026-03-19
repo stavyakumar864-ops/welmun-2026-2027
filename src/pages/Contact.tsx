@@ -15,10 +15,10 @@ const Contact = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("entry.843209002", form.firstName);
-    formData.append("entry.932532238", form.lastName);
-    formData.append("entry.410096132", form.email);
-    formData.append("entry.2117173344", form.message);
+    formData.append("entry.1905276668", form.firstName);
+    formData.append("entry.1158082062", form.lastName);
+    formData.append("entry.1791935519", form.email);
+    formData.append("entry.499414577", form.message);
 
     fetch(GOOGLE_FORM_ACTION, {
       method: "POST",
