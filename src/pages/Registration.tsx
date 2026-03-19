@@ -48,6 +48,26 @@ const Registration = () => {
         </p>
       </div>
 
+      {/* Mobile Section Nav */}
+      <nav className="lg:hidden w-full max-w-7xl mb-8 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-2 pb-2 min-w-max">
+          {sections.map(({ id, label, icon: Icon, path }) => (
+            <button
+              key={id}
+              onClick={() => navigate(path)}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-display tracking-wider whitespace-nowrap transition-all duration-300 cursor-none ${
+                isActive(path)
+                  ? "bg-primary/15 text-primary border border-primary/30"
+                  : "text-muted-foreground hover:text-primary hover:bg-primary/5 border border-transparent"
+              }`}
+            >
+              <Icon className="w-3.5 h-3.5 shrink-0" />
+              {label}
+            </button>
+          ))}
+        </div>
+      </nav>
+
       <div className="w-full max-w-7xl flex gap-10">
         {/* Main Content */}
         <div className="flex-1">
