@@ -25,7 +25,7 @@ const RegistrationKameraObscura = () => {
   const contactRef = useScrollReveal<HTMLDivElement>(0.1);
 
   return (
-    <PageLayout>
+    <PageLayout backgroundImage="/images/kamera-obscura-bg.jpeg">
       <section className="space-y-8 w-full max-w-4xl">
         {/* Header */}
         <div ref={headerRef} className="reveal-section flex flex-col items-center mb-4">
