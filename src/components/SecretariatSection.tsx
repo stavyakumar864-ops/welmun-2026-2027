@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import secGenPhoto from "@/assets/sec-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
@@ -73,7 +72,6 @@ const techContainer = {
 };
 
 const SecretariatSection = () => {
-  const [modalRole, setModalRole] = useState<string | null>(null);
 
   return (
     <>
@@ -108,7 +106,6 @@ const SecretariatSection = () => {
           <motion.div
             variants={cardFromLeft}
             className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden self-end"
-            onClick={() => setModalRole(otherMembers[0].role)}
           >
             <img src={otherMembers[0].img} alt={otherMembers[0].name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
             <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[0].name}</h3>
@@ -119,7 +116,6 @@ const SecretariatSection = () => {
           <motion.div
             variants={cardFromBottom}
             className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden self-end -translate-y-8 md:-translate-y-12"
-            onClick={() => setModalRole(secGen.role)}
           >
             <img src={secGen.img} alt={secGen.name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
             <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{secGen.name}</h3>
@@ -130,7 +126,6 @@ const SecretariatSection = () => {
           <motion.div
             variants={cardFromRight}
             className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden self-end"
-            onClick={() => setModalRole(otherMembers[1].role)}
           >
             <img src={otherMembers[1].img} alt={otherMembers[1].name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
             <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[1].name}</h3>
@@ -171,7 +166,6 @@ const SecretariatSection = () => {
               key={t.name}
               variants={i === 0 ? cardFromLeft : cardFromRight}
               className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
-              onClick={() => setModalRole(t.role)}
             >
               <div className="w-full h-[300px] bg-muted/30 mb-5 flex items-center justify-center">
                 <span className="text-muted-foreground/50 font-display text-lg">Coming Soon</span>
@@ -183,19 +177,6 @@ const SecretariatSection = () => {
         </motion.div>
       </section>
 
-      {/* Modal */}
-      {modalRole && (
-        <div
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 cursor-none"
-          style={{ animation: "fadeIn 0.3s ease-out" }}
-          onClick={() => setModalRole(null)}
-        >
-          <div className="bg-card p-10 max-w-lg text-center" style={{ animation: "fadeIn 0.3s ease-out" }} onClick={(e) => e.stopPropagation()}>
-            <h2 className="font-display text-3xl text-primary mb-4">{modalRole}</h2>
-            <p className="text-light-gold">Biography content here.</p>
-          </div>
-        </div>
-      )}
     </>
   );
 };
