@@ -151,7 +151,10 @@ export const committees: CommitteeData[] = [
     chairName: "TBA",
     chairRole: "Chairperson",
     chairEmail: "chair.specpol@welhamboys.org",
-    eb: [],
+    eb: [
+      { name: "TBA", role: "Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_7895e5b978fa4c238ab6c4962af9e9fc~mv2.png/v1/fill/w_346,h_282,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/UNSC%20Logo_edited_edited.png" },
+      { name: "TBA", role: "Vice Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_7895e5b978fa4c238ab6c4962af9e9fc~mv2.png/v1/fill/w_346,h_282,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/UNSC%20Logo_edited_edited.png" },
+    ],
   },
   {
     id: "unhrc",
@@ -166,7 +169,10 @@ export const committees: CommitteeData[] = [
     chairName: "TBA",
     chairRole: "Chairperson",
     chairEmail: "chair.unhrc@welhamboys.org",
-    eb: [],
+    eb: [
+      { name: "TBA", role: "Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_01011cccbd1c434893d58de2d9b22db0~mv2.png/v1/crop/x_38,y_15,w_620,h_617/fill/w_264,h_262,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/unhcr-logo-png-transparent.png" },
+      { name: "TBA", role: "Vice Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_01011cccbd1c434893d58de2d9b22db0~mv2.png/v1/crop/x_38,y_15,w_620,h_617/fill/w_264,h_262,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/unhcr-logo-png-transparent.png" },
+    ],
   },
   {
     id: "ipc",
