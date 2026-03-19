@@ -15,11 +15,10 @@ const Contact = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    // Google Forms entry IDs — you may need to update these to match your form fields
-    formData.append("entry.1234567890", form.firstName);
-    formData.append("entry.0987654321", form.lastName);
-    formData.append("entry.1111111111", form.email);
-    formData.append("entry.2222222222", form.message);
+    formData.append("entry.843209002", form.firstName);
+    formData.append("entry.932532238", form.lastName);
+    formData.append("entry.410096132", form.email);
+    formData.append("entry.2117173344", form.message);
 
     fetch(GOOGLE_FORM_ACTION, {
       method: "POST",
