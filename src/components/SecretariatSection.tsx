@@ -178,19 +178,6 @@ const SecretariatSection = () => {
         </motion.div>
       </section>
 
-      {/* Modal */}
-      {modalRole && (
-        <div
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 cursor-none"
-          style={{ animation: "fadeIn 0.3s ease-out" }}
-          onClick={() => setModalRole(null)}
-        >
-          <div className="bg-card p-10 max-w-lg text-center" style={{ animation: "fadeIn 0.3s ease-out" }} onClick={(e) => e.stopPropagation()}>
-            <h2 className="font-display text-3xl text-primary mb-4">{modalRole}</h2>
-            <p className="text-light-gold">Biography content here.</p>
-          </div>
-        </div>
-      )}
     </>
   );
 };
