@@ -96,10 +96,10 @@ const Contact = () => {
         {/* Map + Address */}
         <div>
           <h2 className="font-display text-2xl md:text-3xl text-primary mb-6 md:mb-8 text-center">Find Us</h2>
-          <a href="https://www.google.com/maps/place/Welham+Boys'+School/@30.3191,78.0325,17z/" target="_blank" rel="noopener noreferrer" className="block w-full aspect-[4/3] border border-primary/20 overflow-hidden cursor-none">
+          <a href="https://maps.app.goo.gl/T9LFVLQLBteNxTXs5" target="_blank" rel="noopener noreferrer" className="block w-full aspect-[4/3] border border-primary/20 overflow-hidden cursor-none">
             <iframe
               title="Welham Boys' School Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.5!2d78.03025!3d30.31910!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929c4f3a5a5a5%3A0x8c4b8b8b8b8b8b8b!2sWelham+Boys'+School!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Welham+Boys'+School,Dehradun,Uttarakhand,India&zoom=15"
               className="w-full h-full border-0 pointer-events-none"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
