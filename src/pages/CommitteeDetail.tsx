@@ -193,7 +193,7 @@ const CommitteeDetail = () => {
           {committee.eb.length > 0 && (
             <div className="w-full max-w-6xl">
               <h2 className="font-display text-2xl text-primary mb-8">Executive Board</h2>
-              <div ref={ebRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              <div ref={ebRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center">
                 {committee.eb.map((member, i) => (
                   <div key={member.name} data-reveal={i} className="flex flex-col items-center text-center gap-2">
                     <img
