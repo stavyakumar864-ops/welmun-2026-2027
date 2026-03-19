@@ -14,59 +14,15 @@ const Contact = () => {
         {/* Email Form */}
         <div>
           <h2 className="font-display text-2xl md:text-3xl text-primary mb-6 md:mb-8 text-center">Email Us</h2>
-          {submitted ? (
-            <p className="text-accent text-lg text-center">Thanks for submitting!</p>
-          ) : (
-            <div className="bg-card/50 border border-primary/20 p-5 sm:p-8">
-              <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-muted-foreground text-sm mb-2 block">First name</label>
-                    <input
-                      type="text"
-                      value={form.firstName}
-                      onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-                      className="w-full bg-card border border-primary/30 text-foreground px-3 py-2 focus:outline-none focus:border-primary cursor-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-muted-foreground text-sm mb-2 block">Last name</label>
-                    <input
-                      type="text"
-                      value={form.lastName}
-                      onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-                      className="w-full bg-card border border-primary/30 text-foreground px-3 py-2 focus:outline-none focus:border-primary cursor-none"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-muted-foreground text-sm mb-2 block">Email *</label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full bg-card border border-primary/30 text-foreground px-3 py-2 focus:outline-none focus:border-primary cursor-none"
-                  />
-                </div>
-                <div>
-                  <label className="text-muted-foreground text-sm mb-2 block">Write a message</label>
-                  <textarea
-                    rows={5}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full bg-card border border-primary/30 text-foreground px-3 py-2 focus:outline-none focus:border-primary resize-none cursor-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="px-10 py-2.5 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors cursor-none font-display tracking-wider"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          )}
+          <div className="w-full border border-primary/20 overflow-hidden">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdPpfT4pNf9llR0nNsoMwrBp_WtALr-xSj1Mk7coWs516WqXw/viewform?embedded=true"
+              title="Contact Form"
+              className="w-full border-0"
+              style={{ minHeight: "600px" }}
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* Map + Address */}
