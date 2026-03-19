@@ -3,13 +3,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import PageLayout from "@/components/PageLayout";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import type { Easing } from "framer-motion";
+
+const ease: Easing = [0, 0, 0.2, 1];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: "easeOut" },
+    transition: { duration: 0.6, delay: i * 0.1, ease },
   }),
 };
 
