@@ -67,6 +67,12 @@
     overflow-x: hidden;
   }
 
+  *, *::before, *::after,
+  a, button, input, textarea, select, label,
+  [role="button"], [tabindex] {
+    cursor: none !important;
+  }
+
   h1, h2, h3 {
     font-family: 'Playfair Display', serif;
   }
