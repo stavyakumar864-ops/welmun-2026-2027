@@ -105,7 +105,7 @@ const Contact = () => {
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
-          </div>
+          </a>
 
           <div className="text-center mt-6 md:mt-8">
             <h2 className="font-display text-xl md:text-2xl text-primary underline mb-3">Our Address</h2>
