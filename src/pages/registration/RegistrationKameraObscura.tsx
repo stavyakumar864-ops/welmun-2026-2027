@@ -161,6 +161,7 @@ const RegistrationKameraObscura = () => (
       </CardContent>
     </Card>
   </section>
+  </PageLayout>
 );
 
 export default RegistrationKameraObscura;
