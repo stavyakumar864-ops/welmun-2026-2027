@@ -52,7 +52,7 @@ const Navbar = memo(() => {
       <div className="flex items-center gap-3">
         {/* Hamburger button */}
         <button
-          className="lg:hidden text-primary cursor-none z-[110]"
+          className="xl:hidden text-primary cursor-none z-[110]"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
