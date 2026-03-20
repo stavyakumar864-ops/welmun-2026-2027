@@ -34,7 +34,7 @@ const Navbar = memo(() => {
       </div>
 
       {/* Desktop nav */}
-      <ul className="hidden lg:flex gap-4 flex-nowrap list-none mx-auto">
+      <ul className="hidden xl:flex gap-4 flex-nowrap list-none mx-auto">
         {navLinks.map((link) => (
           <li key={link.label}>
             <Link
