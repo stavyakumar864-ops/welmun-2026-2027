@@ -96,7 +96,7 @@ const SecretariatSection = () => {
         />
 
         <motion.div
-          className="w-full flex flex-row items-end justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-16 mt-12 max-w-5xl mx-auto"
+          className="w-full flex flex-col items-center sm:flex-row sm:items-end sm:justify-center gap-8 sm:gap-6 md:gap-10 lg:gap-16 mt-12 max-w-5xl mx-auto"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -105,31 +105,31 @@ const SecretariatSection = () => {
           {/* Left member */}
           <motion.div
             variants={cardFromLeft}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+            className="hover-lift img-zoom bg-card p-6 md:p-8 text-center cursor-none overflow-hidden w-full max-w-xs sm:flex-1"
           >
-            <img src={otherMembers[0].img} alt={otherMembers[0].name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
-            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[0].name}</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{otherMembers[0].role}</p>
+            <img src={otherMembers[0].img} alt={otherMembers[0].name} className="w-full h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
+            <h3 className="font-display text-lg md:text-xl text-primary">{otherMembers[0].name}</h3>
+            <p className="text-muted-foreground text-sm mt-1">{otherMembers[0].role}</p>
           </motion.div>
 
           {/* Secretary General — elevated */}
           <motion.div
             variants={cardFromBottom}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs -mb-0 relative -top-10 md:-top-16"
+            className="hover-lift img-zoom bg-card p-6 md:p-8 text-center cursor-none overflow-hidden w-full max-w-xs sm:flex-1 sm:relative sm:-top-10 md:-top-16 order-first sm:order-none"
           >
-            <img src={secGen.img} alt={secGen.name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
-            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{secGen.name}</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{secGen.role}</p>
+            <img src={secGen.img} alt={secGen.name} className="w-full h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
+            <h3 className="font-display text-lg md:text-xl text-primary">{secGen.name}</h3>
+            <p className="text-muted-foreground text-sm mt-1">{secGen.role}</p>
           </motion.div>
 
           {/* Right member */}
           <motion.div
             variants={cardFromRight}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+            className="hover-lift img-zoom bg-card p-6 md:p-8 text-center cursor-none overflow-hidden w-full max-w-xs sm:flex-1"
           >
-            <img src={otherMembers[1].img} alt={otherMembers[1].name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
-            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[1].name}</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{otherMembers[1].role}</p>
+            <img src={otherMembers[1].img} alt={otherMembers[1].name} className="w-full h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
+            <h3 className="font-display text-lg md:text-xl text-primary">{otherMembers[1].name}</h3>
+            <p className="text-muted-foreground text-sm mt-1">{otherMembers[1].role}</p>
           </motion.div>
         </motion.div>
       </section>
