@@ -1,13 +1,14 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import secGenPhoto from "@/assets/sec-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
 import dirGenPhoto from "@/assets/dir-gen.png";
 import techDirector1Photo from "@/assets/tech-director-1.png";
 import techDirector2Photo from "@/assets/tech-director-2.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-const secGen = { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto };
-
-const otherMembers = [
+const allMembers = [
+  { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
   { role: "Director General", name: "Tanveer S. Madan", img: dirGenPhoto },
   { role: "Under Secretary", name: "Koustabh Gupta", img: underSecPhoto },
 ];
@@ -71,7 +72,25 @@ const techContainer = {
   },
 };
 
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0, scale: 0.9 }),
+  center: { x: 0, opacity: 1, scale: 1 },
+  exit: (dir: number) => ({ x: dir > 0 ? -300 : 300, opacity: 0, scale: 0.9 }),
+};
+
 const SecretariatSection = () => {
+  const isMobile = useIsMobile();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const timer = setInterval(() => {
+      setDirection(1);
+      setActiveIndex((prev) => (prev + 1) % allMembers.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [isMobile]);
 
   return (
     <>
@@ -95,49 +114,81 @@ const SecretariatSection = () => {
           style={{ transformOrigin: "center" }}
         />
 
-        <motion.div
-          className="w-full mt-12 max-w-5xl mx-auto relative flex items-end justify-center md:gap-10 lg:gap-16"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* Left member — on small screens, sits behind sec gen offset left */}
+        {/* Mobile: auto-swiping carousel */}
+        {isMobile ? (
+          <div className="w-full mt-12 flex flex-col items-center">
+            <div className="relative w-[75%] max-w-xs overflow-hidden" style={{ minHeight: 420 }}>
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="bg-card p-6 text-center cursor-none overflow-hidden"
+                >
+                  <img
+                    src={allMembers[activeIndex].img}
+                    alt={allMembers[activeIndex].name}
+                    className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary"
+                  />
+                  <h3 className="font-display text-lg text-primary">{allMembers[activeIndex].name}</h3>
+                  <p className="text-muted-foreground text-sm mt-1">{allMembers[activeIndex].role}</p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            {/* Dots */}
+            <div className="flex gap-2 mt-6">
+              {allMembers.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setDirection(i > activeIndex ? 1 : -1); setActiveIndex(i); }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 cursor-none ${
+                    i === activeIndex ? "bg-primary w-6" : "bg-muted-foreground/30"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          /* Desktop: side-by-side with elevated sec gen */
           <motion.div
-            variants={cardFromLeft}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden
-              w-[65%] sm:w-[55%] md:w-auto md:flex-1 max-w-xs
-              absolute md:relative left-0 md:left-auto z-10 md:z-auto"
+            className="w-full mt-12 max-w-5xl mx-auto flex items-end justify-center gap-10 lg:gap-16"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
           >
-            <img src={otherMembers[0].img} alt={otherMembers[0].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
-            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[0].name}</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{otherMembers[0].role}</p>
-          </motion.div>
+            <motion.div
+              variants={cardFromLeft}
+              className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+            >
+              <img src={allMembers[1].img} alt={allMembers[1].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
+              <h3 className="font-display text-xl text-primary">{allMembers[1].name}</h3>
+              <p className="text-muted-foreground text-sm mt-1">{allMembers[1].role}</p>
+            </motion.div>
 
-          {/* Secretary General — always on top, elevated on md+ */}
-          <motion.div
-            variants={cardFromBottom}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden
-              w-[65%] sm:w-[55%] md:w-auto md:flex-1 max-w-xs
-              relative z-20 md:-top-16"
-          >
-            <img src={secGen.img} alt={secGen.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
-            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{secGen.name}</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{secGen.role}</p>
-          </motion.div>
+            <motion.div
+              variants={cardFromBottom}
+              className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs relative -top-16"
+            >
+              <img src={allMembers[0].img} alt={allMembers[0].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
+              <h3 className="font-display text-xl text-primary">{allMembers[0].name}</h3>
+              <p className="text-muted-foreground text-sm mt-1">{allMembers[0].role}</p>
+            </motion.div>
 
-          {/* Right member — on small screens, sits behind sec gen offset right */}
-          <motion.div
-            variants={cardFromRight}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden
-              w-[65%] sm:w-[55%] md:w-auto md:flex-1 max-w-xs
-              absolute md:relative right-0 md:right-auto z-10 md:z-auto"
-          >
-            <img src={otherMembers[1].img} alt={otherMembers[1].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
-            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[1].name}</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{otherMembers[1].role}</p>
+            <motion.div
+              variants={cardFromRight}
+              className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+            >
+              <img src={allMembers[2].img} alt={allMembers[2].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
+              <h3 className="font-display text-xl text-primary">{allMembers[2].name}</h3>
+              <p className="text-muted-foreground text-sm mt-1">{allMembers[2].role}</p>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </section>
 
       {/* Tech Directors */}
@@ -180,7 +231,6 @@ const SecretariatSection = () => {
           ))}
         </motion.div>
       </section>
-
     </>
   );
 };
