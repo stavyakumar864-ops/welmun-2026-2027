@@ -71,25 +71,9 @@ const techContainer = {
   },
 };
 
-const slideVariants = {
-  enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0, scale: 0.9 }),
-  center: { x: 0, opacity: 1, scale: 1 },
-  exit: (dir: number) => ({ x: dir > 0 ? -300 : 300, opacity: 0, scale: 0.9 }),
-};
-
 const SecretariatSection = () => {
   const isMobile = useIsMobile();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
 
-  useEffect(() => {
-    if (!isMobile) return;
-    const timer = setInterval(() => {
-      setDirection(1);
-      setActiveIndex((prev) => (prev + 1) % allMembers.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [isMobile]);
 
   return (
     <>
