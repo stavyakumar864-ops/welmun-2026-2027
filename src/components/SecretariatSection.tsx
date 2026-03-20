@@ -96,23 +96,41 @@ const SecretariatSection = () => {
         />
 
         <motion.div
-          className="w-full mt-16 grid grid-cols-1 md:grid-cols-3 gap-12"
+          className="w-full flex flex-row items-end justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-16 mt-12 max-w-5xl mx-auto"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {[otherMembers[0], secGen, otherMembers[1]].map((member, i) => (
-            <motion.div
-              key={member.name}
-              variants={i === 0 ? cardFromLeft : i === 2 ? cardFromRight : cardFromBottom}
-              className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
-            >
-              <img src={member.img} alt={member.name} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
-              <h3 className="font-display text-xl text-primary">{member.name}</h3>
-              <p className="text-muted-foreground text-sm mt-1">{member.role}</p>
-            </motion.div>
-          ))}
+          {/* Left member */}
+          <motion.div
+            variants={cardFromLeft}
+            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+          >
+            <img src={otherMembers[0].img} alt={otherMembers[0].name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
+            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[0].name}</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{otherMembers[0].role}</p>
+          </motion.div>
+
+          {/* Secretary General — elevated */}
+          <motion.div
+            variants={cardFromBottom}
+            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs -mb-0 relative -top-10 md:-top-16"
+          >
+            <img src={secGen.img} alt={secGen.name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
+            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{secGen.name}</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{secGen.role}</p>
+          </motion.div>
+
+          {/* Right member */}
+          <motion.div
+            variants={cardFromRight}
+            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+          >
+            <img src={otherMembers[1].img} alt={otherMembers[1].name} className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover mb-5" loading="lazy" />
+            <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[1].name}</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm mt-1">{otherMembers[1].role}</p>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -149,7 +167,9 @@ const SecretariatSection = () => {
               variants={i === 0 ? cardFromLeft : cardFromRight}
               className="hover-lift img-zoom bg-card p-8 text-center cursor-none overflow-hidden"
             >
-              <img src={t.img} alt={t.name} className="w-full h-[300px] object-cover mb-5" loading="lazy" />
+              <div className="w-full h-[300px] bg-muted/30 mb-5 flex items-center justify-center">
+                <span className="text-muted-foreground/50 font-display text-lg">Coming Soon</span>
+              </div>
               <h3 className="font-display text-xl text-primary">{t.name || t.role}</h3>
               <p className="text-muted-foreground text-sm mt-1">{t.role}</p>
             </motion.div>
