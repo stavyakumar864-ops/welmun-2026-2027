@@ -63,7 +63,7 @@ const Navbar = memo(() => {
 
       {/* Mobile/Tablet menu overlay */}
       <div
-        className={`fixed inset-0 w-full h-screen bg-background z-[105] flex flex-col items-center justify-center gap-5 lg:hidden transition-all duration-300 ${
+        className={`fixed inset-0 w-full h-screen bg-background z-[105] flex flex-col items-center justify-center gap-5 xl:hidden transition-all duration-300 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
