@@ -96,36 +96,42 @@ const SecretariatSection = () => {
         />
 
         <motion.div
-          className="w-full flex flex-row items-end justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-16 mt-12 max-w-5xl mx-auto"
+          className="w-full mt-12 max-w-5xl mx-auto relative flex items-end justify-center md:gap-10 lg:gap-16"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Left member */}
+          {/* Left member — on small screens, sits behind sec gen offset left */}
           <motion.div
             variants={cardFromLeft}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden
+              w-[65%] sm:w-[55%] md:w-auto md:flex-1 max-w-xs
+              absolute md:relative left-0 md:left-auto z-10 md:z-auto"
           >
             <img src={otherMembers[0].img} alt={otherMembers[0].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
             <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[0].name}</h3>
             <p className="text-muted-foreground text-xs sm:text-sm mt-1">{otherMembers[0].role}</p>
           </motion.div>
 
-          {/* Secretary General — elevated */}
+          {/* Secretary General — always on top, elevated on md+ */}
           <motion.div
             variants={cardFromBottom}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs -mb-0 relative -top-10 md:-top-16"
+            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden
+              w-[65%] sm:w-[55%] md:w-auto md:flex-1 max-w-xs
+              relative z-20 md:-top-16"
           >
             <img src={secGen.img} alt={secGen.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
             <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{secGen.name}</h3>
             <p className="text-muted-foreground text-xs sm:text-sm mt-1">{secGen.role}</p>
           </motion.div>
 
-          {/* Right member */}
+          {/* Right member — on small screens, sits behind sec gen offset right */}
           <motion.div
             variants={cardFromRight}
-            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+            className="hover-lift img-zoom bg-card p-4 sm:p-6 md:p-8 text-center cursor-none overflow-hidden
+              w-[65%] sm:w-[55%] md:w-auto md:flex-1 max-w-xs
+              absolute md:relative right-0 md:right-auto z-10 md:z-auto"
           >
             <img src={otherMembers[1].img} alt={otherMembers[1].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
             <h3 className="font-display text-base sm:text-lg md:text-xl text-primary">{otherMembers[1].name}</h3>
