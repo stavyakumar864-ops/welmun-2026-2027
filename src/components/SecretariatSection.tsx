@@ -109,7 +109,7 @@ const SecretariatSection = () => {
               <motion.div
                 key={m.name}
                 variants={cardFromBottom}
-                className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-[80%] max-w-xs"
+                className="hover-lift img-zoom bg-card p-6 text-center cursor-none overflow-hidden w-[80%] max-w-xs"
               >
                 <img src={m.img} alt={m.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
                 <h3 className="font-display text-lg text-primary">{m.name}</h3>
