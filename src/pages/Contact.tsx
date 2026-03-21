@@ -122,7 +122,7 @@ const Contact = () => {
           <h2 className="font-display text-xl md:text-2xl text-primary underline mb-3">Conference Director</h2>
           <p className="text-muted-foreground text-base md:text-lg">Ms. Kiran Tripathi</p>
           <p className="text-muted-foreground text-base md:text-lg">+91-7409809908</p>
-          <a href="mailto:kirantripathi@welhamboys.org" className="text-primary hover:underline cursor-none text-base md:text-lg">
+          <a href="mailto:kirantripathi@welhamboys.org" className="text-blue-accent hover:underline cursor-none text-base md:text-lg">
             kirantripathi@welhamboys.org
           </a>
         </div>
