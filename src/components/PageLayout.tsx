@@ -6,13 +6,14 @@ import CustomCursor from "@/components/CustomCursor";
 interface PageLayoutProps {
   children: React.ReactNode;
   backgroundImage?: string;
+  hideParticles?: boolean;
 }
 
-const PageLayout = memo(({ children, backgroundImage }: PageLayoutProps) => {
+const PageLayout = memo(({ children, backgroundImage, hideParticles }: PageLayoutProps) => {
   return (
     <>
       <CustomCursor isIntroVisible={false} />
-      <ParticleCanvas />
+      {!hideParticles && <ParticleCanvas />}
       <Navbar />
       {backgroundImage && (
         <div

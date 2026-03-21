@@ -65,7 +65,7 @@ const PhotoGallery = () => {
   );
 
   return (
-    <PageLayout>
+    <PageLayout hideParticles>
       <h1 className="font-display text-5xl md:text-6xl text-primary mb-4 tracking-[6px] uppercase">
         WELMUN Gallery
       </h1>
