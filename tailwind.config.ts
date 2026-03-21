@@ -58,6 +58,8 @@ export default {
         "dark-brown": "hsl(var(--dark-brown))",
         "rich-brown": "hsl(var(--rich-brown))",
         "soft-brown": "hsl(var(--soft-brown))",
+        "blue-accent": "hsl(var(--blue-accent))",
+        "blue-accent-foreground": "hsl(var(--blue-accent-foreground))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
