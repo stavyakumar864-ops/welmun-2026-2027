@@ -132,7 +132,7 @@ const SecretariatSection = () => {
             >
               <img src={allMembers[1].img} alt={allMembers[1].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
               <h3 className="font-display text-xl text-primary">{allMembers[1].name}</h3>
-              <p className="text-muted-foreground text-sm mt-1">{allMembers[1].role}</p>
+              <p className="text-blue-accent text-sm mt-1">{allMembers[1].role}</p>
             </motion.div>
 
             <motion.div
