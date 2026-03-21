@@ -6,7 +6,7 @@ const ScheduleBanner = () => {
     <section
       className="w-full h-full flex flex-col justify-center items-center overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, hsl(var(--background)) 0%, hsl(205 35% 52% / 0.08) 45%, hsl(var(--muted)) 55%, hsl(var(--muted)) 100%)",
+        background: "linear-gradient(135deg, hsl(20 30% 18%) 0%, hsl(205 35% 52% / 0.08) 45%, hsl(18 15% 25%) 55%, hsl(20 30% 18%) 100%)",
       }}
     >
       <motion.h2
