@@ -27,7 +27,7 @@ const PageLayout = memo(({ children, backgroundImage, hideParticles }: PageLayou
           <div className="absolute inset-0 bg-background/80" />
         </div>
       )}
-      <main className={`pt-20 min-h-screen px-4 sm:px-[5%] md:px-[8%] lg:px-[10%] xl:px-[12%] py-16 md:py-24 flex flex-col items-center ${backgroundImage ? "relative z-10" : ""}`}>
+      <main className={`pt-32 md:pt-36 min-h-screen px-4 sm:px-[5%] md:px-[8%] lg:px-[10%] xl:px-[12%] pb-16 md:pb-24 flex flex-col items-center ${backgroundImage ? "relative z-10" : ""}`}>
         {children}
       </main>
     </>
