@@ -40,7 +40,7 @@ const HeroSection = ({ animateIn = true }: HeroSectionProps) => {
       <div className="relative z-10 flex flex-col items-center text-center px-6">
         <motion.h1
           variants={slideFromLeft}
-          className="font-display text-7xl md:text-9xl lg:text-[10rem] text-blue-accent tracking-wide leading-none uppercase"
+          className="font-display text-7xl md:text-9xl lg:text-[10rem] text-primary tracking-wide leading-none uppercase"
         >
           WELMUN
         </motion.h1>

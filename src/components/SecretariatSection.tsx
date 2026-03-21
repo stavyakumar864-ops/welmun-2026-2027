@@ -191,7 +191,7 @@ const SecretariatSection = () => {
             >
               <div className="w-full aspect-[3/4] bg-secondary mb-5" />
               <h3 className="font-display text-xl text-primary">{t.name}</h3>
-              <p className="text-blue-accent text-sm mt-1">{t.role}</p>
+              <p className="text-muted-foreground text-sm mt-1">{t.role}</p>
             </motion.div>
           ))}
         </motion.div>
