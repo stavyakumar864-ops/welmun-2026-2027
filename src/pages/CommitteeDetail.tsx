@@ -161,7 +161,7 @@ const CommitteeDetail = () => {
                     href={committee.bgLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-none"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-blue-accent/40 text-blue-accent text-sm hover:bg-blue-accent hover:text-blue-accent-foreground transition-all duration-300 cursor-none"
                   >
                     <FileText className="w-4 h-4" />
                     Background Guide
@@ -172,7 +172,7 @@ const CommitteeDetail = () => {
                     href={committee.matrixLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-none"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-blue-accent/40 text-blue-accent text-sm hover:bg-blue-accent hover:text-blue-accent-foreground transition-all duration-300 cursor-none"
                   >
                     <Grid3X3 className="w-4 h-4" />
                     Matrix
@@ -183,7 +183,7 @@ const CommitteeDetail = () => {
                     href={committee.ropLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-none"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-blue-accent/40 text-blue-accent text-sm hover:bg-blue-accent hover:text-blue-accent-foreground transition-all duration-300 cursor-none"
                   >
                     <BookOpen className="w-4 h-4" />
                     Rules of Procedure

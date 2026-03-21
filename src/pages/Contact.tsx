@@ -84,7 +84,7 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="px-10 py-2.5 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-colors cursor-none font-display tracking-wider"
+                  className="px-10 py-2.5 border-2 border-blue-accent text-blue-accent hover:bg-blue-accent hover:text-blue-accent-foreground transition-colors cursor-none font-display tracking-wider"
                 >
                   Submit
                 </button>
@@ -122,7 +122,7 @@ const Contact = () => {
           <h2 className="font-display text-xl md:text-2xl text-primary underline mb-3">Conference Director</h2>
           <p className="text-muted-foreground text-base md:text-lg">Ms. Kiran Tripathi</p>
           <p className="text-muted-foreground text-base md:text-lg">+91-7409809908</p>
-          <a href="mailto:kirantripathi@welhamboys.org" className="text-primary hover:underline cursor-none text-base md:text-lg">
+          <a href="mailto:kirantripathi@welhamboys.org" className="text-blue-accent hover:underline cursor-none text-base md:text-lg">
             kirantripathi@welhamboys.org
           </a>
         </div>
@@ -130,7 +130,7 @@ const Contact = () => {
           <h2 className="font-display text-xl md:text-2xl text-primary underline mb-3">Secretary-General</h2>
           <p className="text-muted-foreground text-base md:text-lg">Ahan Sparsh</p>
           <p className="text-muted-foreground text-base md:text-lg">+91-8709633816</p>
-          <a href="mailto:secretarygeneral@welhamboys.org" className="text-primary hover:underline cursor-none text-base md:text-lg">
+          <a href="mailto:secretarygeneral@welhamboys.org" className="text-blue-accent hover:underline cursor-none text-base md:text-lg">
             secretarygeneral@welhamboys.org
           </a>
         </div>

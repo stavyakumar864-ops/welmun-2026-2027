@@ -39,7 +39,7 @@ const Navbar = memo(() => {
           <li key={link.label}>
             <Link
               to={link.to}
-              className={`relative text-primary no-underline cursor-none text-sm after:content-[''] after:absolute after:h-[2px] after:bg-primary after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full ${
+              className={`relative text-primary no-underline cursor-none text-sm after:content-[''] after:absolute after:h-[2px] after:bg-blue-accent after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full ${
                 location.pathname === link.to ? "after:w-full" : "after:w-0"
               }`}
             >

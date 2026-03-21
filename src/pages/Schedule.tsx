@@ -88,7 +88,7 @@ const Schedule = () => {
 
       <div className="mt-12 mb-8">
         <a href={PDF_URL} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 gap-2">
+          <Button variant="outline" className="border-blue-accent text-blue-accent hover:bg-blue-accent/10 gap-2">
             <Download className="w-4 h-4" />
             Download Schedule (PDF)
           </Button>

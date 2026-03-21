@@ -57,8 +57,8 @@ const Registration = () => {
               onClick={() => navigate(path)}
               className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-display tracking-wider whitespace-nowrap transition-all duration-300 cursor-none ${
                 isActive(path)
-                  ? "bg-primary/15 text-primary border border-primary/30"
-                  : "text-muted-foreground hover:text-primary hover:bg-primary/5 border border-transparent"
+                  ? "bg-blue-accent/15 text-blue-accent border border-blue-accent/30"
+                  : "text-muted-foreground hover:text-blue-accent hover:bg-blue-accent/5 border border-transparent"
               }`}
             >
               <Icon className="w-3.5 h-3.5 shrink-0" />
@@ -84,8 +84,8 @@ const Registration = () => {
                 onClick={() => navigate(path)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-300 cursor-none text-left ${
                   isActive(path)
-                    ? "bg-primary/15 text-primary border-l-2 border-primary"
-                    : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                    ? "bg-blue-accent/15 text-blue-accent border-l-2 border-blue-accent"
+                    : "text-muted-foreground hover:text-blue-accent hover:bg-blue-accent/5"
                 }`}
               >
                 <Icon className="w-4 h-4 shrink-0" />
