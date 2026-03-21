@@ -71,7 +71,7 @@ const Committees = () => {
             >
               <Link
                 to={`/committees/${c.id}`}
-                className="group relative block aspect-[16/10] overflow-hidden rounded-sm cursor-none transition-transform duration-500 hover:scale-[1.03] hover:shadow-[0_8px_30px_-8px_hsl(var(--gold)/0.25)]"
+                className="group relative block aspect-[3/4] sm:aspect-[16/10] overflow-hidden rounded-2xl cursor-none transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_12px_40px_-8px_hsl(var(--gold)/0.3)]"
               >
                 <img
                   src={c.cardImage}
@@ -79,12 +79,19 @@ const Committees = () => {
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-background/60 group-hover:bg-background/40 transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/40" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                <div className="absolute inset-0 bg-background/50 group-hover:bg-background/30 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                <div className="absolute inset-0 flex flex-col items-center justify-end p-6 pb-8 text-center gap-3">
+                  {c.logo && (
+                    <img
+                      src={c.logo}
+                      alt={`${c.shortName} logo`}
+                      className="w-16 h-16 md:w-20 md:h-20 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+                    />
+                  )}
                   <h2
-                    className="font-display text-2xl md:text-3xl text-primary tracking-[4px] uppercase"
-                    style={{ textShadow: "0 2px 12px hsl(15 30% 12% / 0.9), 0 0 30px hsl(15 30% 12% / 0.6)" }}
+                    className="font-display text-2xl md:text-3xl lg:text-4xl text-primary tracking-[6px] uppercase font-bold"
+                    style={{ textShadow: "0 2px 16px hsl(15 30% 12% / 0.95), 0 0 40px hsl(15 30% 12% / 0.7)" }}
                   >
                     {c.shortName}
                   </h2>
