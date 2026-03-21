@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { committees } from "@/data/committees";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, FileText, Grid3X3, BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
 import CommitteeIntro from "@/components/CommitteeIntro";
 import Navbar from "@/components/Navbar";
@@ -39,13 +40,11 @@ const CommitteeDetail = () => {
       <ParticleCanvas />
       <Navbar />
 
-      {/* Montage — fixed video at z-0 + spacer */}
       <CommitteeIntro
         committeeId={committee.id}
         committeeName={committee.shortName}
       />
 
-      {/* Committee info — scrolls over the montage */}
       <div className="relative z-[2]" style={{ clipPath: "inset(0)" }}>
         <div
           className="fixed inset-0 z-0"
@@ -58,12 +57,12 @@ const CommitteeDetail = () => {
           <div className="absolute inset-0 bg-background/80" />
         </div>
 
-        <main className="relative z-10 pt-20 min-h-screen px-[5%] md:px-[8%] lg:px-[10%] py-24 flex flex-col items-center">
-          {/* Back + Prev/Next nav */}
-          <div className="w-full max-w-6xl flex items-center justify-between mb-10">
+        <main className="relative z-10 pt-20 min-h-screen px-4 sm:px-[5%] md:px-[8%] lg:px-[10%] py-16 md:py-24 flex flex-col items-center">
+          {/* Navigation Bar */}
+          <div className="w-full max-w-5xl flex items-center justify-between mb-12">
             <Link
               to="/committees"
-              className="text-muted-foreground hover:text-primary transition-colors cursor-none"
+              className="text-muted-foreground hover:text-primary transition-colors cursor-none text-sm"
             >
               ← Back to Committees
             </Link>
@@ -89,46 +88,82 @@ const CommitteeDetail = () => {
             </div>
           </div>
 
-          {/* Layout: Photos | Content */}
-          <div ref={headerRef} className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 lg:gap-12 items-start mb-16 reveal-section">
-            {/* Left — Chair & Vice Chair Photos + Logo */}
-            <div className="flex flex-col items-center gap-6 lg:min-w-[280px]">
-              <img
-                src={committee.logo}
-                alt={committee.name}
-                className="w-36 h-auto object-contain mb-2"
-              />
+          {/* Hero: Logo + Committee Name + Agenda */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full max-w-5xl text-center mb-14"
+          >
+            <img
+              src={committee.logo}
+              alt={committee.name}
+              className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-5"
+            />
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary mb-3 tracking-wide">
+              {committee.name}
+            </h1>
+            {committee.agenda && (
+              <p className="text-muted-foreground italic text-base md:text-lg max-w-3xl mx-auto">
+                "{committee.agenda}"
+              </p>
+            )}
+            {committee.freezeDate && (
+              <p className="text-muted-foreground text-sm mt-3">
+                <span className="text-primary font-medium">Freeze Date:</span> {committee.freezeDate}
+              </p>
+            )}
+            {committee.note && (
+              <p className="text-accent font-medium text-sm mt-2">{committee.note}</p>
+            )}
+          </motion.div>
+
+          {/* Main Content: Chair + Letter side by side */}
+          <div ref={headerRef} className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 lg:gap-14 items-start mb-20 reveal-section">
+            {/* Left — Chair Photo + Resources */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col items-center gap-5"
+            >
+              {/* Chair Photo */}
               {committee.eb[0] && (
-                <div className="flex flex-col items-center gap-2">
-                  {committee.eb[0].image ? (
-                    <img
-                      src={committee.eb[0].image}
-                      alt={committee.eb[0].name}
-                      className="w-32 h-44 lg:w-36 lg:h-48 object-cover rounded-sm border border-primary/30"
-                    />
-                  ) : (
-                    <div className="w-32 h-44 lg:w-36 lg:h-48 rounded-sm border border-primary/30 bg-muted/50 flex items-center justify-center">
-                      <span className="text-muted-foreground/60 font-display text-xs">TBA</span>
-                    </div>
-                  )}
-                  <p className="text-primary font-display text-sm font-medium text-center leading-tight">
-                    {committee.eb[0].name}
-                  </p>
-                  <p className="text-accent italic text-xs text-center">
-                    {committee.eb[0].role}
-                  </p>
+                <div className="flex flex-col items-center gap-3 w-full">
+                  <div className="w-48 h-64 lg:w-56 lg:h-72 rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg">
+                    {committee.eb[0].image ? (
+                      <img
+                        src={committee.eb[0].image}
+                        alt={committee.eb[0].name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-muted/50 flex items-center justify-center">
+                        <span className="text-muted-foreground/60 font-display text-xs">TBA</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-center">
+                    <p className="text-primary font-display text-base font-semibold leading-tight">
+                      {committee.eb[0].name}
+                    </p>
+                    <p className="text-accent italic text-sm mt-0.5">
+                      {committee.eb[0].role}
+                    </p>
+                  </div>
                 </div>
               )}
 
-              {/* Resource buttons */}
-              <div className="flex flex-col gap-3 w-full mt-2">
+              {/* Resource Buttons */}
+              <div className="flex flex-col gap-2.5 w-full mt-3">
                 {committee.bgLink && (
                   <a
                     href={committee.bgLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-2.5 border border-primary text-primary text-sm text-center hover:bg-primary hover:text-primary-foreground transition-colors cursor-none"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-none"
                   >
+                    <FileText className="w-4 h-4" />
                     Background Guide
                   </a>
                 )}
@@ -137,8 +172,9 @@ const CommitteeDetail = () => {
                     href={committee.matrixLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-2.5 border border-primary text-primary text-sm text-center hover:bg-primary hover:text-primary-foreground transition-colors cursor-none"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-none"
                   >
+                    <Grid3X3 className="w-4 h-4" />
                     Matrix
                   </a>
                 )}
@@ -147,62 +183,71 @@ const CommitteeDetail = () => {
                     href={committee.ropLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-2.5 border border-primary text-primary text-sm text-center hover:bg-primary hover:text-primary-foreground transition-colors cursor-none"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-primary/30 text-primary text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-none"
                   >
+                    <BookOpen className="w-4 h-4" />
                     Rules of Procedure
                   </a>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            {/* Right — Name, Agenda, Letter */}
-            <div className="flex flex-col">
-              <h1 className="font-display text-3xl md:text-4xl text-primary mb-4">
-                {committee.name}
-              </h1>
-              {committee.agenda && (
-                <p className="text-muted-foreground italic mb-3">
-                  Agenda: "{committee.agenda}"
-                </p>
-              )}
-              {committee.freezeDate && (
-                <p className="text-muted-foreground mb-6">
-                  <span className="text-primary font-medium">Freeze Date : </span>
-                  {committee.freezeDate}
-                </p>
-              )}
-              {committee.note && (
-                <p className="text-accent font-medium mb-4">{committee.note}</p>
-              )}
-
-              <div className="space-y-5 text-muted-foreground leading-relaxed">
+            {/* Right — Chair's Letter */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col"
+            >
+              <h2 className="font-display text-xl text-primary mb-5 tracking-wide">
+                Letter from the Chair
+              </h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed text-[15px]">
                 {committee.chairLetter.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
-                <p className="mt-4">
-                  {committee.chairName}
-                  <br />
-                  {committee.chairRole}, {committee.name}
-                  <br />
-                  <a
-                    href={`mailto:${committee.chairEmail}`}
-                    className="text-primary hover:underline cursor-none"
-                  >
-                    {committee.chairEmail}
-                  </a>
-                </p>
               </div>
-            </div>
+              <div className="mt-6 pt-5 border-t border-primary/15">
+                <p className="text-primary font-display font-semibold">{committee.chairName}</p>
+                <p className="text-muted-foreground text-sm mt-0.5">
+                  {committee.chairRole}, {committee.name}
+                </p>
+                <a
+                  href={`mailto:${committee.chairEmail}`}
+                  className="text-primary text-sm hover:underline cursor-none mt-1 inline-block"
+                >
+                  {committee.chairEmail}
+                </a>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Executive Board — all members */}
+          {/* Executive Board */}
           {committee.eb.length > 0 && (
-            <div className="w-full max-w-6xl">
-              <h2 className="font-display text-2xl text-primary mb-8">Executive Board</h2>
-              <div ref={ebRef} className="flex flex-wrap justify-center gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="w-full max-w-5xl"
+            >
+              <div className="text-center mb-10">
+                <h2 className="font-display text-2xl md:text-3xl text-primary tracking-wide">
+                  Executive Board
+                </h2>
+                <div
+                  className="w-16 h-[2px] mx-auto mt-3"
+                  style={{ background: "linear-gradient(to right, transparent, hsl(var(--gold)), transparent)" }}
+                />
+              </div>
+              <div ref={ebRef} className="flex flex-wrap justify-center gap-8">
                 {committee.eb.map((member, i) => (
-                  <div key={`${member.role}-${i}`} data-reveal={i} className="flex flex-col items-center text-center gap-2 w-28">
-                    <div className="w-28 h-36 rounded-sm border border-primary/20 bg-muted/50 flex items-center justify-center overflow-hidden">
+                  <div
+                    key={`${member.role}-${i}`}
+                    data-reveal={i}
+                    className="flex flex-col items-center text-center gap-2.5 w-32"
+                  >
+                    <div className="w-32 h-40 rounded-xl border border-primary/20 bg-muted/30 overflow-hidden shadow-md">
                       {member.image ? (
                         <img
                           src={member.image}
@@ -211,15 +256,17 @@ const CommitteeDetail = () => {
                           loading="lazy"
                         />
                       ) : (
-                        <span className="text-muted-foreground/60 font-display text-xs">TBA</span>
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-muted-foreground/60 font-display text-xs">TBA</span>
+                        </div>
                       )}
                     </div>
-                    <p className="text-primary text-sm font-medium leading-tight">{member.name}</p>
+                    <p className="text-primary text-sm font-semibold leading-tight">{member.name}</p>
                     <p className="text-accent text-xs italic">{member.role}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           )}
         </main>
       </div>
