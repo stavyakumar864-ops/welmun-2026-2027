@@ -120,7 +120,7 @@
   }
   .hover-lift:hover {
     transform: translateY(-6px);
-    box-shadow: 0 12px 30px -8px hsl(var(--gold) / 0.15);
+    box-shadow: 0 12px 30px -8px hsl(var(--blue-accent) / 0.2);
   }
 
   /* Image zoom on hover */

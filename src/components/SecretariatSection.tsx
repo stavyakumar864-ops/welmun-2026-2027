@@ -187,7 +187,7 @@ const SecretariatSection = () => {
             <motion.div
               key={t.name}
               variants={i === 0 ? cardFromLeft : cardFromRight}
-              className="hover-lift bg-card p-6 text-center cursor-none overflow-hidden w-[80%] max-w-xs"
+              className="hover-lift bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-[80%] max-w-xs"
             >
               <div className="w-full aspect-[3/4] bg-secondary mb-5" />
               <h3 className="font-display text-xl text-primary">{t.name}</h3>

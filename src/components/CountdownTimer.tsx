@@ -39,7 +39,7 @@ const CountdownTimer = () => {
             <span className="text-[10px] md:text-xs text-light-gold ml-1">{b.label}</span>
           </span>
           {i < boxes.length - 1 && (
-            <span className="text-primary/30 text-2xl md:text-4xl font-display select-none">:</span>
+            <span className="text-blue-accent/30 text-2xl md:text-4xl font-display select-none">:</span>
           )}
         </span>
       ))}

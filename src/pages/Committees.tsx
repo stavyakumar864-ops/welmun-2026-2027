@@ -27,7 +27,7 @@ const Committees = () => {
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
         className="w-32 md:w-48 h-[2px] mb-10 origin-center"
-        style={{ background: "linear-gradient(to right, transparent, hsl(var(--gold)), transparent)" }}
+        style={{ background: "linear-gradient(to right, transparent, hsl(var(--blue-accent)), hsl(var(--gold)), hsl(var(--blue-accent)), transparent)" }}
       />
 
       {/* Position Paper Deadline Note */}

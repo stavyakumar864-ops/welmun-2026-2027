@@ -35,7 +35,6 @@ const ParticleCanvas = memo(() => {
       last = now - (delta % FPS_INTERVAL);
 
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = "rgba(220,210,195,0.35)";
       ctx.beginPath();
       for (let i = 0; i < COUNT; i++) {
         ctx.moveTo(px[i] + pr[i], py[i]);
@@ -43,6 +42,17 @@ const ParticleCanvas = memo(() => {
         py[i] += 0.25;
         if (py[i] > h) { py[i] = 0; px[i] = Math.random() * w; }
       }
+      // Mix of gold and blue particles
+      ctx.fillStyle = "rgba(220,210,195,0.3)";
+      ctx.fill();
+
+      ctx.beginPath();
+      for (let i = 0; i < 10; i++) {
+        const idx = i % COUNT;
+        ctx.moveTo(px[idx] + pr[idx] * 0.8, py[idx] - 20);
+        ctx.arc(px[idx] + 30, py[idx] - 20, pr[idx] * 0.7, 0, 6.283);
+      }
+      ctx.fillStyle = "rgba(80,140,180,0.2)";
       ctx.fill();
     };
     animId = requestAnimationFrame(animate);

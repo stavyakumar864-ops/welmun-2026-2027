@@ -19,7 +19,7 @@ const ContactBanner = () => {
       </div>
 
       {/* Bottom — Footer-style info */}
-      <div className="mt-auto pt-12 border-t border-primary/20">
+      <div className="mt-auto pt-12 border-t border-blue-accent/20">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="space-y-1">
             <p className="font-display text-lg text-primary uppercase tracking-wider">Welham Boys' School</p>

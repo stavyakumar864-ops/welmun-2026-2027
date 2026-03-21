@@ -47,7 +47,7 @@ const HeroSection = ({ animateIn = true }: HeroSectionProps) => {
 
         <motion.p
           variants={slideFromRight}
-          className="mt-4 text-primary text-xl md:text-3xl italic font-display tracking-wider"
+          className="mt-4 text-blue-accent text-xl md:text-3xl italic font-display tracking-wider"
         >
           'Ordo ab Chao'
         </motion.p>
