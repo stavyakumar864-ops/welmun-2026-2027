@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 const ScheduleBanner = () => {
   return (
     <section
-      className="w-full h-full flex flex-col justify-center items-center overflow-hidden"
+      className="w-full h-full flex flex-col justify-center items-center overflow-hidden bg-background"
       style={{
-        background: "linear-gradient(135deg, hsl(20 30% 18%) 0%, hsl(205 35% 52% / 0.08) 45%, hsl(18 15% 25%) 55%, hsl(20 30% 18%) 100%)",
+        backgroundImage: "linear-gradient(135deg, transparent 0%, hsl(205 35% 52% / 0.08) 45%, hsl(18 15% 25%) 55%, hsl(20 30% 18%) 100%)",
       }}
     >
       <motion.h2
