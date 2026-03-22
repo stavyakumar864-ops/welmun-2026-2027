@@ -241,7 +241,7 @@ const CommitteeDetail = () => {
                 />
               </div>
               <div ref={ebRef} className="flex flex-wrap justify-center gap-8">
-                {committee.eb.map((member, i) => (
+                {committee.eb.slice(1).map((member, i) => (
                   <div
                     key={`${member.role}-${i}`}
                     data-reveal={i}
