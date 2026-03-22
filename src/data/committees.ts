@@ -208,13 +208,13 @@ export const committees: CommitteeData[] = [
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_8a7d0b09ed6d42e2ba11fce6192fff57.pdf",
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_82efced08b144a4f803d1e2d099f92fd.pdf",
     eb: [
-      { name: "Athrv Ahuja", role: "Editor-In-Chief", image: "https://static.wixstatic.com/media/9bbbe8_938bb5e7c1bd475098b8901130035d4f~mv2.jpg/v1/crop/x_0,y_63,w_1525,h_1527/fill/w_278,h_278,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC07582_edited.jpg" },
+      { name: "Neiyl Vasishta", role: "Editor-In-Chief", image: "https://static.wixstatic.com/media/9bbbe8_5190f093472c406d91d44f3c23fef01f~mv2.jpg/v1/crop/x_271,y_260,w_3259,h_4366/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5559_JPG.jpg" },
       { name: "Arnav Aaditya", role: "Senior Editor", image: "https://static.wixstatic.com/media/9bbbe8_8d88f72192ea444fb3218cba8a3d97a5~mv2.jpg/v1/crop/x_286,y_153,w_3181,h_4261/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5563_JPG.jpg" },
       { name: "Chiraag Bhargava", role: "Senior Editor", image: "https://static.wixstatic.com/media/9bbbe8_68b69e33577849af908ed6334b0c1f5a~mv2.jpeg/v1/crop/x_282,y_167,w_1530,h_2050/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC06217.jpeg" },
       { name: "Minarth Jalan", role: "Creative Editor", image: "https://static.wixstatic.com/media/9bbbe8_c43531dbec5a4afe94b88dd9a3419eda~mv2.jpg/v1/crop/x_172,y_212,w_3327,h_4451/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5569_JPG.jpg" },
       { name: "Harshil Bhatia", role: "Creative Editor", image: "https://static.wixstatic.com/media/9bbbe8_c6b9144eebc9443c826aa946de3b3904~mv2.jpg/v1/crop/x_0,y_293,w_3648,h_4886/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5565_JPG.jpg" },
       { name: "Jai Gagaliya", role: "Rapporteur", image: "https://static.wixstatic.com/media/9bbbe8_1b7c097133604154b7ff56cb1e9b5a7a~mv2.jpg/v1/crop/x_249,y_171,w_3399,h_4552/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5560_JPG.jpg" },
-      { name: "Neiyl Vasishta", role: "Rapporteur", image: "https://static.wixstatic.com/media/9bbbe8_5190f093472c406d91d44f3c23fef01f~mv2.jpg/v1/crop/x_271,y_260,w_3259,h_4366/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5559_JPG.jpg" },
+      { name: "Athrv Ahuja", role: "Rapporteur", image: "https://static.wixstatic.com/media/9bbbe8_938bb5e7c1bd475098b8901130035d4f~mv2.jpg/v1/crop/x_0,y_63,w_1525,h_1527/fill/w_278,h_278,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/DSC07582_edited.jpg" },
     ],
   },
 ];
