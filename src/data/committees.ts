@@ -202,7 +202,7 @@ export const committees: CommitteeData[] = [
       "As the press, you're at the forefront of all events. Use the medium that you hold in your hands and your minds and paint the canvas of freedom and truth to support the people and report to the world what needs to be reported.",
       "The IPC is often underestimated, but let this serve as a reminder that your role is just as vital as that of any other delegate—if not more so. At WELMUN, we give you the liberty to present your thoughts in any form that you want.",
     ],
-    chairName: "Athrv Ahuja",
+    chairName: "Neiyl Vasishta",
     chairRole: "Editor-In-Chief",
     chairEmail: "chair.ipc@welhamboys.org",
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_8a7d0b09ed6d42e2ba11fce6192fff57.pdf",
