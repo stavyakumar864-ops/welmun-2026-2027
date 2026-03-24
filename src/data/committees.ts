@@ -134,12 +134,11 @@ export const committees: CommitteeData[] = [
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_e212e0737dab4fa9b851a97fe79b5485.pdf",
     eb: [
       { name: "Tanveer S. Madan", role: "Chairperson", image: dirGenPhoto },
-      { name: "Koustabh Gupta", role: "Vice Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_33873253a044439aad312f3ee02d7fa5~mv2.jpg/v1/crop/x_207,y_318,w_3393,h_4467/fill/w_193,h_260,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5527_JPG.jpg" },
-      { name: "Rakshit Bajaj", role: "Director", image: "https://static.wixstatic.com/media/9bbbe8_00b8ffe151de4a948dce9a1c83c4e013~mv2.jpg/v1/crop/x_498,y_457,w_2867,h_3765/fill/w_193,h_260,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5525_JPG.jpg" },
-      { name: "Aarav Agarwal", role: "Rapporteur", image: "https://static.wixstatic.com/media/9bbbe8_d07822137f5f40e485ffc684316bcea0~mv2.jpg/v1/crop/x_179,y_308,w_3469,h_4560/fill/w_193,h_260,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5526_JPG.jpg" },
-      { name: "Atharva Agrawal", role: "Rapporteur", image: "https://static.wixstatic.com/media/9bbbe8_9c88e9c2bfe84869ab7b2fa3201030fc~mv2.jpg/v1/crop/x_254,y_239,w_3394,h_4441/fill/w_194,h_260,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5517_JPG.jpg" },
+      { name: "TBA", role: "Vice Chairperson", image: "" },
       { name: "TBA", role: "Director", image: "" },
       { name: "TBA", role: "Director", image: "" },
+      { name: "TBA", role: "Rapporteur", image: "" },
+      { name: "TBA", role: "Rapporteur", image: "" },
     ],
   },
   {
