@@ -27,7 +27,7 @@ const ScheduleBanner = () => {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="mt-6 font-display text-xl md:text-3xl text-primary/80 tracking-widest uppercase"
       >
-        28 Jul – 30 Jul, 2025
+        28 Jul – 30 Jul, 2026
       </motion.p>
 
       <motion.div

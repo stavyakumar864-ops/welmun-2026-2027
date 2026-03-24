@@ -175,7 +175,7 @@ const ConferenceDetails = () => {
           <TabsContent value="policy" className="mt-8">
             <div className="mb-6 p-4 rounded-lg bg-primary/5 border border-primary/15">
               <p className="text-foreground text-sm leading-relaxed">
-                The following describes the policies of WELMUN 2025. All delegates,
+                The following describes the policies of WELMUN 2026. All delegates,
                 faculty advisors, and participants are expected to adhere to these
                 guidelines throughout the duration of the conference.
               </p>

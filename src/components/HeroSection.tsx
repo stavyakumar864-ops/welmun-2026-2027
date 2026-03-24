@@ -73,7 +73,7 @@ const HeroSection = ({ animateIn = true }: HeroSectionProps) => {
         className="absolute bottom-12 right-8 md:right-16 z-10 text-right"
       >
         <h2 className="font-display text-3xl md:text-5xl text-primary leading-tight uppercase tracking-wide">
-          28–30<br />July<br />2025
+          28–30<br />July<br />2026
         </h2>
       </motion.div>
     </motion.section>

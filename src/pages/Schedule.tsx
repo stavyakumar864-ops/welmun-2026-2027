@@ -38,9 +38,9 @@ const day3 = [
 ];
 
 const days = [
-  { label: "Day 1 — Monday, July 28, 2025", rows: day1 },
-  { label: "Day 2 — Tuesday, July 29, 2025", rows: day2 },
-  { label: "Day 3 — Wednesday, July 30, 2025", rows: day3 },
+  { label: "Day 1 — Tuesday, July 28, 2026", rows: day1 },
+  { label: "Day 2 — Wednesday, July 29, 2026", rows: day2 },
+  { label: "Day 3 — Thursday, July 30, 2026", rows: day3 },
 ];
 
 const Schedule = () => {
