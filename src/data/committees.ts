@@ -203,11 +203,11 @@ export const committees: CommitteeData[] = [
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_82efced08b144a4f803d1e2d099f92fd.pdf",
     eb: [
       { name: "Neiyl Vasishta", role: "Editor-In-Chief", image: "https://static.wixstatic.com/media/9bbbe8_5190f093472c406d91d44f3c23fef01f~mv2.jpg/v1/crop/x_271,y_260,w_3259,h_4366/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5559_JPG.jpg" },
-      { name: "TBA", role: "Senior Editor", image: "" },
-      { name: "TBA", role: "Creative Editor", image: "" },
-      { name: "TBA", role: "Creative Editor", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
+      { name: "Jai Gagaliya", role: "Senior Editor", image: "" },
+      { name: "Vaibbhav Yadav", role: "Senior Editor", image: "" },
+      { name: "Siddharth Jindal", role: "Creative Editor", image: "" },
+      { name: "Ealvis Tallang", role: "Creative Editor", image: "" },
+      { name: "Rushil Singhal", role: "Rapporteur", image: "" },
     ],
   },
 ];
