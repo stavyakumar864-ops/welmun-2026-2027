@@ -266,6 +266,37 @@ const CommitteeDetail = () => {
               </div>
             </motion.div>
           )}
+
+          {/* Montage Video (IPC only) */}
+          {committee.id === "ipc" && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="w-full max-w-5xl mt-20"
+            >
+              <div className="text-center mb-10">
+                <h2 className="font-display text-2xl md:text-3xl text-primary tracking-wide">
+                  Montage
+                </h2>
+                <div
+                  className="w-16 h-[2px] mx-auto mt-3"
+                  style={{ background: "linear-gradient(to right, transparent, hsl(var(--gold)), transparent)" }}
+                />
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-primary/20 shadow-lg">
+                <video
+                  src="/videos/ipc-montage.mp4"
+                  controls
+                  className="w-full"
+                  poster=""
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </motion.div>
+          )}
         </main>
       </div>
     </>
