@@ -158,6 +158,7 @@ export const committees: CommitteeData[] = [
       { name: "Angad Singh", role: "Director", image: "" },
       { name: "Ayan Choudhary", role: "Director", image: "" },
       { name: "Garvit Agarwal", role: "Rapporteur", image: "" },
+      { name: "TBA", role: "Rapporteur", image: "" },
     ],
   },
   {
