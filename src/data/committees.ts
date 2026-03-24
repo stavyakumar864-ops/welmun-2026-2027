@@ -205,8 +205,6 @@ export const committees: CommitteeData[] = [
       { name: "TBA", role: "Creative Editor", image: "" },
       { name: "TBA", role: "Creative Editor", image: "" },
       { name: "TBA", role: "Rapporteur", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
     ],
   },
 ];
