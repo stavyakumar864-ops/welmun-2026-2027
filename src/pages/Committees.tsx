@@ -41,7 +41,7 @@ const Committees = () => {
           <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
           <p className="text-red-300/90 text-sm leading-relaxed">
             <span className="text-red-400 font-display font-semibold">Important:</span> All delegates must submit their Position Papers by{" "}
-            <span className="text-red-300 font-semibold">July 20, 2025</span>. Guidelines are provided in each committee's Background Guide.
+            <span className="text-red-300 font-semibold">July 20, 2025</span>. Guidelines are provided in each committee's Background Guide. Late submissions may lead to de-marking of Position Papers.
           </p>
         </div>
       </motion.div>
