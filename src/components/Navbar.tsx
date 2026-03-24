@@ -23,7 +23,7 @@ const Navbar = memo(() => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full pl-2 pr-2 lg:pl-4 lg:pr-4 py-3 flex justify-between items-center bg-background/95 z-[100]">
+    <nav className="fixed w-full pl-2 pr-2 lg:pl-4 lg:pr-4 py-3 flex justify-between items-center bg-background z-[100]">
       <div className="flex items-center gap-3">
         <Link to="/" className="cursor-none">
           <img src={elephantLogo} alt="Welham Logo" className="h-14 w-auto" />
