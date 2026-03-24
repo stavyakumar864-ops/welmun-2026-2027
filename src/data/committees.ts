@@ -73,7 +73,7 @@ export const committees: CommitteeData[] = [
       "The illicit trade of small arms and light weapons, facilitated by growing technology, has only risen, proportional to the number of conflicts around the world. From small regional gang turf wars in South America to wars between countries in the Middle East and North Asia, these arms seem to have found their way everywhere.",
       "As the United Nations' disarmament body, it is your utmost prerogative and responsibility to treat the issue as important and discuss practical solutions through mutual respect and understanding.",
     ],
-    chairName: "Samarth Agrawal",
+    chairName: "Kushagra Gupta",
     chairRole: "Chairperson",
     chairEmail: "chair.disec@welhamboys.org",
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_ef0870397fba4a2c84c7171164e8a001.pdf",
