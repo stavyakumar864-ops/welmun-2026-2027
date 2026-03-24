@@ -172,11 +172,11 @@ export const committees: CommitteeData[] = [
     chairLetter: [
       "Details for the United Nations Human Rights Council will be updated soon. Stay tuned for more information about the agenda, executive board, and background guides.",
     ],
-    chairName: "TBA",
+    chairName: "Shashwat Singh",
     chairRole: "Chairperson",
     chairEmail: "chair.unhrc@welhamboys.org",
     eb: [
-      { name: "TBA", role: "Chairperson", image: "" },
+      { name: "Shashwat Singh", role: "Chairperson", image: "" },
       { name: "TBA", role: "Vice Chairperson", image: "" },
       { name: "TBA", role: "Director", image: "" },
       { name: "TBA", role: "Director", image: "" },
