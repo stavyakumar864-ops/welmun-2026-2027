@@ -270,7 +270,7 @@ const CommitteeDetail = () => {
       </div>
 
       {/* Bottom cover to prevent the fixed montage video from showing after content */}
-      <div className="relative z-[3] h-1 bg-background" />
+      <div className="relative z-[3] h-screen" style={{ background: "hsl(var(--background))" }} />
     </>
   );
 };
