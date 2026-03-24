@@ -31,7 +31,7 @@ const RegistrationProcess = () => (
         {
           step: "Step 5",
           title: "Submit Position Papers",
-          desc: "Each delegate must submit a position paper for their assigned committee by July 20, 2025. Guidelines are provided in each committee's Background Guide.",
+          desc: "Each delegate must submit a position paper for their assigned committee by July 20, 2026. Guidelines are provided in each committee's Background Guide.",
         },
       ].map((item, i) => (
         <Card key={i} className="bg-secondary/30 border-primary/20 hover-lift">
