@@ -5,6 +5,7 @@ import viceroysImg from "@/assets/committees/viceroys-cabinet.jpg";
 import loksabhaImg from "@/assets/committees/loksabha.jpg";
 import ipcImg from "@/assets/committees/ipc.jpg";
 import unhcrImg from "@/assets/committees/unhcr.jpg";
+import dirGenPhoto from "@/assets/dir-gen.png";
 
 export interface EBMember {
   name: string;
