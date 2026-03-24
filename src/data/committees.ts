@@ -182,7 +182,6 @@ export const committees: CommitteeData[] = [
       { name: "TBA", role: "Vice Chairperson", image: "" },
       { name: "TBA", role: "Director", image: "" },
       { name: "TBA", role: "Director", image: "" },
-      { name: "TBA", role: "Director", image: "" },
       { name: "TBA", role: "Rapporteur", image: "" },
       { name: "TBA", role: "Rapporteur", image: "" },
     ],
