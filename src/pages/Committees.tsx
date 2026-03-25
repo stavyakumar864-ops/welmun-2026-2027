@@ -70,7 +70,7 @@ const CommitteeStrip = ({
         videoRef.current.currentTime = 0;
         videoRef.current.play().catch(() => {});
       }
-    }, 200);
+    }, 3000);
   }, [onHover]);
 
   const handleMouseLeave = useCallback(() => {
