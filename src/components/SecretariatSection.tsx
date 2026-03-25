@@ -11,8 +11,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const allMembers = [
   { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
-  { role: "Director General", name: "Tanveer S. Madan", img: dirGenPhoto },
   { role: "Under Secretary", name: "Koustabh Gupta", img: underSecPhoto },
+  { role: "Director General", name: "Tanveer S. Madan", img: dirGenPhoto },
   { role: "Under Secretary", name: "Aaryan Khanna", img: AARYAN_PHOTO },
 ];
 
