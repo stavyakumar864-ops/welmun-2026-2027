@@ -203,7 +203,7 @@ const Committees = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="w-full max-w-6xl flex rounded-2xl overflow-hidden border border-primary/10"
+        className="w-full max-w-6xl flex gap-2 rounded-2xl overflow-hidden"
         style={{ height: "70vh", minHeight: "500px" }}
       >
         {orderedCommittees.map((c) => (
