@@ -131,7 +131,7 @@ const SecretariatSection = () => {
             {/* Secretary General on top */}
             <motion.div
               variants={cardFromBottom}
-              className="hover-lift img-zoom bg-card border border-blue-accent/10 p-8 text-center cursor-none overflow-hidden max-w-xs w-full"
+              className="hover-lift img-zoom bg-card border border-blue-accent/10 p-8 text-center cursor-none overflow-hidden w-64"
             >
               <img src={allMembers[0].img} alt={allMembers[0].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
               <h3 className="font-display text-xl text-primary">{allMembers[0].name}</h3>
@@ -144,7 +144,7 @@ const SecretariatSection = () => {
                 <motion.div
                   key={m.name}
                   variants={i === 0 ? cardFromLeft : i === 2 ? cardFromRight : cardFromBottom}
-                  className="hover-lift img-zoom bg-card border border-blue-accent/10 p-8 text-center cursor-none overflow-hidden flex-1 max-w-xs"
+                  className="hover-lift img-zoom bg-card border border-blue-accent/10 p-8 text-center cursor-none overflow-hidden w-64"
                 >
                   <img src={m.img} alt={m.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
                   <h3 className="font-display text-xl text-primary">{m.name}</h3>
