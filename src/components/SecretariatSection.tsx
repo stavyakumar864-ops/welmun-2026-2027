@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import secGenPhoto from "@/assets/sec-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
 import underSec2Photo from "@/assets/under-sec-2.png";
+
+const AARYAN_PHOTO = "https://static.wixstatic.com/media/9bbbe8_6cc88ce16eb24e9d863d96cf105cf006~mv2.jpg/v1/crop/x_409,y_548,w_2837,h_3797/fill/w_190,h_261,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5552_JPG.jpg";
 import dirGenPhoto from "@/assets/dir-gen.png";
 import techDirector1Photo from "@/assets/tech-director-1.png";
 import techDirector2Photo from "@/assets/tech-director-2.png";
@@ -11,7 +13,7 @@ const allMembers = [
   { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
   { role: "Director General", name: "Tanveer S. Madan", img: dirGenPhoto },
   { role: "Under Secretary", name: "Koustabh Gupta", img: underSecPhoto },
-  { role: "Under Secretary", name: "Aaryan Khanna", img: underSec2Photo },
+  { role: "Under Secretary", name: "Aaryan Khanna", img: AARYAN_PHOTO },
 ];
 
 const techDirectors = [
