@@ -61,7 +61,7 @@ const CommitteeStrip = ({
   return (
     <Link
       to={`/committees/${committee.id}`}
-      className="relative overflow-hidden cursor-none block h-full"
+      className="relative overflow-hidden cursor-none block h-full rounded-xl"
       style={{
         flex: isActive ? 20 : 1,
         transition: "flex 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
