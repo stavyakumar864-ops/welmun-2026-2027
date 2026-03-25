@@ -177,11 +177,10 @@ export const committees: CommitteeData[] = [
     chairEmail: "chair.unhrc@welhamboys.org",
     eb: [
       { name: "Shashwat Singh", role: "Chairperson", image: "" },
-      { name: "TBA", role: "Vice Chairperson", image: "" },
-      { name: "TBA", role: "Director", image: "" },
-      { name: "TBA", role: "Director", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
+      { name: "Angad Khurana", role: "Vice Chairperson", image: "" },
+      { name: "Keshav Poddar", role: "Director", image: "" },
+      { name: "Aarav Aggarwal", role: "Director", image: "" },
+      { name: "Ranveer Madan", role: "Rapporteur", image: "" },
     ],
   },
   {
