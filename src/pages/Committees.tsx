@@ -1,15 +1,167 @@
+import { useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { committees } from "@/data/committees";
 
+// Video imports
+import unscVideo from "@/assets/committees/unsc-intro.mp4";
+import disecVideo from "@/assets/committees/disec-intro.mp4";
+import unodcVideo from "@/assets/committees/unodc-intro.mp4";
+import viceroysVideo from "@/assets/committees/viceroys-cabinet-intro.mp4";
+import loksabhaVideo from "@/assets/committees/loksabha-intro.mp4";
+import ipcVideo from "@/assets/committees/ipc-intro.mp4";
+import unhcrVideo from "@/assets/committees/unhcr-intro.mp4";
+
+const committeeVideos: Record<string, string> = {
+  unsc: unscVideo,
+  disec: disecVideo,
+  unodc: unodcVideo,
+  "viceroys-cabinet": viceroysVideo,
+  specpol: loksabhaVideo,
+  unhrc: unhcrVideo,
+  ipc: ipcVideo,
+};
+
 const orderedIds = ["unsc", "disec", "unodc", "viceroys-cabinet", "specpol", "unhrc", "ipc"];
 const orderedCommittees = orderedIds
   .map((id) => committees.find((c) => c.id === id))
   .filter(Boolean) as typeof committees;
 
+const CommitteeStrip = ({
+  committee,
+  isActive,
+  onHover,
+  onLeave,
+}: {
+  committee: (typeof committees)[0];
+  isActive: boolean;
+  onHover: () => void;
+  onLeave: () => void;
+}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSrc = committeeVideos[committee.id];
+
+  const handleMouseEnter = useCallback(() => {
+    onHover();
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [onHover]);
+
+  const handleMouseLeave = useCallback(() => {
+    onLeave();
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [onLeave]);
+
+  return (
+    <Link
+      to={`/committees/${committee.id}`}
+      className="relative overflow-hidden cursor-none block h-full"
+      style={{
+        flex: isActive ? 4 : 1,
+        transition: "flex 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Background image (always visible) */}
+      <img
+        src={committee.cardImage}
+        alt={committee.name}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          transition: "opacity 0.5s ease",
+          opacity: isActive && videoSrc ? 0 : 1,
+        }}
+      />
+
+      {/* Video (plays on hover) */}
+      {videoSrc && (
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          muted
+          playsInline
+          loop
+          preload="none"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            opacity: isActive ? 1 : 0,
+            transition: "opacity 0.5s ease",
+          }}
+        />
+      )}
+
+      {/* Overlay */}
+      <div
+        className="absolute inset-0 transition-all duration-500"
+        style={{
+          background: isActive
+            ? "linear-gradient(to top, hsl(var(--background) / 0.85) 0%, hsl(var(--background) / 0.3) 40%, transparent 100%)"
+            : "linear-gradient(to top, hsl(var(--background) / 0.9) 0%, hsl(var(--background) / 0.5) 100%)",
+        }}
+      />
+
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-end p-4 pb-8 gap-3 z-10">
+        {/* Logo */}
+        {committee.logo && (
+          <img
+            src={committee.logo}
+            alt={`${committee.shortName} logo`}
+            className="object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] transition-all duration-500"
+            style={{
+              width: isActive ? "5rem" : "3rem",
+              height: isActive ? "5rem" : "3rem",
+              opacity: isActive ? 1 : 0.8,
+            }}
+          />
+        )}
+
+        {/* Short name - rotated when collapsed */}
+        <h2
+          className="font-display text-primary uppercase font-bold whitespace-nowrap transition-all duration-500"
+          style={{
+            textShadow: "0 2px 16px hsl(15 30% 12% / 0.95), 0 0 40px hsl(15 30% 12% / 0.7)",
+            fontSize: isActive ? "2rem" : "1.25rem",
+            letterSpacing: isActive ? "6px" : "3px",
+            writingMode: isActive ? "horizontal-tb" : "vertical-rl",
+            textOrientation: isActive ? "mixed" : "mixed",
+            transform: isActive ? "none" : "rotate(180deg)",
+          }}
+        >
+          {committee.shortName}
+        </h2>
+
+        {/* Full name + agenda visible on hover */}
+        <div
+          className="text-center max-w-md transition-all duration-500 overflow-hidden"
+          style={{
+            opacity: isActive ? 1 : 0,
+            maxHeight: isActive ? "200px" : "0",
+            transform: isActive ? "translateY(0)" : "translateY(20px)",
+          }}
+        >
+          <p className="text-muted-foreground text-sm tracking-wider uppercase mb-2">
+            {committee.name}
+          </p>
+          <p className="text-muted-foreground/70 text-xs leading-relaxed line-clamp-2">
+            {committee.agenda}
+          </p>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
 const Committees = () => {
+  const [activeId, setActiveId] = useState<string | null>(null);
+
   return (
     <PageLayout backgroundImage="/images/committees-bg.jpg">
       {/* Hero Title */}
@@ -46,140 +198,24 @@ const Committees = () => {
         </div>
       </motion.div>
 
-      {/* Featured Row — Top 2 committees larger */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        {orderedCommittees.slice(0, 2).map((c, i) => (
-          <motion.div
+      {/* Vertical Strips */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="w-full max-w-6xl flex rounded-2xl overflow-hidden border border-primary/10"
+        style={{ height: "70vh", minHeight: "500px" }}
+      >
+        {orderedCommittees.map((c) => (
+          <CommitteeStrip
             key={c.id}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.7, delay: i * 0.15, ease: [0.23, 1, 0.32, 1] }}
-          >
-            <Link
-              to={`/committees/${c.id}`}
-              className="group relative block aspect-[4/5] sm:aspect-[3/2] overflow-hidden rounded-2xl cursor-none transition-all duration-500 hover:shadow-[0_16px_50px_-10px_hsl(var(--gold)/0.3)]"
-            >
-              <img
-                src={c.cardImage}
-                alt={c.name}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-background/40 group-hover:bg-background/25 transition-all duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-              <div className="absolute inset-0 flex flex-col items-center justify-end p-6 pb-8 gap-3">
-                {c.logo && (
-                  <img
-                    src={c.logo}
-                    alt={`${c.shortName} logo`}
-                    className="w-20 h-20 md:w-24 md:h-24 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
-                  />
-                )}
-                <h2
-                  className="font-display text-3xl md:text-4xl text-primary tracking-[6px] uppercase font-bold"
-                  style={{ textShadow: "0 2px 16px hsl(15 30% 12% / 0.95), 0 0 40px hsl(15 30% 12% / 0.7)" }}
-                >
-                  {c.shortName}
-                </h2>
-                <p className="text-muted-foreground text-xs md:text-sm tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {c.name}
-                </p>
-              </div>
-            </Link>
-          </motion.div>
+            committee={c}
+            isActive={activeId === c.id}
+            onHover={() => setActiveId(c.id)}
+            onLeave={() => setActiveId(null)}
+          />
         ))}
-      </div>
-
-      {/* Middle Row — 3 committees */}
-      <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        {orderedCommittees.slice(2, 5).map((c, i) => (
-          <motion.div
-            key={c.id}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.7, delay: i * 0.12, ease: [0.23, 1, 0.32, 1] }}
-          >
-            <Link
-              to={`/committees/${c.id}`}
-              className="group relative block aspect-[3/4] sm:aspect-[4/5] overflow-hidden rounded-2xl cursor-none transition-all duration-500 hover:shadow-[0_12px_40px_-8px_hsl(var(--gold)/0.3)]"
-            >
-              <img
-                src={c.cardImage}
-                alt={c.name}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-background/45 group-hover:bg-background/25 transition-all duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-              <div className="absolute inset-0 flex flex-col items-center justify-end p-5 pb-7 gap-2.5">
-                {c.logo && (
-                  <img
-                    src={c.logo}
-                    alt={`${c.shortName} logo`}
-                    className="w-16 h-16 md:w-20 md:h-20 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
-                  />
-                )}
-                <h2
-                  className="font-display text-2xl md:text-3xl text-primary tracking-[5px] uppercase font-bold"
-                  style={{ textShadow: "0 2px 16px hsl(15 30% 12% / 0.95), 0 0 40px hsl(15 30% 12% / 0.7)" }}
-                >
-                  {c.shortName}
-                </h2>
-                <p className="text-muted-foreground text-xs tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {c.name}
-                </p>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Bottom Row — 2 remaining */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6">
-        {orderedCommittees.slice(5).map((c, i) => (
-          <motion.div
-            key={c.id}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.7, delay: i * 0.15, ease: [0.23, 1, 0.32, 1] }}
-          >
-            <Link
-              to={`/committees/${c.id}`}
-              className="group relative block aspect-[4/5] sm:aspect-[3/2] overflow-hidden rounded-2xl cursor-none transition-all duration-500 hover:shadow-[0_16px_50px_-10px_hsl(var(--gold)/0.3)]"
-            >
-              <img
-                src={c.cardImage}
-                alt={c.name}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-background/40 group-hover:bg-background/25 transition-all duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
-              <div className="absolute inset-0 flex flex-col items-center justify-end p-6 pb-8 gap-3">
-                {c.logo && (
-                  <img
-                    src={c.logo}
-                    alt={`${c.shortName} logo`}
-                    className="w-20 h-20 md:w-24 md:h-24 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
-                  />
-                )}
-                <h2
-                  className="font-display text-3xl md:text-4xl text-primary tracking-[6px] uppercase font-bold"
-                  style={{ textShadow: "0 2px 16px hsl(15 30% 12% / 0.95), 0 0 40px hsl(15 30% 12% / 0.7)" }}
-                >
-                  {c.shortName}
-                </h2>
-                <p className="text-muted-foreground text-xs md:text-sm tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {c.name}
-                </p>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
+      </motion.div>
     </PageLayout>
   );
 };
