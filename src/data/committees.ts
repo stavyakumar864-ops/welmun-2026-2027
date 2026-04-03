@@ -177,6 +177,8 @@ export const committees: CommitteeData[] = [
     chairName: "Shashwat Singh",
     chairRole: "Chairperson",
     chairEmail: "chair.unhrc@welhamboys.org",
+    bgLink: "#",
+    matrixLink: "#",
     eb: [
       { name: "Shashwat Singh", role: "Chairperson", image: "" },
       { name: "Angad Khurana", role: "Vice Chairperson", image: "" },
