@@ -90,7 +90,7 @@ const Schedule = () => {
         <a href={PDF_URL} target="_blank" rel="noopener noreferrer">
           <Button variant="outline" className="border-blue-accent text-blue-accent hover:bg-blue-accent/10 gap-2">
             <Download className="w-4 h-4" />
-            Download Schedule (PDF)
+            Download Schedule
           </Button>
         </a>
       </div>
