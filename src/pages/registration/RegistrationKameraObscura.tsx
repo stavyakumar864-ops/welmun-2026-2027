@@ -69,7 +69,7 @@ const RegistrationKameraObscura = () => {
           <h3 className="font-display text-xl text-primary mb-4">Dates & Deadlines</h3>
           <div className="grid md:grid-cols-2 gap-3">
             {[
-              { label: "Registration Deadline", value: "Sunday, April 20, 2026" },
+              { label: "Registration Deadline", value: "Saturday, April 25, 2026" },
               { label: "Travel Details Submission", value: "Friday, July 10, 2026" },
               { label: "Orientation & Topic Announcement", value: "Tuesday, July 28, 2026" },
               { label: "Submission of Entries", value: "Wednesday, July 29, 2026" },
@@ -101,7 +101,7 @@ const RegistrationKameraObscura = () => {
               <h3 className="font-display text-lg text-primary">Registration Links</h3>
               <div className="space-y-2">
                 <motion.a
-                  href="https://forms.gle/W85Qor3LpTeLTSwZ7"
+                  href="https://forms.gle/cpiANBnEWMAhbrXT9"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
@@ -109,10 +109,10 @@ const RegistrationKameraObscura = () => {
                   className="block p-3 bg-primary/5 rounded-lg border border-primary/10 hover:bg-primary/10 transition-colors cursor-none"
                 >
                   <p className="text-primary font-display text-sm">Registration Form →</p>
-                  <p className="text-muted-foreground text-xs">forms.gle/W85Qor3LpTeLTSwZ7</p>
+                  <p className="text-muted-foreground text-xs">forms.gle/cpiANBnEWMAhbrXT9</p>
                 </motion.a>
                 <motion.a
-                  href="https://forms.gle/Ze1DZQeseiaPeQUQ7"
+                  href="https://forms.gle/brqBPJBP7SLhnW9AA"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
@@ -120,7 +120,7 @@ const RegistrationKameraObscura = () => {
                   className="block p-3 bg-primary/5 rounded-lg border border-primary/10 hover:bg-primary/10 transition-colors cursor-none"
                 >
                   <p className="text-primary font-display text-sm">Travel Details Form →</p>
-                  <p className="text-muted-foreground text-xs">forms.gle/Ze1DZQeseiaPeQUQ7</p>
+                  <p className="text-muted-foreground text-xs">forms.gle/brqBPJBP7SLhnW9AA</p>
                 </motion.a>
               </div>
             </CardContent>
@@ -281,7 +281,7 @@ const RegistrationKameraObscura = () => {
                 <div className="flex flex-col md:flex-row gap-4 text-sm text-muted-foreground">
                   <span className="flex items-center gap-2"><Mail className="w-4 h-4 text-primary" /> <a href="mailto:kameraobscura@welhamboys.org" className="text-primary hover:underline cursor-none">kameraobscura@welhamboys.org</a></span>
                   <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" /> Mr. Sushant Portion — +91 9997166850</span>
-                  <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" /> Mr. Jai Ranjan Kagdee — +91 8755903327</span>
+                  <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-primary" /> Mr. Jai Ranjan Kagdee — +91 9997660626</span>
                 </div>
               </CardContent>
             </Card>

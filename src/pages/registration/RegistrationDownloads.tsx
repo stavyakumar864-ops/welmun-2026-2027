@@ -11,7 +11,7 @@ const RegistrationDownloads = () => (
         { title: "Invitation Letter", desc: "Official invitation from the Principal of Welham Boys' School.", file: "/docs/WELMUN-Invite.docx" },
         { title: "Delegate Information Form", desc: "Details of delegates, teacher escorts, and committee preferences.", file: "/docs/WELMUN-Delegate_Information.docx" },
         { title: "Indemnity Form", desc: "Consent form to be signed and sealed by the Principal.", file: "/docs/WELMUN-Indemnity_Form.docx" },
-        { title: "Hotel Tariff", desc: "List of partner hotels with rates and contact details.", file: "/docs/WELMUN-Hotel_Tariff.docx" },
+        { title: "Hotel Tariff", desc: "List of partner hotels with rates and contact details.", file: "/docs/WELMUN-Hotel_Tariff.pdf" },
       ].map((doc) => (
         <a key={doc.title} href={doc.file} download className="block group">
           <Card className="bg-secondary/30 border-primary/20 hover:border-primary/50 hover:bg-secondary/50 transition-colors duration-300 hover-lift h-full">
