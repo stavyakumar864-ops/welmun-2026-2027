@@ -110,12 +110,13 @@ const Schedule = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 max-w-2xl mx-auto">
           {[
             { role: "E.A. to the Principal", phone: "+91 8979052222" },
-            { role: "Vice-Principal", phone: "+91 8755909037" },
+            { role: "Vice-Principal", name: "Ms. A. Bakshi", phone: "+91 8755909037" },
           ].map((c) => (
             <div key={c.role} className="flex items-start gap-3 p-4 rounded-lg border border-primary/20 bg-secondary/30">
               <User className="w-4 h-4 text-primary shrink-0 mt-0.5" />
               <div>
                 <p className="font-display text-xs text-primary tracking-wider">{c.role}</p>
+                {c.name && <p className="text-sm text-foreground">{c.name}</p>}
                 <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
                   <Phone className="w-3 h-3" /> {c.phone}
                 </p>
