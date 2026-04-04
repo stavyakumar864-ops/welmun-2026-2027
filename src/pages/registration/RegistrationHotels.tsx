@@ -101,14 +101,6 @@ const RegistrationHotels = () => (
         <a href="mailto:journeywbs@welhamboys.org" className="text-primary hover:underline cursor-none">journeywbs@welhamboys.org</a> / +91-9304000005 / +91-8171033339. Once booking is confirmed by the Journey In-charge, you can directly liaise with the hotel for payments. Please confirm your final place of stay, date/time, and exact number of members for us to arrange daily commuting. Pick-and-drop facility will be provided from Dehradun Railway Station, Jolly Grant Airport, and the local bus stand.
       </p>
     </div>
-    <div className="mb-6">
-      <a href="/docs/WELMUN-Hotel_Tariff.pdf" target="_blank" rel="noopener noreferrer">
-        <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 gap-2">
-          <Download className="w-4 h-4" />
-          Download Full Hotel Tariff (PDF)
-        </Button>
-      </a>
-    </div>
     <div className="space-y-4">
       {hotels.map((hotel) => (
         <Card key={hotel.name} className="bg-secondary/30 border-primary/20">
