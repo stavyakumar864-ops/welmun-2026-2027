@@ -3,25 +3,13 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
-  Calendar,
-  Users,
-  CreditCard,
-  FileText,
-  HelpCircle,
   Download,
-  Hotel,
-  
+  Camera,
 } from "lucide-react";
 
 const sections = [
-  { id: "overview", label: "Overview", icon: Calendar, path: "/registration" },
-  { id: "eligibility", label: "Eligibility", icon: Users, path: "/registration/eligibility" },
-  { id: "process", label: "Process", icon: FileText, path: "/registration/process" },
-  { id: "fees", label: "Fees & Payment", icon: CreditCard, path: "/registration/fees" },
-  { id: "hotels", label: "Hotels", icon: Hotel, path: "/registration/hotels" },
-  { id: "downloads", label: "Downloads", icon: Download, path: "/registration/downloads" },
-  
-  { id: "faqs", label: "FAQs", icon: HelpCircle, path: "/registration/faqs" },
+  { id: "downloads", label: "Downloads", icon: Download, path: "/registration" },
+  { id: "kamera-obscura", label: "Kamera Obscura", icon: Camera, path: "/registration/kamera-obscura" },
 ];
 
 const Registration = () => {

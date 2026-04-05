@@ -37,17 +37,10 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/addressals" element={<Addressals />} />
           <Route path="/registration" element={<Registration />}>
-            <Route index element={<RegistrationOverview />} />
-            <Route path="eligibility" element={<RegistrationEligibility />} />
-            <Route path="process" element={<RegistrationProcess />} />
-            <Route path="fees" element={<RegistrationFees />} />
-            <Route path="hotels" element={<RegistrationHotels />} />
-            <Route path="downloads" element={<RegistrationDownloads />} />
-            
-            <Route path="faqs" element={<RegistrationFAQs />} />
+            <Route index element={<RegistrationDownloads />} />
+            <Route path="kamera-obscura" element={<RegistrationKameraObscura />} />
           </Route>
           <Route path="/schedule" element={<Schedule />} />
-          <Route path="/kamera-obscura" element={<RegistrationKameraObscura />} />
           <Route path="/committees" element={<Committees />} />
           <Route path="/committees/:id" element={<CommitteeDetail />} />
           <Route path="/conference-details" element={<ConferenceDetails />} />

@@ -11,7 +11,6 @@ const navLinks = [
   
   { label: "Schedule", to: "/schedule" },
   { label: "Committees", to: "/committees" },
-  { label: "Kamera Obscura", to: "/kamera-obscura" },
   { label: "Conference Details", to: "/conference-details" },
   { label: "Important Downloads", to: "/downloads" },
   { label: "Photo Gallery", to: "/gallery" },
