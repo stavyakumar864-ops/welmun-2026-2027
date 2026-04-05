@@ -8,7 +8,6 @@ import Addressals from "./pages/Addressals";
 import Registration from "./pages/Registration";
 import RegistrationDownloads from "./pages/registration/RegistrationDownloads";
 import RegistrationKameraObscura from "./pages/registration/RegistrationKameraObscura";
-import RegistrationKameraObscura from "./pages/registration/RegistrationKameraObscura";
 import Schedule from "./pages/Schedule";
 import Committees from "./pages/Committees";
 import CommitteeDetail from "./pages/CommitteeDetail";
