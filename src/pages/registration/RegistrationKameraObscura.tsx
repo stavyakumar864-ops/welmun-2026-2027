@@ -286,8 +286,7 @@ const RegistrationKameraObscura = () => {
             </Card>
           </motion.div>
         </div>
-      </section>
-    </PageLayout>
+    </section>
   );
 };
 
