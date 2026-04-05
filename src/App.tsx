@@ -38,7 +38,7 @@ const App = () => (
           <Route path="/committees" element={<Committees />} />
           <Route path="/committees/:id" element={<CommitteeDetail />} />
           <Route path="/conference-details" element={<ConferenceDetails />} />
-          <Route path="/downloads" element={<ImportantDownloads />} />
+          
           <Route path="/gallery" element={<PhotoGallery />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
