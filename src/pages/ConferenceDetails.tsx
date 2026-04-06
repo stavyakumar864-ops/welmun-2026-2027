@@ -160,10 +160,6 @@ const ConferenceDetails = () => {
           Conference Details
         </h1>
         <div className="gold-divider" />
-        <p className="text-muted-foreground text-lg mt-4 text-center max-w-2xl mb-12">
-          Everything you need to know about WELMUN 2026 — policies, rules of
-          procedure, and foundational documents.
-        </p>
       </div>
 
       <div className="w-full max-w-4xl mx-auto">
