@@ -112,9 +112,10 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="px-10 py-2.5 border-2 border-blue-accent text-blue-accent hover:bg-blue-accent hover:text-blue-accent-foreground transition-colors cursor-none font-display tracking-wider"
+                  disabled={cooldown}
+                  className="px-10 py-2.5 border-2 border-blue-accent text-blue-accent hover:bg-blue-accent hover:text-blue-accent-foreground transition-colors cursor-none font-display tracking-wider disabled:opacity-50 disabled:pointer-events-none"
                 >
-                  Submit
+                  {cooldown ? "Please wait…" : "Submit"}
                 </button>
               </form>
             </div>
