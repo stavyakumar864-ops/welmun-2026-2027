@@ -28,6 +28,15 @@ const Contact = () => {
       return;
     }
 
+    const now = Date.now();
+    if (now - lastSubmitRef.current < RATE_LIMIT_MS) {
+      alert("Please wait before submitting again.");
+      return;
+    }
+    lastSubmitRef.current = now;
+    setCooldown(true);
+    setTimeout(() => setCooldown(false), RATE_LIMIT_MS);
+
     const formData = new FormData();
     formData.append("entry.1905276668", form.firstName);
     formData.append("entry.1158082062", form.lastName);

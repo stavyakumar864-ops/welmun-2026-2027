@@ -47,6 +47,7 @@ const CommitteeIntro = ({ committeeId, committeeName }: CommitteeIntroProps) => 
           autoPlay
           muted
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-background/40" />
