@@ -42,6 +42,7 @@ const Contact = () => {
             <p className="text-accent text-lg text-center">Thanks for submitting!</p>
           ) : (
             <div className="bg-card/50 border border-primary/20 p-5 sm:p-8">
+              <p className="text-muted-foreground text-xs mb-4">* All fields are mandatory.</p>
               <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
