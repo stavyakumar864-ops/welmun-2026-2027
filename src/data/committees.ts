@@ -55,11 +55,11 @@ export const committees: CommitteeData[] = [
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_1a6c914129cb4ef78d39032161badd0f.pdf",
     eb: [
       { name: "Ahan Sparsh", role: "Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_3593fea72fc54c79954d792b7808238e~mv2.jpg/v1/crop/x_0,y_0,w_3648,h_4800/fill/w_175,h_237,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5542_JPG.jpg" },
-      { name: "TBA", role: "Vice Chairperson", image: "" },
-      { name: "TBA", role: "Director", image: "" },
-      { name: "TBA", role: "Director", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
-      { name: "TBA", role: "Rapporteur", image: "" },
+      { name: "Atharva Agarwal", role: "Vice Chairperson", image: "" },
+      { name: "Bhavesh Singhal", role: "Director", image: "" },
+      { name: "Nirvaan Agarwal", role: "Director", image: "" },
+      { name: "Dhruv Agarwal", role: "Rapporteur", image: "" },
+      { name: "Viyom Nathania", role: "Rapporteur", image: "" },
     ],
   },
   {
