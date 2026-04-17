@@ -7,6 +7,11 @@ import ipcImg from "@/assets/committees/ipc.jpg";
 import unhcrImg from "@/assets/committees/unhcr.jpg";
 import dirGenPhoto from "@/assets/dir-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
+import tanveerPhoto from "@/assets/tanveer-madan.png";
+import shashwatPhoto from "@/assets/shashwat-singh.png";
+import aaryanPhoto from "@/assets/aaryan-khanna.png";
+import angadKhuranaPhoto from "@/assets/angad-khurana.png";
+import ahanPhoto from "@/assets/ahan-sparsh.png";
 
 export interface EBMember {
   name: string;
@@ -54,7 +59,7 @@ export const committees: CommitteeData[] = [
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_b826bb68105845d9b1794b6a9f30ce7f.pdf",
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_1a6c914129cb4ef78d39032161badd0f.pdf",
     eb: [
-      { name: "Ahan Sparsh", role: "Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_3593fea72fc54c79954d792b7808238e~mv2.jpg/v1/crop/x_0,y_0,w_3648,h_4800/fill/w_175,h_237,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5542_JPG.jpg" },
+      { name: "Ahan Sparsh", role: "Chairperson", image: ahanPhoto },
       { name: "Atharva Agarwal", role: "Vice Chairperson", image: "" },
       { name: "Bhavesh Singhal", role: "Director", image: "" },
       { name: "Nirvaan Agarwal", role: "Director", image: "" },
@@ -106,7 +111,7 @@ export const committees: CommitteeData[] = [
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_ef8d0e73bf5541cc8c56c877d65bb714.pdf",
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_0cb03ee32e8f4f3d88af1b2f9e6762e1.pdf",
     eb: [
-      { name: "Aaryan Khanna", role: "Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_6cc88ce16eb24e9d863d96cf105cf006~mv2.jpg/v1/crop/x_409,y_548,w_2837,h_3797/fill/w_190,h_261,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5552_JPG.jpg" },
+      { name: "Aaryan Khanna", role: "Chairperson", image: aaryanPhoto },
       { name: "TBA", role: "Vice Chairperson", image: "" },
       { name: "TBA", role: "Director", image: "" },
       { name: "TBA", role: "Director", image: "" },
@@ -132,7 +137,7 @@ export const committees: CommitteeData[] = [
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_54e7cb89272c413093a16b96bf674386.pdf",
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_e212e0737dab4fa9b851a97fe79b5485.pdf",
     eb: [
-      { name: "Tanveer S. Madan", role: "Chairperson", image: dirGenPhoto },
+      { name: "Tanveer S. Madan", role: "Chairperson", image: tanveerPhoto },
       { name: "TBA", role: "Vice Chairperson", image: "" },
       { name: "TBA", role: "Director", image: "" },
       { name: "TBA", role: "Director", image: "" },
@@ -180,8 +185,8 @@ export const committees: CommitteeData[] = [
     bgLink: "#",
     matrixLink: "#",
     eb: [
-      { name: "Shashwat Singh", role: "Chairperson", image: "" },
-      { name: "Angad Khurana", role: "Vice Chairperson", image: "" },
+      { name: "Shashwat Singh", role: "Chairperson", image: shashwatPhoto },
+      { name: "Angad Khurana", role: "Vice Chairperson", image: angadKhuranaPhoto },
       { name: "Keshav Poddar", role: "Director", image: "" },
       { name: "Aarav Aggarwal", role: "Director", image: "" },
       { name: "Ranveer Madan", role: "Rapporteur", image: "" },
