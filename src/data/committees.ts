@@ -12,6 +12,10 @@ import shashwatPhoto from "@/assets/shashwat-singh.png";
 import aaryanPhoto from "@/assets/aaryan-khanna.png";
 import angadKhuranaPhoto from "@/assets/angad-khurana.png";
 import ahanPhoto from "@/assets/ahan-sparsh.png";
+import ipcNeiylPhoto from "@/assets/eb/ipc-neiyl.png";
+import ipcJaiPhoto from "@/assets/eb/ipc-jai.png";
+import ipcVaibbhavPhoto from "@/assets/eb/ipc-vaibbhav.png";
+import ipcRushilPhoto from "@/assets/eb/ipc-rushil.png";
 
 export interface EBMember {
   name: string;
@@ -221,12 +225,12 @@ export const committees: CommitteeData[] = [
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_8a7d0b09ed6d42e2ba11fce6192fff57.pdf",
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_82efced08b144a4f803d1e2d099f92fd.pdf",
     eb: [
-      { name: "Neiyl Vasishta", role: "Editor-In-Chief", image: "https://static.wixstatic.com/media/9bbbe8_5190f093472c406d91d44f3c23fef01f~mv2.jpg/v1/crop/x_271,y_260,w_3259,h_4366/fill/w_198,h_272,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5559_JPG.jpg" },
-      { name: "Jai Gagaliya", role: "Senior Editor", image: "" },
-      { name: "Vaibbhav Yadav", role: "Senior Editor", image: "" },
+      { name: "Neiyl Vasishta", role: "Editor-In-Chief", image: ipcNeiylPhoto },
+      { name: "Jai Gagaliya", role: "Senior Editor", image: ipcJaiPhoto },
+      { name: "Vaibbhav Yadav", role: "Senior Editor", image: ipcVaibbhavPhoto },
       { name: "Siddharth Jindal", role: "Creative Editor", image: "" },
       { name: "Ealvis Tallang", role: "Creative Editor", image: "" },
-      { name: "Rushil Singhal", role: "Rapporteur", image: "" },
+      { name: "Rushil Singhal", role: "Rapporteur", image: ipcRushilPhoto },
     ],
   },
 ];
