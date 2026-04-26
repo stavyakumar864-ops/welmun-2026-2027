@@ -203,9 +203,15 @@ const CommitteeDetail = () => {
                 Letter from the Chair
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed text-[15px]">
-                {committee.chairLetter.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
+                {committee.chairLetter.map((p, i) => {
+                  const isItalic = p.startsWith("*") && p.endsWith("*");
+                  const text = isItalic ? p.slice(1, -1) : p;
+                  return (
+                    <p key={i} className={isItalic ? "italic" : undefined}>
+                      {text}
+                    </p>
+                  );
+                })}
               </div>
               <div className="mt-6 pt-5 border-t border-primary/15">
                 <p className="text-primary font-display font-semibold">{committee.chairName}</p>

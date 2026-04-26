@@ -205,10 +205,10 @@ export const committees: CommitteeData[] = [
     logo: "https://static.wixstatic.com/media/9bbbe8_c513eeb9c61e4606a15653078fb56cbb~mv2.png/v1/crop/x_0,y_1,w_500,h_498/fill/w_282,h_281,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/iplogo2.png",
     agenda: "",
     chairLetter: [
-      "\"You run to things that other people are afraid of.\"",
+      "*\"You run to things that other people are afraid of.\"*",
       "Chaos makes people terrified, however journalists? They have discovered a gateway to a greater world, a world through which they feed the people, a world which revolves around them just to document the truth the universe would otherwise never see.",
       "It is with great honour that I, Neiyl Vasishta, in the capacity of the Editor-In-Chief, welcome you to the 12th edition of the International Press Corps at Welham Boys' School Model United Nations.",
-      "\"Where the community collides, is where the journalists coincide.\"",
+      "*\"Where the community collides, is where the journalists coincide.\"*",
       "Stories aren't meant to be reported, but to be stepped in. I've observed how narratives are built, broken and bent to fit power. Somewhere between impossible deadlines and missed sleep, there's one thing that's stuck: truth isn't handed to you, you obtain it. Which is the reason we all strive to be present here.",
       "This is what this committee, IPC stands for.",
       "My journey with IPC didn't begin with certainty. I remember stepping into my very first committee, unsure of what I had to offer, encircled with people who were far better than me. Though journalism has a way of shaping you, that uncertainty turned into curiosity, and that curiosity into a voice I learned to trust. I will be assisted by Jai Gagaliya and Vaibbhav Yadav as the Senior Editors, Siddharth Jindal and Ealvis Tallang as the Creative Editors, along with Rushil Singhal as the Rapporteur.",
