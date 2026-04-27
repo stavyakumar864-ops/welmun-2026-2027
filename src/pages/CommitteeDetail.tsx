@@ -8,13 +8,18 @@ import Navbar from "@/components/Navbar";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import CustomCursor from "@/components/CustomCursor";
 
+const orderedIds = ["unsc", "viceroys-cabinet", "disec", "unodc", "specpol", "unhrc", "ipc"];
+const orderedCommittees = orderedIds
+  .map((cid) => committees.find((c) => c.id === cid))
+  .filter(Boolean) as typeof committees;
+
 const CommitteeDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const currentIndex = committees.findIndex((c) => c.id === id);
-  const committee = currentIndex !== -1 ? committees[currentIndex] : null;
-  const prevCommittee = currentIndex > 0 ? committees[currentIndex - 1] : null;
-  const nextCommittee = currentIndex < committees.length - 1 ? committees[currentIndex + 1] : null;
+  const currentIndex = orderedCommittees.findIndex((c) => c.id === id);
+  const committee = currentIndex !== -1 ? orderedCommittees[currentIndex] : null;
+  const prevCommittee = currentIndex > 0 ? orderedCommittees[currentIndex - 1] : null;
+  const nextCommittee = currentIndex < orderedCommittees.length - 1 ? orderedCommittees[currentIndex + 1] : null;
 
   const headerRef = useScrollReveal<HTMLDivElement>(0.1);
   const ebRef = useStaggerReveal<HTMLDivElement>(100);
