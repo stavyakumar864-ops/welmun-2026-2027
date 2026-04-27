@@ -40,6 +40,7 @@ import ayanChoudharyPhoto from "@/assets/eb/ayan-choudhary.jpg";
 import ealvisTallangPhoto from "@/assets/eb/ealvis-tallang.png";
 import gitanshPawarPhoto from "@/assets/eb/gitansh-pawar.jpg";
 import pingalakshGoyalPhoto from "@/assets/eb/pingalaksh-goyal.jpg";
+import atharvaAggarwalPhoto from "@/assets/eb/atharva-aggarwal.jpg";
 
 export interface EBMember {
   name: string;
@@ -88,7 +89,7 @@ export const committees: CommitteeData[] = [
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_1a6c914129cb4ef78d39032161badd0f.pdf",
     eb: [
       { name: "Ahan Sparsh", role: "Chairperson", image: ahanPhoto },
-      { name: "Atharva Aggarwal", role: "Vice Chairperson", image: "" },
+      { name: "Atharva Aggarwal", role: "Vice Chairperson", image: atharvaAggarwalPhoto },
       { name: "Bhavesh Singhal", role: "Director", image: "" },
       { name: "Dhruv Aggarwal", role: "Rapporteur", image: "" },
       { name: "Vyom Nathani", role: "Rapporteur", image: "" },
