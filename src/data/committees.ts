@@ -224,8 +224,9 @@ export const committees: CommitteeData[] = [
     eb: [
       { name: "Shashwat Singh", role: "Chairperson", image: shashwatPhoto },
       { name: "Angad Khurana", role: "Vice Chairperson", image: angadKhuranaPhoto },
-      { name: "Shrey Gupta", role: "Director", image: "" },
-      { name: "Ranveer Madan", role: "Rapporteur", image: "" },
+      { name: "Keshav Poddar", role: "Director", image: "" },
+      { name: "Aarav Agarwal", role: "Director", image: "" },
+      { name: "Siddhartha Shrivastava", role: "Rapporteur", image: "" },
     ],
   },
   {
