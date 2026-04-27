@@ -34,6 +34,8 @@ import prayaanShobitVaishPhoto from "@/assets/eb/prayaan-shobit-vaish.png";
 import prahethVishalAggarwalPhoto from "@/assets/eb/praheth-vishal-aggarwal.png";
 import aaryanUnodcPhoto from "@/assets/eb/aaryan-khanna-unodc.png";
 import kushagraGuptaPhoto from "@/assets/eb/kushagra-gupta.jpg";
+import ayanChoudharyPhoto from "@/assets/eb/ayan-choudhary.jpg";
+import angadSinghPhoto from "@/assets/eb/angad-singh.jpg";
 
 export interface EBMember {
   name: string;
@@ -191,8 +193,8 @@ export const committees: CommitteeData[] = [
     eb: [
       { name: "Kushagra Gupta", role: "Chairperson", image: kushagraGuptaPhoto },
       { name: "Adarsh Raj", role: "Vice Chairperson", image: "" },
-      { name: "Angad Singh", role: "Director", image: "" },
-      { name: "Ayan Choudhary", role: "Director", image: "" },
+      { name: "Angad Singh", role: "Director", image: angadSinghPhoto },
+      { name: "Ayan Choudhary", role: "Director", image: ayanChoudharyPhoto },
       { name: "Garvit Agarwal", role: "Rapporteur", image: "" },
     ],
   },
