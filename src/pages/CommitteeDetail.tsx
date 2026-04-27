@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { committees } from "@/data/committees";
+import { orderedCommittees } from "@/data/committees";
 import { ChevronLeft, ChevronRight, FileText, Grid3X3, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
@@ -7,11 +7,6 @@ import CommitteeIntro from "@/components/CommitteeIntro";
 import Navbar from "@/components/Navbar";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import CustomCursor from "@/components/CustomCursor";
-
-const orderedIds = ["unsc", "viceroys-cabinet", "disec", "unodc", "specpol", "unhrc", "ipc"];
-const orderedCommittees = orderedIds
-  .map((cid) => committees.find((c) => c.id === cid))
-  .filter(Boolean) as typeof committees;
 
 const CommitteeDetail = () => {
   const { id } = useParams<{ id: string }>();

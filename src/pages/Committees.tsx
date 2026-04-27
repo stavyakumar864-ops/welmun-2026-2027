@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import { committees } from "@/data/committees";
+import { committees, orderedCommittees } from "@/data/committees";
 
 // Portrait images for vertical strips
 import unscPortrait from "@/assets/committees/unsc-portrait.jpg";
@@ -42,11 +42,6 @@ const committeeVideos: Record<string, string> = {
   unhrc: unhcrVideo,
   ipc: ipcVideo,
 };
-
-const orderedIds = ["unsc", "viceroys-cabinet", "disec", "unodc", "specpol", "unhrc", "ipc"];
-const orderedCommittees = orderedIds
-  .map((id) => committees.find((c) => c.id === id))
-  .filter(Boolean) as typeof committees;
 
 const CommitteeStrip = ({
   committee,

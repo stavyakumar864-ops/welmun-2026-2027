@@ -34,7 +34,6 @@ import prayaanShobitVaishPhoto from "@/assets/eb/prayaan-shobit-vaish.png";
 import prahethVishalAggarwalPhoto from "@/assets/eb/praheth-vishal-aggarwal.png";
 import aaryanUnodcPhoto from "@/assets/eb/aaryan-khanna-unodc.png";
 import kushagraGuptaPhoto from "@/assets/eb/kushagra-gupta.jpg";
-import ayanChoudharyPhoto from "@/assets/eb/ayan-choudhary.jpg";
 import angadSinghPhoto from "@/assets/eb/angad-singh.jpg";
 import adarshRajPhoto from "@/assets/eb/adarsh-raj.jpg";
 
@@ -195,7 +194,7 @@ export const committees: CommitteeData[] = [
       { name: "Kushagra Gupta", role: "Chairperson", image: kushagraGuptaPhoto },
       { name: "Adarsh Raj", role: "Vice Chairperson", image: adarshRajPhoto },
       { name: "Angad Singh", role: "Director", image: angadSinghPhoto },
-      { name: "Ayan Choudhary", role: "Director", image: ayanChoudharyPhoto },
+      { name: "Ayan Choudhary", role: "Director", image: "" },
       { name: "Garvit Agarwal", role: "Rapporteur", image: "" },
     ],
   },
@@ -254,3 +253,9 @@ export const committees: CommitteeData[] = [
     ],
   },
 ];
+
+export const committeeOrder = ["unsc", "viceroys-cabinet", "disec", "unodc", "specpol", "unhrc", "ipc"] as const;
+
+export const orderedCommittees = committeeOrder
+  .map((id) => committees.find((committee) => committee.id === id))
+  .filter(Boolean) as CommitteeData[];
