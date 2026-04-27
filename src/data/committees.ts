@@ -43,6 +43,7 @@ import pingalakshGoyalPhoto from "@/assets/eb/pingalaksh-goyal.jpg";
 import atharvaAggarwalPhoto from "@/assets/eb/atharva-aggarwal.jpg";
 import dhruvAggarwalPhoto from "@/assets/eb/dhruv-aggarwal.jpg";
 import vyomNathaniPhoto from "@/assets/eb/vyom-nathani.jpg";
+import bhaveshSinghalPhoto from "@/assets/eb/bhavesh-singhal.jpg";
 
 export interface EBMember {
   name: string;
@@ -92,7 +93,7 @@ export const committees: CommitteeData[] = [
     eb: [
       { name: "Ahan Sparsh", role: "Chairperson", image: ahanPhoto },
       { name: "Atharva Aggarwal", role: "Vice Chairperson", image: atharvaAggarwalPhoto },
-      { name: "Bhavesh Singhal", role: "Director", image: "" },
+      { name: "Bhavesh Singhal", role: "Director", image: bhaveshSinghalPhoto },
       { name: "Dhruv Aggarwal", role: "Rapporteur", image: dhruvAggarwalPhoto },
       { name: "Vyom Nathani", role: "Rapporteur", image: vyomNathaniPhoto },
     ],
