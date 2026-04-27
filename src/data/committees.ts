@@ -33,6 +33,7 @@ import muazManzoorPhoto from "@/assets/eb/muaz-manzoor.png";
 import prayaanShobitVaishPhoto from "@/assets/eb/prayaan-shobit-vaish.png";
 import prahethVishalAggarwalPhoto from "@/assets/eb/praheth-vishal-aggarwal.png";
 import aaryanUnodcPhoto from "@/assets/eb/aaryan-khanna-unodc.png";
+import kushagraGuptaPhoto from "@/assets/eb/kushagra-gupta.jpg";
 
 export interface EBMember {
   name: string;
@@ -188,7 +189,7 @@ export const committees: CommitteeData[] = [
     bgLink: "#",
     matrixLink: "#",
     eb: [
-      { name: "Kushagra Gupta", role: "Chairperson", image: "https://static.wixstatic.com/media/9bbbe8_dca912a8075b4a5a8a72983d08e78d56~mv2.jpg/v1/crop/x_293,y_0,w_3355,h_4422/fill/w_175,h_237,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_5536_JPG.jpg" },
+      { name: "Kushagra Gupta", role: "Chairperson", image: kushagraGuptaPhoto },
       { name: "Adarsh Raj", role: "Vice Chairperson", image: "" },
       { name: "Angad Singh", role: "Director", image: "" },
       { name: "Ayan Choudhary", role: "Director", image: "" },
