@@ -27,6 +27,7 @@ import chetanChopraPhoto from "@/assets/eb/chetan-chopra.jpg";
 import agastyaGuptaPhoto from "@/assets/eb/agastya-gupta.jpg";
 import viratGaganPhoto from "@/assets/eb/virat-gagan.jpg";
 import shivanshThapliyalPhoto from "@/assets/eb/shivansh-thapliyal.jpg";
+import koustabhGuptaPhoto from "@/assets/eb/koustabh-gupta.jpg";
 
 export interface EBMember {
   name: string;
@@ -100,7 +101,7 @@ export const committees: CommitteeData[] = [
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_ef0870397fba4a2c84c7171164e8a001.pdf",
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_3ffae51adf4942b1a1758b8c40dbf3f3.pdf",
     eb: [
-      { name: "Koustabh Gupta", role: "Chairperson", image: underSecPhoto },
+      { name: "Koustabh Gupta", role: "Chairperson", image: koustabhGuptaPhoto },
       { name: "Agastya Gupta", role: "Vice Chairperson", image: agastyaGuptaPhoto },
       { name: "Chetan Chopra", role: "Director", image: chetanChopraPhoto },
       { name: "Yuvraj Gupta", role: "Director", image: yuvrajGuptaPhoto },
