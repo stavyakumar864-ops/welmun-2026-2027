@@ -95,7 +95,7 @@ export const committees: CommitteeData[] = [
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_1a6c914129cb4ef78d39032161badd0f.pdf",
     eb: [
       { name: "Ahan Sparsh", role: "Chairperson", image: ahanPhoto },
-      { name: "Atharva Aggarwal", role: "Vice Chairperson", image: atharvaAggarwalPhoto },
+      { name: "Atharva Agrawal", role: "Vice Chairperson", image: atharvaAggarwalPhoto },
       { name: "Bhavesh Singhal", role: "Director", image: bhaveshSinghalPhoto },
       { name: "Dhruv Aggarwal", role: "Rapporteur", image: dhruvAggarwalPhoto },
       { name: "Vyom Nathani", role: "Rapporteur", image: vyomNathaniPhoto },
