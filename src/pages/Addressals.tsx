@@ -50,35 +50,41 @@ const Addressals = () => {
         <h1 className="font-display text-4xl md:text-5xl text-primary mb-8">Secretary General's Message</h1>
         <div className="flex flex-col md:flex-row gap-10">
           <div className="flex-1 space-y-5 text-muted-foreground leading-relaxed">
+            <blockquote className="border-l-2 border-primary/40 pl-4 italic text-primary/90">
+              "If you look hard enough, chaos turns into order the way letters turn into words."
+              <br />
+              <span className="not-italic text-sm">— Patricia McCormick</span>
+            </blockquote>
             <p>
-              As I sit here to write this message, I find myself overwhelmed with a myriad of emotions — some joyous, some melancholic. Life, much like these emotions, is a mosaic of moments, each with its own distinct hue. Some bring happiness, while others test our resilience. But what truly defines success is the unwavering determination to persevere, no matter the odds. The world today stands as a testament to this truth. With turmoil and uncertainty clouding our skies, countless lives have been disrupted, leaving us in a state of unprecedented challenge. Yet, in the face of adversity, hope and perseverance shine the brightest.
+              The first thought that came to my mind when I sat down to write this was a simple one: "why does chaos bother us so much?" Perhaps it is not the disorder itself, but the feeling of being out of control, of not knowing what comes next. We are taught, directly and indirectly, to seek order, to trust certainty, and to believe that order is something permanent and dependable.
+            </p>
+            <p>The world seldom works that way.</p>
+            <p>
+              Order is, more often than not, temporary. Treaties falter, ceasefires are broken, crimes are committed everyday; the fact is, the world is more criminal than it is civilized. Order shifts, and sometimes collapses entirely under the weight of conflict and competing perspectives. In those moments, chaos emerges not as the presence of tension, but as the absence of order. This may seem like a small distinction, but it reveals the true purpose of every international organisation: reducing tension only treats the symptoms. Order is the ultimate goal.
             </p>
             <p>
-              Power, when wielded wisely, is a force for progress. This reminds me of a Secretary-General's address I read in ninth grade, which stated, "When the power of love overcomes the love for power, the world will know peace." Many dismiss this as an unattainable utopia, but I beg to differ. If there is one universal truth, it is that change is inevitable. And I believe, with every fiber of my being, that our generation not only possesses the potential but also the resolve to be the harbingers of that change.
+              The theme of this year, "Order out of Chaos," is not a call to eliminate tension. It is a recognition that tension is where the work begins, because order never stands when it's one sided. Order is never achieved from draft resolutions passed without debate, from disagreements left unspoken, from any imposition of power and authority by one over another. It is built gradually, and with intention, through honest conversation and the willingness to sit with ideas that challenge our own. Everything else is, at best, tokenistic.
+            </p>
+            <p>That is the spirit I look forward to bringing to this conference as your Secretary-General.</p>
+            <p>
+              The days ahead will be full of moments where things do not go as planned. Arguments may feel unresolved, consensus may seem out of reach, and the path forward in committee may be unclear. In those moments, your approach will matter more than your preparation. Listening without immediately conceding, questioning without dismissing, and adapting without losing conviction: these are the qualities that define not just strong delegates, but thoughtful people.
             </p>
             <p>
-              A little about myself — I am Ahan Sparsh, a firm believer in the power of perseverance and purpose. I am someone from a humble background, studies the art of humble politics and tries to live a not so humble life, and it hasn't always been kind. There have been days when the weight of the world felt too heavy to bear, moments when silence echoed louder than words, and nights spent wondering if things would ever truly get better. I have seen dreams crumble, relationships falter, and hope flicker in the darkest corners of my mind. But even in those moments, I held on. Not because I had to — but because I chose to.
+              WELMUN has never simply been a conference. It is a space where ambition, perspective, and the willingness to negotiate come together. This year will be no different. From the urgency of national debates to the complexity of international decision-making, every committee has been designed to challenge you, not just in what you argue, but in how you think.
             </p>
             <p>
-              And that's what I want WELMUN to mean to you. A space where even if the gods are against you, you don't go down without a fight. A place where resilience isn't a virtue — it's a way of life. A platform where your voice matters, and where disagreement is not destruction, but dialogue.
+              None of this would have been possible without the dedication of the Secretariat, the Executive Board, and the support of our institution. Their work has been guided by a single purpose: to make this conference both challenging and meaningful.
             </p>
             <p>
-              This year, WELMUN will host some of the most dynamic and nuanced committees to date. From the tension-laced halls of the Lok Sabha and the strategic corridors of UNSC, to the diplomatic delicacy of DISEC and the economical firepower of ECOSOC — this is not just a conference. This is a battleground of ideas. A place where you'll learn to handle pressure, think fast, argue better, and most importantly — grow.
+              You will walk into committee with your ideas, your strategies, and your voice. What you build with them is entirely up to you.
             </p>
-            <p>
-              This experience will challenge your mind, test your patience, and shape your character. It will offer you allies, adversaries, mentors and moments that will live far beyond the three days of committee.
-            </p>
-            <p>
-              And none of this would have been possible without the exceptional team that has brought this vision to life. Standing beside me are Shreyas Shah, in the capacity of Director-General, and Samarth Agrawal and Divij Gupta as the Under Secretary-Generals, along with a hardworking Executive Board and the brilliant teachers of our school. Together, we have poured in sleepless nights, unwavering passion, and a whole lot of heart into this conference. And we are not just your Secretariat — we are your biggest supporters.
-            </p>
+            <p>Order, after all, is never found. It is made, especially in times of chaos.</p>
             <p className="mt-2 font-medium text-primary">
-              Welcome to WELMUN's 11th edition<br />
-              Let your voice echo. Let your truth matter. Let the world listen.
+              This WELMUN, let the power of love overcome the love for power.
             </p>
             <p className="mt-4">
               Ahan Sparsh<br />
-              Secretary-General,<br />
-              Welham Boys' School Model United Nations Conference
+              Secretary-General
             </p>
           </div>
           <div className="flex flex-col items-center gap-3 shrink-0">
