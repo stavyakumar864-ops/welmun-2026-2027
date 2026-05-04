@@ -181,7 +181,7 @@ export const committees: CommitteeData[] = [
     ],
     chairName: "Tanveer Singh Madan",
     chairRole: "Chairperson",
-    chairEmail: "chair.ecosoc@welhamboys.org",
+    chairEmail: "chair.councilofhindustan@welhamboys.org",
     bgLink: "https://www.welhammun.org/_files/ugd/9bbbe8_54e7cb89272c413093a16b96bf674386.pdf",
     matrixLink: "https://www.welhammun.org/_files/ugd/9bbbe8_e212e0737dab4fa9b851a97fe79b5485.pdf",
     eb: [
