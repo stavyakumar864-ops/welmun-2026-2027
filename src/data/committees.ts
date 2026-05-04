@@ -221,7 +221,7 @@ export const committees: CommitteeData[] = [
     logo: "https://static.wixstatic.com/media/9bbbe8_7895e5b978fa4c238ab6c4962af9e9fc~mv2.png/v1/fill/w_293,h_239,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/UNSC%20Logo_edited_edited.png",
     agenda: "The Revolt of 1857",
     freezeDate: "15 June, 1857",
-    note: "This is a bilingual and a constant crisis committee. This committee does not follow the traditional timeline and is based on a series of fictional events.",
+    note: "Note: This is a bilingual and a constant crisis committee.\n\n\n\n This committee does not follow the traditional timeline and is based on a series of fictional events.",
     chairLetter: [
       "\"A flame does not ask permission to burn.\"",
       "Dear Delegates,",
@@ -239,12 +239,12 @@ export const committees: CommitteeData[] = [
     bgLink: "#",
     matrixLink: "#",
     eb: [
-      { name: "Tanveer S. Madan", role: "Chairperson", image: tanveerPhoto },
-      { name: "Eshaan Tiwari", role: "Vice Chairperson", image: eshaanTiwariPhoto },
-      { name: "Tauhid Ali Hasan", role: "Director", image: tauhidPhoto },
-      { name: "Vaibhav Kumar Sharma", role: "Director", image: vaibhavSharmaPhoto },
-      { name: "Archit Shekhar", role: "Rapporteur", image: architShekharPhoto },
-      { name: "Priyansh Baluni", role: "Rapporteur", image: priyanshPhoto },
+      { name: "Tanveer Singh Madan", role: "Shahenshah-i-Hind\n(Chairperson)", image: tanveerPhoto },
+      { name: "Eshaan Tiwari", role: "Naib Sadr-i-Majlis\n(Vice Chair)", image: eshaanTiwariPhoto },
+      { name: "Tauhid Ali Hasan", role: "Nigran-i-Majlis\n(Director)", image: tauhidPhoto },
+      { name: "Vaibhav Kumar Sharma", role: "Nigran-i-Majlis\n(Director)", image: vaibhavSharmaPhoto },
+      { name: "Archit Shekhar", role: "Katib-i-Majlis\n(Rapporteur)", image: architShekharPhoto },
+      { name: "Priyansh Baluni", role: "Katib-i-Majlis\n(Rapporteur)", image: priyanshPhoto },
     ],
   },
   {

@@ -10,9 +10,9 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const allMembers = [
   { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
-  { role: "Director General", name: "Tanveer S. Madan", img: dirGenPhoto },
-  { role: "Under Secretary", name: "Koustabh Gupta", img: underSecPhoto },
-  { role: "Under Secretary", name: "Aaryan Khanna", img: aaryanPhoto },
+  { role: "Director General", name: "Tanveer Singh Madan", img: dirGenPhoto },
+  { role: "Under Secretary General", name: "Koustabh Gupta", img: underSecPhoto },
+  { role: "Under Secretary General", name: "Aaryan Khanna", img: aaryanPhoto },
 ];
 
 const techDirectors = [
