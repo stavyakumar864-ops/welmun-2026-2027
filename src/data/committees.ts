@@ -270,7 +270,7 @@ export const committees: CommitteeData[] = [
     logo: "https://static.wixstatic.com/media/9bbbe8_7895e5b978fa4c238ab6c4962af9e9fc~mv2.png/v1/fill/w_293,h_239,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/UNSC%20Logo_edited_edited.png",
     agenda: "The Revolt of 1857",
     freezeDate: "15 June, 1857",
-    note: "Note: This is a bilingual and a constant crisis committee.\n\n\n\n This committee does not follow the traditional timeline and is based on a series of fictional events.",
+    note: "Note: This is a bilingual and a constant crisis committee.\nThis committee does not follow the traditional timeline and is based on a series of fictional events.",
     chairLetter: [
       '"A flame does not ask permission to burn."',
       "Dear Delegates,",
@@ -281,7 +281,7 @@ export const committees: CommitteeData[] = [
       "At the onset of the uprising against the British, this committee convenes on 15 June, 1857 at the Diwan-i-Khas (Red Fort) in Delhi. This committee must answer questions on what is moral and what is colonial anarchy. Whether an independent state is even feasible or a partition even necessary but most importantly, it must answer the question – what is the validity of an independence that is forged when your own men are shaking hands with the enemy.",
       "May the revolt that shook an empire remind this committee that history does not forgive silence.",
       "Anticipating voices as fearless as the rebels of 1857,",
-    ],x
+    ],
     chairName: "Tanveer Singh Madan",
     chairRole: "Chairperson",
     chairEmail: "chair.councilofhindustan@welhamboys.org",

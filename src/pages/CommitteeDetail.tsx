@@ -114,7 +114,7 @@ const CommitteeDetail = () => {
               </p>
             )}
             {committee.note && (
-              <p className="text-accent font-medium text-sm mt-2">{committee.note}</p>
+              <p className="text-accent font-medium italic text-center mt-2 whitespace-pre-line" style={{ fontSize: '16pt' }}>{committee.note}</p>
             )}
           </motion.div>
 
