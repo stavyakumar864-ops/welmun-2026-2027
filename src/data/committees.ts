@@ -114,7 +114,7 @@ export const committees: CommitteeData[] = [
   },
   {
     id: "disec",
-    name: "United Nations General Assembly (DISEC)",
+    name: "United Nations General Assembly I - DISEC",
     shortName: "DISEC",
     cardImage: disecImg,
     logo: "/images/logos/disec.png",
@@ -205,7 +205,7 @@ export const committees: CommitteeData[] = [
   },
   {
     id: "specpol",
-    name: "Special Political and Decolonization Committee",
+    name: "UNGA IV - Special Political and Decolonization Committee",
     shortName: "SPECPOL",
     cardImage: loksabhaImg,
     logo: "/images/logos/specpol.png",
