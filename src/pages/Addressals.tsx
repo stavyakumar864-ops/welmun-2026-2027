@@ -19,7 +19,7 @@ interface Addressal {
 const addressals: Addressal[] = [
   {
     label: "From the Desk of",
-    title: "Principal's Message",
+    title: "Principal",
     name: "Ms. Sangeeta Kain",
     role: "Principal, Welham Boys' School",
     photo: principalPhoto,
@@ -39,7 +39,7 @@ const addressals: Addressal[] = [
   },
   {
     label: "From the Desk of",
-    title: "Secretary-General's Message",
+    title: "Secretary-General",
     name: "Ahan Sparsh",
     role: "Secretary-General, WELMUN 2026",
     photo: secGenPhoto,
