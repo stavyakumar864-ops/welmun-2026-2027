@@ -61,10 +61,43 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
   if (phase === "done") return null;
 
   return (
-    <div className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-background">
+    <div className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-background overflow-hidden">
+      {/* Scanline sweep — bright horizontal line moves down once */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[2px] z-[10003] mix-blend-screen"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent, hsl(40 20% 90% / 0.9) 50%, transparent)",
+          boxShadow: "0 0 24px hsl(40 20% 90% / 0.6)",
+          animation: "scanlineSweep 0.9s cubic-bezier(0.45, 0, 0.55, 1) 0.05s forwards",
+        }}
+      />
+
+      {/* Screen flicker — quick brightness pulses */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[10002] bg-foreground/40 mix-blend-overlay"
+        style={{
+          opacity: 0,
+          animation: "screenFlicker 1s ease-out forwards",
+        }}
+      />
+
+      {/* Subtle CRT scanline texture, fades out */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[10001]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, hsl(40 20% 90% / 0.05) 2px, hsl(40 20% 90% / 0.05) 3px)",
+          animation: "scanlinesFade 1.4s ease-out forwards",
+        }}
+      />
+
       {/* Logo that zooms in */}
       <div
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center relative z-[10004]"
         style={{
           transform: phase === "morphing" ? "scale(15)" : "scale(1)",
           opacity: phase === "morphing" ? 0 : 1,
@@ -77,16 +110,15 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="w-40 h-40 md:w-56 md:h-56 mb-8 object-contain"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.6s ease-out 0.15s forwards",
+            animation: "glitchSlice 0.85s steps(8, end) 0.1s forwards",
             filter: "drop-shadow(0 0 40px hsl(40 20% 90% / 0.3))",
           }}
         />
         <h1
-          className="font-display text-5xl md:text-8xl tracking-[6px] text-primary"
+          className="font-display text-5xl md:text-8xl tracking-[6px] text-primary relative"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.6s ease-out 0.5s forwards",
-            textShadow: "0 0 40px hsl(40 20% 90% / 0.2)",
+            animation: "glitchChroma 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s forwards",
           }}
         >
           WELMUN '26
@@ -95,7 +127,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="mt-3 text-lg md:text-2xl font-display italic tracking-wider text-muted-foreground"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.5s ease-out 0.85s forwards",
+            animation: "introLogoFadeIn 0.5s ease-out 1.05s forwards",
           }}
         >
           'Ordo ab Chao'
@@ -104,7 +136,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
 
       {/* Scroll hint */}
       <div
-        className="absolute bottom-6 flex flex-col items-center gap-2"
+        className="absolute bottom-6 flex flex-col items-center gap-2 z-[10004]"
         style={{
           opacity: phase === "morphing" ? 0 : undefined,
           transition: "opacity 0.3s",
@@ -115,7 +147,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="tracking-[3px] text-sm font-medium cursor-none text-primary"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.5s ease-out 1.2s forwards",
+            animation: "introLogoFadeIn 0.5s ease-out 1.4s forwards",
           }}
         >
           SCROLL DOWN
@@ -123,7 +155,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
         <span
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.5s ease-out 1.2s forwards",
+            animation: "introLogoFadeIn 0.5s ease-out 1.4s forwards",
           }}
           className="text-3xl text-primary"
         >
