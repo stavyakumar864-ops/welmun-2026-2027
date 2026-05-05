@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import secGenPhoto from "@/assets/sec-gen.png";
 import underSecPhoto from "@/assets/under-sec.png";
-import underSec2Photo from "@/assets/under-sec-2.png";
 import aaryanPhoto from "@/assets/aaryan-khanna.png";
 import dirGenPhoto from "@/assets/dir-gen.png";
 import techDirector1Photo from "@/assets/tech-director-1.png";
 import techDirector2Photo from "@/assets/tech-director-2.png";
-import { useIsMobile } from "@/hooks/use-mobile";
 
-const allMembers = [
-  { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
+const EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
+const secGen = { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto };
+const supportingMembers = [
   { role: "Under Secretary General", name: "Koustabh Gupta", img: underSecPhoto },
   { role: "Director General", name: "Tanveer Singh Madan", img: dirGenPhoto },
   { role: "Under Secretary General", name: "Aaryan Khanna", img: aaryanPhoto },
@@ -21,201 +21,131 @@ const techDirectors: { role: string; name: string; img: string | null }[] = [
   { role: "Technical Director", name: "Piyush Singhal", img: null },
 ];
 
-const headingVariant = {
-  hidden: { opacity: 0, y: 30, scale: 0.9 },
-  visible: {
-    opacity: 1, y: 0, scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" as const },
-  },
+const PortraitCard = ({
+  member,
+  size = "md",
+  delay = 0,
+}: {
+  member: { role: string; name: string; img: string | null };
+  size?: "lg" | "md" | "sm";
+  delay?: number;
+}) => {
+  const dims =
+    size === "lg"
+      ? "w-64 md:w-72"
+      : size === "md"
+      ? "w-44 md:w-52"
+      : "w-40 md:w-44";
+
+  return (
+    <motion.div
+      className={`${dims} flex flex-col items-center text-center`}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.55, delay, ease: EASE }}
+    >
+      <div className="relative w-full">
+        <div className="absolute inset-0 rounded-xl bg-blue-accent/15 blur-2xl scale-95" />
+        <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl border border-primary/20 bg-secondary/40 shadow-2xl group">
+          {member.img ? (
+            <img
+              src={member.img}
+              alt={member.name}
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-secondary/60">
+              <span className="font-display text-primary/40 text-sm tracking-[3px] uppercase">
+                Portrait
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+      <span className="text-blue-accent text-[10px] md:text-[11px] tracking-[3px] uppercase mt-5">
+        {member.role}
+      </span>
+      <h3 className={`font-display text-primary leading-tight mt-1.5 ${size === "lg" ? "text-2xl md:text-3xl" : "text-base md:text-lg"}`}>
+        {member.name}
+      </h3>
+    </motion.div>
+  );
 };
 
-const dividerVariant = {
-  hidden: { scaleX: 0, opacity: 0 },
-  visible: {
-    scaleX: 1, opacity: 1,
-    transition: { duration: 0.4, delay: 0.15, ease: "easeOut" as const },
-  },
-};
-
-const cardFromLeft = {
-  hidden: { opacity: 0, x: -100, rotateY: 15, scale: 0.85 },
-  visible: {
-    opacity: 1, x: 0, rotateY: 0, scale: 1,
-    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
-
-const cardFromRight = {
-  hidden: { opacity: 0, x: 100, rotateY: -15, scale: 0.85 },
-  visible: {
-    opacity: 1, x: 0, rotateY: 0, scale: 1,
-    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
-
-const cardFromBottom = {
-  hidden: { opacity: 0, y: 80, scale: 0.8 },
-  visible: {
-    opacity: 1, y: 0, scale: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-const techContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
-  },
-};
+const SectionHeading = ({
+  eyebrow,
+  title,
+}: {
+  eyebrow: string;
+  title: string;
+}) => (
+  <div className="flex flex-col items-center text-center mb-14 md:mb-16">
+    <motion.span
+      className="font-display italic text-blue-accent text-xs md:text-sm tracking-[5px] uppercase mb-3"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
+      {eyebrow}
+    </motion.span>
+    <motion.h2
+      className="font-display text-3xl md:text-5xl text-primary tracking-wide"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
+    >
+      {title}
+    </motion.h2>
+    <motion.div
+      className="gold-divider mx-auto"
+      initial={{ scaleX: 0, opacity: 0 }}
+      whileInView={{ scaleX: 1, opacity: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+      style={{ transformOrigin: "center" }}
+    />
+  </div>
+);
 
 const SecretariatSection = () => {
-  const isMobile = useIsMobile();
-
-
   return (
     <>
       {/* Secretariat */}
-      <section id="secretariat" className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-[5%] md:px-[10%] py-16 md:py-24">
-        <motion.h2
-          className="font-display text-4xl text-primary text-center"
-          variants={headingVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          Secretariat
-        </motion.h2>
-        <motion.div
-          className="gold-divider"
-          variants={dividerVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          style={{ transformOrigin: "center" }}
-        />
+      <section
+        id="secretariat"
+        className="py-24 md:py-32 px-4 sm:px-[5%] md:px-[8%]"
+      >
+        <SectionHeading eyebrow="Leading WELMUN 2026" title="The Secretariat" />
 
-        {isMobile ? (
-          <motion.div
-            className="w-full mt-12 flex flex-col items-center gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            {allMembers.map((m, i) => (
-              <motion.div
-                key={m.name}
-                variants={cardFromBottom}
-                className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-[80%] max-w-xs"
-              >
-                <img src={m.img} alt={m.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
-                <h3 className="font-display text-lg text-primary">{m.name}</h3>
-                <p className="text-muted-foreground text-sm mt-1">{m.role}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          /* Desktop: side-by-side with elevated sec gen */
-          <motion.div
-            className="w-full mt-12 max-w-5xl mx-auto flex flex-col items-center gap-12"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {/* Secretary General on top */}
-            <motion.div
-              variants={cardFromBottom}
-              className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-56"
-            >
-              <img src={allMembers[0].img} alt={allMembers[0].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-4 bg-secondary" loading="lazy" />
-              <h3 className="font-display text-lg text-primary">{allMembers[0].name}</h3>
-              <p className="text-muted-foreground text-sm mt-1">{allMembers[0].role}</p>
-            </motion.div>
+        {/* Featured: Secretary General */}
+        <div className="flex justify-center mb-16 md:mb-20">
+          <PortraitCard member={secGen} size="lg" />
+        </div>
 
-            {/* Director General centered below */}
-            <div className="flex items-start justify-center gap-8">
-              <motion.div
-                variants={cardFromLeft}
-                className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-56"
-              >
-                <img src={allMembers[1].img} alt={allMembers[1].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-4 bg-secondary" loading="lazy" />
-                <h3 className="font-display text-lg text-primary">{allMembers[1].name}</h3>
-                <p className="text-muted-foreground text-sm mt-1">{allMembers[1].role}</p>
-              </motion.div>
-
-              <motion.div
-                variants={cardFromBottom}
-                className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-56"
-              >
-                <img src={allMembers[2].img} alt={allMembers[2].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-4 bg-secondary" loading="lazy" />
-                <h3 className="font-display text-lg text-primary">{allMembers[2].name}</h3>
-                <p className="text-muted-foreground text-sm mt-1">{allMembers[2].role}</p>
-              </motion.div>
-
-              <motion.div
-                variants={cardFromRight}
-                className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-56"
-              >
-                <img src={allMembers[3].img} alt={allMembers[3].name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-4 bg-secondary" loading="lazy" />
-                <h3 className="font-display text-lg text-primary">{allMembers[3].name}</h3>
-                <p className="text-muted-foreground text-sm mt-1">{allMembers[3].role}</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
+        {/* Supporting members */}
+        <div className="flex flex-wrap justify-center gap-8 md:gap-12 max-w-5xl mx-auto">
+          {supportingMembers.map((m, i) => (
+            <PortraitCard key={m.name} member={m} size="md" delay={i * 0.08} />
+          ))}
+        </div>
       </section>
 
       {/* Tech Directors */}
-      <section id="tech-directors" className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-[5%] md:px-[10%] py-16 md:py-24">
-        <motion.h2
-          className="font-display text-4xl text-primary text-center"
-          variants={headingVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          Technical Directors
-        </motion.h2>
-        <motion.div
-          className="gold-divider"
-          variants={dividerVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          style={{ transformOrigin: "center" }}
-        />
+      <section
+        id="tech-directors"
+        className="py-24 md:py-32 px-4 sm:px-[5%] md:px-[8%]"
+      >
+        <SectionHeading eyebrow="Powering the Conference" title="Technical Directors" />
 
-        <motion.div
-          className="w-full mt-16 flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16"
-          variants={techContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div className="flex flex-wrap justify-center gap-8 md:gap-12 max-w-5xl mx-auto">
           {techDirectors.map((t, i) => (
-            <motion.div
-              key={t.name}
-              variants={i === 0 ? cardFromLeft : i === techDirectors.length - 1 ? cardFromRight : cardFromBottom}
-              className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-[80%] max-w-xs"
-            >
-              {t.img ? (
-                <img src={t.img} alt={t.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
-              ) : (
-                <div className="w-full aspect-[3/4] mb-5 bg-secondary" aria-label={t.name} />
-              )}
-              <h3 className="font-display text-xl text-primary">{t.name}</h3>
-              <p className="text-muted-foreground text-sm mt-1">{t.role}</p>
-            </motion.div>
+            <PortraitCard key={t.name} member={t} size="md" delay={i * 0.08} />
           ))}
-        </motion.div>
+        </div>
       </section>
     </>
   );

@@ -1,7 +1,7 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
-import { useStaggerReveal } from "@/hooks/useScrollReveal";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const img = (id: string, suffix = "") =>
   `https://static.wixstatic.com/media/9bbbe8_${id}~mv2${suffix}.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/9bbbe8_${id}~mv2${suffix}.jpg`;
@@ -37,7 +37,6 @@ const photos = [
   { src: img("2537dd61df534831a902806a65c27dd7", "_d_5472_3648_s_4_2"), col: 2, row: 2 },
   { src: img("bac18256c0854f64a080d8ced4219221", "_d_5472_3648_s_4_2"), col: 1, row: 1 },
   { src: img("5e71e1bcf8da459b8c4045746db08822"), col: 1, row: 2 },
-  // New photos from source
   { src: img("5af336fdc3354706937f1614607cce73", "_d_5472_3648_s_4_2"), col: 2, row: 1 },
   { src: img("8584d04d3df64a40b3646d27fcbf7c3e", "_d_5472_3648_s_4_2"), col: 1, row: 1 },
   { src: img("eff82fe1ad1b4705b550ecaee42fb01c", "_d_5472_3648_s_4_2"), col: 1, row: 2 },
@@ -63,42 +62,88 @@ const photos = [
   { src: img("50cb405885f344ae8d5178302d1dbdeb"), col: 1, row: 1 },
 ];
 
-// Helper to get high-res version of an image URL
 const getHighRes = (src: string) =>
-  src.replace(/\/fill\/w_\d+,h_\d+/, "/fill/w_1920,h_1280").replace(/\/fit\/w_\d+,h_\d+/, "/fit/w_1920,h_1280");
+  src
+    .replace(/\/fill\/w_\d+,h_\d+/, "/fill/w_1920,h_1280")
+    .replace(/\/fit\/w_\d+,h_\d+/, "/fit/w_1920,h_1280");
 
 const PhotoGallery = () => {
-  const ref = useStaggerReveal<HTMLDivElement>(60);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const openLightbox = (i: number) => setLightboxIndex(i);
-  const closeLightbox = () => setLightboxIndex(null);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
   const goNext = useCallback(
-    (e: React.MouseEvent) => {
-      e.stopPropagation();
-      if (lightboxIndex !== null) setLightboxIndex((lightboxIndex + 1) % photos.length);
+    (e?: React.MouseEvent | KeyboardEvent) => {
+      if (e && "stopPropagation" in e) e.stopPropagation();
+      setLightboxIndex((i) => (i === null ? null : (i + 1) % photos.length));
     },
-    [lightboxIndex]
+    []
   );
 
   const goPrev = useCallback(
-    (e: React.MouseEvent) => {
-      e.stopPropagation();
-      if (lightboxIndex !== null) setLightboxIndex((lightboxIndex - 1 + photos.length) % photos.length);
+    (e?: React.MouseEvent | KeyboardEvent) => {
+      if (e && "stopPropagation" in e) e.stopPropagation();
+      setLightboxIndex((i) =>
+        i === null ? null : (i - 1 + photos.length) % photos.length
+      );
     },
-    [lightboxIndex]
+    []
   );
+
+  // Keyboard nav + body scroll lock
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    document.body.style.overflow = "hidden";
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowRight") goNext();
+      else if (e.key === "ArrowLeft") goPrev();
+    };
+    window.addEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [lightboxIndex, closeLightbox, goNext, goPrev]);
+
+  // Preload adjacent images so next/prev is instant
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const next = (lightboxIndex + 1) % photos.length;
+    const prev = (lightboxIndex - 1 + photos.length) % photos.length;
+    [next, prev].forEach((i) => {
+      const im = new Image();
+      im.src = getHighRes(photos[i].src);
+    });
+  }, [lightboxIndex]);
 
   return (
     <PageLayout hideParticles>
-      <h1 className="font-display text-5xl md:text-6xl text-primary mb-4 tracking-[6px] uppercase">
-        WELMUN Gallery
-      </h1>
-      <div className="gold-divider mb-12" />
+      {/* Hero */}
+      <motion.div
+        className="flex flex-col items-center text-center mb-12"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <span className="font-display italic text-blue-accent text-xs md:text-sm tracking-[5px] uppercase mb-3">
+          Moments from past editions
+        </span>
+        <h1 className="font-display text-4xl md:text-6xl text-primary tracking-wide">
+          Photo Gallery
+        </h1>
+        <div className="gold-divider mx-auto" />
+        <p className="text-muted-foreground text-xs md:text-sm mt-1 italic">
+          {photos.length} photographs · click any image to view
+        </p>
+      </motion.div>
+
+      {/* Masonry grid */}
       <div
-        ref={ref}
-        className="w-full max-w-[1400px] mx-auto grid gap-1"
+        className="w-full max-w-[1400px] mx-auto grid gap-1.5 md:gap-2"
         style={{
           gridTemplateColumns: "repeat(4, 1fr)",
           gridAutoRows: "180px",
@@ -106,73 +151,103 @@ const PhotoGallery = () => {
         }}
       >
         {photos.map((photo, i) => (
-          <div
+          <motion.button
             key={i}
-            data-reveal={i}
-            className="img-zoom overflow-hidden relative group cursor-pointer"
+            type="button"
+            onClick={() => openLightbox(i)}
+            className="relative overflow-hidden group cursor-none rounded-md md:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-accent/60"
             style={{
               gridColumn: `span ${photo.col}`,
               gridRow: `span ${photo.row}`,
             }}
-            onClick={() => openLightbox(i)}
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{
+              duration: 0.45,
+              delay: Math.min(i * 0.02, 0.6),
+              ease: "easeOut",
+            }}
+            aria-label={`Open photo ${i + 1} of ${photos.length}`}
           >
             <img
               src={photo.src}
-              alt={`WELMUN Gallery ${i + 1}`}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              alt={`WELMUN gallery photo ${i + 1}`}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
               loading={i < 8 ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-background/10 group-hover:bg-background/0 transition-colors duration-300" />
-          </div>
+            {/* Subtle hover overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Expand icon on hover */}
+            <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Maximize2 className="w-3.5 h-3.5 text-primary" />
+            </div>
+          </motion.button>
         ))}
       </div>
 
       {/* Lightbox Modal */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-[300] flex items-center justify-center bg-black/90 cursor-none"
-          style={{ animation: "fadeIn 0.3s ease-out" }}
+          className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-sm"
+          style={{ animation: "fadeIn 0.25s ease-out" }}
           onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Photo viewer"
         >
-          {/* Close button */}
-          <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 z-10 text-white/70 hover:text-white transition-colors p-2"
-            aria-label="Close lightbox"
+          {/* Top bar */}
+          <div
+            className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 py-3 z-10 bg-gradient-to-b from-black/60 to-transparent"
+            onClick={(e) => e.stopPropagation()}
           >
-            <X size={32} />
-          </button>
+            <span className="font-display text-white/80 text-xs md:text-sm tracking-[3px] uppercase">
+              {String(lightboxIndex + 1).padStart(2, "0")}
+              <span className="text-white/40 mx-2">/</span>
+              {String(photos.length).padStart(2, "0")}
+            </span>
+            <button
+              onClick={closeLightbox}
+              className="text-white/70 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 cursor-none"
+              aria-label="Close lightbox"
+            >
+              <X size={24} />
+            </button>
+          </div>
 
           {/* Previous button */}
           <button
-            onClick={goPrev}
-            className="absolute left-4 z-10 text-white/70 hover:text-white transition-colors p-2"
+            onClick={(e) => goPrev(e)}
+            className="absolute left-2 md:left-6 z-10 text-white/70 hover:text-white transition-all p-2 md:p-3 rounded-full hover:bg-white/10 cursor-none"
             aria-label="Previous photo"
           >
-            <ChevronLeft size={40} />
+            <ChevronLeft size={36} />
           </button>
 
           {/* Image */}
           <img
+            key={lightboxIndex}
             src={getHighRes(photos[lightboxIndex].src)}
-            alt={`WELMUN Gallery ${lightboxIndex + 1}`}
-            className="max-w-[90vw] max-h-[85vh] object-contain select-none"
-            style={{ animation: "fadeIn 0.2s ease-out" }}
+            alt={`WELMUN gallery photo ${lightboxIndex + 1}`}
+            className="max-w-[92vw] max-h-[82vh] object-contain select-none rounded-md shadow-2xl"
+            style={{ animation: "fadeIn 0.35s ease-out" }}
             onClick={(e) => e.stopPropagation()}
           />
 
           {/* Next button */}
           <button
-            onClick={goNext}
-            className="absolute right-4 z-10 text-white/70 hover:text-white transition-colors p-2"
+            onClick={(e) => goNext(e)}
+            className="absolute right-2 md:right-6 z-10 text-white/70 hover:text-white transition-all p-2 md:p-3 rounded-full hover:bg-white/10 cursor-none"
             aria-label="Next photo"
           >
-            <ChevronRight size={40} />
+            <ChevronRight size={36} />
           </button>
 
-          {/* Counter */}
-          <div className="absolute bottom-4 text-white/50 text-sm">
-            {lightboxIndex + 1} / {photos.length}
+          {/* Bottom hint */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center pointer-events-none">
+            <span className="text-white/40 text-[10px] md:text-xs tracking-[3px] uppercase">
+              Esc to close · ← → to navigate
+            </span>
           </div>
         </div>
       )}

@@ -8,7 +8,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import Addressals from "./pages/Addressals";
 import Registration from "./pages/Registration";
-import RegistrationDownloads from "./pages/registration/RegistrationDownloads";
 import Schedule from "./pages/Schedule";
 import Committees from "./pages/Committees";
 import CommitteeDetail from "./pages/CommitteeDetail";
@@ -31,9 +30,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/addressals" element={<Addressals />} />
-            <Route path="/registration" element={<Registration />}>
-              <Route index element={<RegistrationDownloads />} />
-            </Route>
+            <Route path="/registration" element={<Registration />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/committees" element={<Committees />} />
             <Route path="/committees/:id" element={<CommitteeDetail />} />

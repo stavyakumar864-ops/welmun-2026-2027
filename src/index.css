@@ -34,7 +34,7 @@
     --input: 18 20% 28%;
     --ring: 40 20% 90%;
 
-    --radius: 0rem;
+    --radius: 0.625rem;
 
     --gold: 40 20% 90%;
     --light-gold: 40 18% 80%;
@@ -62,21 +62,23 @@
     @apply border-border;
   }
 
-  html, body {
-    cursor: none !important;
-  }
-
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
   }
 
-  *, *::before, *::after,
-  a, button, input, textarea, select, label,
-  [role="button"], [tabindex],
-  ::-webkit-scrollbar, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-track {
-    cursor: none !important;
+  @media (hover: hover) and (pointer: fine) {
+    html, body {
+      cursor: none !important;
+    }
+
+    *, *::before, *::after,
+    a, button, input, textarea, select, label,
+    [role="button"], [tabindex],
+    ::-webkit-scrollbar, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-track {
+      cursor: none !important;
+    }
   }
 
   h1, h2, h3 {
@@ -85,6 +87,17 @@
 
   html {
     scroll-behavior: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 

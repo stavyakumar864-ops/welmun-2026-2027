@@ -1,71 +1,139 @@
 import PageLayout from "@/components/PageLayout";
-import { Card, CardContent } from "@/components/ui/card";
-import { Download, Shield, Scale, BookOpen } from "lucide-react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
+import {
+  Download,
+  Shield,
+  Scale,
+  BookOpen,
+  Calendar,
+  MapPin,
+  Award,
+  Users,
+} from "lucide-react";
 
-const PDF_URLS = {
-  policy: "../../public/docs/conference-policy.pdf",
-  charter:
-    "../../public/docs/uncharter.pdf",
-  rop: "../../public/docs/rop.pdf",
-};
+const QUICK_FACTS = [
+  { icon: Award, label: "Edition", value: "12th" },
+  { icon: Calendar, label: "Dates", value: "28–30 July 2026" },
+  { icon: MapPin, label: "Venue", value: "Welham Boys' School" },
+  { icon: Users, label: "Format", value: "UNA-USA Rules" },
+];
 
-const importantDownloads = [
+interface DocItem {
+  title: string;
+  description: string;
+  url: string;
+  icon: typeof Shield;
+}
+
+const downloads: DocItem[] = [
   {
     title: "Conference Policy",
     description: "Discipline, dress code, electronics policy, awards, and more.",
-    url: PDF_URLS.policy,
-    icon: <Shield className="w-5 h-5" />,
+    url: "/docs/conference-policy.pdf",
+    icon: Shield,
   },
   {
     title: "Charter of the United Nations",
     description: "Full text of the UN Charter & Statute of the International Court of Justice.",
-    url: PDF_URLS.charter,
-    icon: <Scale className="w-5 h-5" />,
+    url: "/docs/uncharter.pdf",
+    icon: Scale,
   },
   {
     title: "Rules of Procedure",
     description: "Complete UNA-USA Rules of Procedure for all committees.",
-    url: PDF_URLS.rop,
-    icon: <BookOpen className="w-5 h-5" />,
+    url: "/docs/rop.pdf",
+    icon: BookOpen,
   },
 ];
 
 const ConferenceDetails = () => {
-  const headerRef = useScrollReveal<HTMLDivElement>(0.1);
-
   return (
     <PageLayout backgroundImage="/images/conference-bg.jpg">
-      <div ref={headerRef} className="reveal-section flex flex-col items-center">
-        <h1 className="font-display text-4xl md:text-5xl text-primary mb-4 text-center">
+      {/* Hero */}
+      <motion.div
+        className="flex flex-col items-center text-center mb-4"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <span className="font-display italic text-blue-accent text-xs md:text-sm tracking-[5px] uppercase mb-3">
+          The 12th Welham Model United Nations
+        </span>
+        <h1 className="font-display text-4xl md:text-6xl text-primary tracking-wide">
           Conference Details
         </h1>
-        <div className="gold-divider" />
-      </div>
+        <div className="gold-divider mx-auto" />
+      </motion.div>
 
-      <div className="w-full max-w-4xl mx-auto">
-        <div className="mt-8">
-          <h2 className="font-display text-2xl text-primary mb-6 flex items-center gap-3">
-            <Download className="w-6 h-6" /> Important Downloads
+      {/* Quick Facts */}
+      <motion.div
+        className="w-full max-w-5xl mx-auto mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+      >
+        {QUICK_FACTS.map((f, i) => {
+          const Icon = f.icon;
+          return (
+            <motion.div
+              key={f.label}
+              className="flex flex-col items-start p-5 rounded-xl border border-primary/15 bg-secondary/25 backdrop-blur-sm hover:border-blue-accent/40 transition-colors"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 + i * 0.06, ease: "easeOut" }}
+            >
+              <div className="w-9 h-9 rounded-lg bg-blue-accent/15 flex items-center justify-center text-blue-accent mb-3">
+                <Icon className="w-4 h-4" />
+              </div>
+              <span className="text-muted-foreground text-[11px] tracking-[3px] uppercase">
+                {f.label}
+              </span>
+              <span className="font-display text-base md:text-lg text-primary leading-tight mt-1">
+                {f.value}
+              </span>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+
+      {/* Downloads */}
+      <div className="w-full max-w-5xl mx-auto mt-20">
+        <div className="flex items-center gap-4 mb-6">
+          <h2 className="font-display text-xl md:text-2xl text-primary tracking-wide whitespace-nowrap flex items-center gap-3">
+            <Download className="w-5 h-5" /> Important Downloads
           </h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {importantDownloads.map((item, i) => (
-              <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="block group">
-                <Card className="bg-secondary/20 border-primary/15 hover:border-primary/40 hover:bg-secondary/40 transition-colors duration-300 hover-lift h-full">
-                  <CardContent className="p-5 flex flex-col items-center text-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-                      {item.icon}
-                    </div>
-                    <h3 className="font-display text-sm text-primary group-hover:text-foreground transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground text-xs">{item.description}</p>
-                    <Download className="w-4 h-4 text-primary/50 group-hover:text-primary transition-colors" />
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
+          <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+        </div>
+        <div className="grid gap-3 md:gap-4 md:grid-cols-3">
+          {downloads.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <motion.a
+                key={item.title}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block p-5 rounded-xl border border-primary/15 bg-secondary/20 hover:border-blue-accent/40 hover:bg-secondary/40 transition-all cursor-none"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.35, delay: i * 0.06, ease: "easeOut" }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-blue-accent/12 flex items-center justify-center text-blue-accent group-hover:bg-blue-accent group-hover:text-blue-accent-foreground transition-colors">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <Download className="w-4 h-4 text-primary/40 group-hover:text-blue-accent transition-colors" />
+                </div>
+                <h3 className="font-display text-base text-primary mb-1.5 group-hover:text-blue-accent transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground text-xs leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </PageLayout>

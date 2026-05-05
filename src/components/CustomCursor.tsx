@@ -1,4 +1,4 @@
-import { useEffect, useRef, memo } from "react";
+import { useEffect, useRef, memo, useState } from "react";
 
 interface CustomCursorProps {
   isIntroVisible: boolean;
@@ -6,8 +6,19 @@ interface CustomCursorProps {
 
 const CustomCursor = memo(({ isIntroVisible }: CustomCursorProps) => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [hasFinePointer, setHasFinePointer] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setHasFinePointer(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setHasFinePointer(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    if (!hasFinePointer) return;
     const cursor = cursorRef.current;
     if (!cursor) return;
 
@@ -47,7 +58,9 @@ const CustomCursor = memo(({ isIntroVisible }: CustomCursorProps) => {
       window.removeEventListener("scroll", forceHideSystemCursor);
       window.removeEventListener("wheel", forceHideSystemCursor);
     };
-  }, []);
+  }, [hasFinePointer]);
+
+  if (!hasFinePointer) return null;
 
   return (
     <div

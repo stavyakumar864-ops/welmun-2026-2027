@@ -209,11 +209,11 @@ const Committees = () => {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
-        className="w-32 md:w-48 h-[2px] mb-10 origin-center"
+        className="w-32 md:w-48 h-[2px] mb-6 origin-center"
         style={{ background: "linear-gradient(to right, transparent, hsl(var(--blue-accent)), hsl(var(--gold)), hsl(var(--blue-accent)), transparent)" }}
       />
 
-      <div className="mb-14" />
+      <div className="mb-12" />
 
       {/* Mobile Card Layout */}
       <motion.div
@@ -226,8 +226,8 @@ const Committees = () => {
           <Link
             key={c.id}
             to={`/committees/${c.id}`}
-            className="relative overflow-hidden rounded-xl group block"
-            style={{ height: "220px" }}
+            className="relative overflow-hidden rounded-xl group block border border-primary/10"
+            style={{ height: "260px" }}
           >
             <img
               src={portraitImages[c.id] || c.cardImage}
@@ -238,18 +238,30 @@ const Committees = () => {
             <div
               className="absolute inset-0"
               style={{
-                background: "linear-gradient(to top, hsl(var(--background) / 0.7) 0%, hsl(var(--background) / 0.2) 60%, transparent 100%)",
+                background: "linear-gradient(to top, hsl(var(--background) / 0.92) 0%, hsl(var(--background) / 0.5) 45%, transparent 80%)",
               }}
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-end p-4 pb-5 gap-2 z-10">
+            <div className="absolute inset-0 flex flex-col items-center justify-end p-4 pb-5 gap-1.5 z-10">
               {c.logo && (
-                <img src={c.logo} alt={`${c.shortName} logo`} className="w-10 h-10 object-contain drop-shadow-lg" />
+                <img src={c.logo} alt={`${c.shortName} logo`} className="w-9 h-9 object-contain drop-shadow-lg mb-1" />
               )}
-              <h2 className="font-display text-primary text-lg uppercase font-bold tracking-[4px]"
-                style={{ textShadow: "0 2px 12px hsl(15 30% 12% / 0.9)" }}>
+              <h2
+                className="font-display text-primary text-xl uppercase font-bold tracking-[4px]"
+                style={{ textShadow: "0 2px 12px hsl(15 30% 12% / 0.9)" }}
+              >
                 {c.shortName}
               </h2>
-              <p className="text-muted-foreground text-xs text-center tracking-wider uppercase">{c.name}</p>
+              <p className="text-primary/85 text-[10px] text-center tracking-[2px] uppercase">
+                {c.name}
+              </p>
+              {c.agenda && (
+                <p className="text-muted-foreground text-[11px] text-center leading-snug line-clamp-2 mt-1 px-1 italic">
+                  {c.agenda}
+                </p>
+              )}
+              <span className="text-blue-accent text-[10px] tracking-[3px] uppercase mt-1 opacity-80 group-hover:opacity-100 transition-opacity">
+                View →
+              </span>
             </div>
           </Link>
         ))}
@@ -273,6 +285,7 @@ const Committees = () => {
           />
         ))}
       </motion.div>
+
     </PageLayout>
   );
 };

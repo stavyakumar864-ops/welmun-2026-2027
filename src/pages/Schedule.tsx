@@ -1,9 +1,59 @@
 import PageLayout from "@/components/PageLayout";
-import { Download, Phone, User } from "lucide-react";
+import {
+  Download,
+  Phone,
+  User,
+  Coffee,
+  Utensils,
+  Sparkles,
+  Camera,
+  Music,
+  PartyPopper,
+  ClipboardList,
+  Mic,
+  Gavel,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useStaggerReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
 
 const PDF_URL = "/docs/WELMUN-Conference_Schedule.docx";
+
+type EventKind =
+  | "registration"
+  | "ceremony"
+  | "session"
+  | "tea"
+  | "lunch"
+  | "photo"
+  | "performance"
+  | "social"
+  | "dinner";
+
+const classify = (event: string): EventKind => {
+  const e = event.toLowerCase();
+  if (e.includes("registration")) return "registration";
+  if (e.includes("ceremony")) return "ceremony";
+  if (e.includes("session")) return "session";
+  if (e.includes("tea")) return "tea";
+  if (e.includes("lunch")) return "lunch";
+  if (e.includes("photograph")) return "photo";
+  if (e.includes("band") || e.includes("performance")) return "performance";
+  if (e.includes("dance")) return "social";
+  if (e.includes("dinner")) return "dinner";
+  return "session";
+};
+
+const KIND_META: Record<EventKind, { icon: typeof Coffee; tint: string; label: string }> = {
+  registration: { icon: ClipboardList, tint: "hsl(var(--blue-accent))", label: "Check-in" },
+  ceremony:     { icon: Gavel,         tint: "hsl(var(--blue-accent))", label: "Ceremony" },
+  session:      { icon: Mic,           tint: "hsl(var(--primary))",     label: "Committee" },
+  tea:          { icon: Coffee,        tint: "hsl(var(--muted-foreground))", label: "Break" },
+  lunch:        { icon: Utensils,      tint: "hsl(var(--muted-foreground))", label: "Meal" },
+  photo:        { icon: Camera,        tint: "hsl(var(--muted-foreground))", label: "Photo" },
+  performance:  { icon: Music,         tint: "hsl(var(--blue-accent))", label: "Performance" },
+  social:       { icon: PartyPopper,   tint: "hsl(var(--blue-accent))", label: "Social" },
+  dinner:       { icon: Sparkles,      tint: "hsl(var(--blue-accent))", label: "Special" },
+};
 
 const day1 = [
   { time: "8:00 AM – 9:30 AM", event: "Registration", venue: "Riverside" },
@@ -38,99 +88,163 @@ const day3 = [
 ];
 
 const days = [
-  { label: "Day 1 — Tuesday, July 28, 2026", rows: day1 },
-  { label: "Day 2 — Wednesday, July 29, 2026", rows: day2 },
-  { label: "Day 3 — Thursday, July 30, 2026", rows: day3 },
+  { num: "01", day: "Tuesday", date: "July 28, 2026", rows: day1 },
+  { num: "02", day: "Wednesday", date: "July 29, 2026", rows: day2 },
+  { num: "03", day: "Thursday", date: "July 30, 2026", rows: day3 },
 ];
 
 const Schedule = () => {
-  const ref = useStaggerReveal<HTMLDivElement>(200);
-
   return (
     <PageLayout backgroundImage="/images/schedule-bg.png">
-      <h1 className="font-display text-5xl text-primary mb-4">Conference Schedule</h1>
-      <div className="gold-divider" />
+      <motion.h1
+        className="font-display text-5xl md:text-6xl text-primary mb-4 tracking-wide text-center"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        Conference Schedule
+      </motion.h1>
+      <div className="gold-divider mx-auto" />
+      <p className="text-muted-foreground text-center max-w-2xl text-sm md:text-base mb-12 mt-2">
+        Three days of debate, deliberation, and celebration at Welham Boys' School.
+      </p>
 
-      <div ref={ref} className="mt-12 w-full max-w-4xl mx-auto space-y-12">
-        {days.map((day, i) => (
-          <div key={day.label} data-reveal={i}>
-            <h2 className="font-display text-2xl md:text-3xl text-primary mb-6 text-center">
-              {day.label}
-            </h2>
-            <div className="overflow-x-auto rounded-lg border border-primary/30">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="bg-primary/20">
-                    <th className="px-4 py-3 text-primary font-display text-sm uppercase tracking-wider">Time</th>
-                    <th className="px-4 py-3 text-primary font-display text-sm uppercase tracking-wider">Event</th>
-                    <th className="px-4 py-3 text-primary font-display text-sm uppercase tracking-wider">Venue</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {day.rows.map((row, j) => (
-                    <tr
-                      key={j}
-                      className={`border-t border-primary/10 ${
-                        j % 2 === 0 ? "bg-secondary/30" : "bg-secondary/10"
-                      } hover:bg-primary/10 transition-colors`}
-                    >
-                      <td className="px-4 py-3 text-muted-foreground text-sm whitespace-nowrap">{row.time}</td>
-                      <td className="px-4 py-3 text-foreground font-medium text-sm">{row.event}</td>
-                      <td className="px-4 py-3 text-muted-foreground text-sm">{row.venue}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      <div className="w-full max-w-4xl mx-auto space-y-16">
+        {days.map((day, dayIdx) => (
+          <motion.section
+            key={day.num}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            {/* Day header */}
+            <div className="flex items-baseline gap-4 md:gap-6 mb-6">
+              <span className="font-display text-5xl md:text-7xl text-blue-accent/70 leading-none">
+                {day.num}
+              </span>
+              <div className="flex-1">
+                <h2 className="font-display text-2xl md:text-3xl text-primary leading-tight">
+                  {day.day}
+                </h2>
+                <p className="text-muted-foreground text-sm tracking-wider uppercase">
+                  {day.date}
+                </p>
+              </div>
+              <div className="hidden md:block flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent self-end mb-3" />
             </div>
-          </div>
+
+            {/* Timeline rows */}
+            <div className="relative pl-4 md:pl-6 space-y-2 border-l border-primary/15">
+              {day.rows.map((row, j) => {
+                const kind = classify(row.event);
+                const meta = KIND_META[kind];
+                const Icon = meta.icon;
+                const isHighlight = ["session", "ceremony", "social"].includes(kind);
+
+                return (
+                  <motion.div
+                    key={j}
+                    initial={{ opacity: 0, x: -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.35, delay: j * 0.04, ease: "easeOut" }}
+                    className={`relative grid grid-cols-[auto_1fr] md:grid-cols-[160px_1fr_auto] gap-3 md:gap-6 items-center px-4 md:px-5 py-3 rounded-lg border transition-colors ${
+                      isHighlight
+                        ? "border-blue-accent/25 bg-secondary/40 hover:bg-secondary/60"
+                        : "border-primary/10 bg-secondary/15 hover:bg-secondary/30"
+                    }`}
+                  >
+                    {/* Timeline dot */}
+                    <span
+                      className="absolute -left-[1.4rem] md:-left-[1.65rem] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+                      style={{ background: meta.tint }}
+                    />
+
+                    {/* Time */}
+                    <span className="text-muted-foreground text-xs md:text-sm whitespace-nowrap font-medium tracking-wide row-span-2 md:row-auto">
+                      {row.time}
+                    </span>
+
+                    {/* Event */}
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span
+                        className="shrink-0 w-8 h-8 rounded-md flex items-center justify-center"
+                        style={{ background: `${meta.tint.replace("hsl(", "hsla(").replace(")", ", 0.12)")}` }}
+                      >
+                        <Icon className="w-4 h-4" style={{ color: meta.tint }} />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-foreground text-sm md:text-base font-medium leading-tight truncate">
+                          {row.event}
+                        </p>
+                        <p className="text-muted-foreground text-xs md:hidden">{row.venue}</p>
+                      </div>
+                    </div>
+
+                    {/* Venue (desktop) */}
+                    <span className="hidden md:inline text-muted-foreground text-xs tracking-wide uppercase whitespace-nowrap">
+                      {row.venue}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {dayIdx < days.length - 1 && (
+              <div
+                className="w-24 h-px mx-auto mt-12"
+                style={{ background: "linear-gradient(to right, transparent, hsl(var(--primary) / 0.4), transparent)" }}
+              />
+            )}
+          </motion.section>
         ))}
       </div>
 
-      {/* Contact Details */}
-      <div className="mt-16 w-full max-w-4xl mx-auto">
-        <h2 className="font-display text-2xl md:text-3xl text-primary mb-6 text-center">Contact Details</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {/* Logistics contacts */}
+      <div className="mt-20 w-full max-w-4xl mx-auto">
+        <h2 className="font-display text-xl md:text-2xl text-primary mb-2 text-center tracking-wide">
+          On-Ground Coordination
+        </h2>
+        <p className="text-muted-foreground text-xs md:text-sm text-center mb-6 tracking-wider uppercase">
+          For schedule, travel, and logistics queries
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
           {[
             { role: "Conference Director", name: "Ms. Kiran Tripathi", phone: "+91 7409809908" },
-            { role: "Journey & Accommodation In-charge", name: "Mr. Rajesh Nautiyal", phone: "+91 8171033339" },
+            { role: "Journey & Accommodation", name: "Mr. Rajesh Nautiyal", phone: "+91 8171033339" },
             { role: "Head of Activities", name: "Mr. Rajeev Bhatia", phone: "+91 8755909040" },
+            { role: "E.A. to the Principal", name: null, phone: "+91 8979052222" },
+            { role: "Vice-Principal", name: null, phone: "+91 8755909037" },
           ].map((c) => (
-            <div key={c.role} className="flex items-start gap-3 p-4 rounded-lg border border-primary/20 bg-secondary/30">
-              <User className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-              <div>
-                <p className="font-display text-xs text-primary tracking-wider">{c.role}</p>
-                <p className="text-sm text-foreground">{c.name}</p>
-                <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
+            <div
+              key={c.role}
+              className="flex items-start gap-3 p-4 rounded-lg border border-primary/15 bg-secondary/25 hover:border-blue-accent/30 transition-colors w-full sm:w-[calc(50%-0.375rem)] lg:w-[calc(33.333%-0.5rem)]"
+            >
+              <User className="w-4 h-4 text-blue-accent shrink-0 mt-0.5" />
+              <div className="min-w-0">
+                <p className="font-display text-xs text-primary tracking-wider uppercase">{c.role}</p>
+                {c.name && <p className="text-sm text-foreground mt-0.5">{c.name}</p>}
+                <a
+                  href={`tel:${c.phone.replace(/\s/g, "")}`}
+                  className="text-xs text-muted-foreground hover:text-blue-accent flex items-center gap-1 mt-1 transition-colors cursor-none"
+                >
                   <Phone className="w-3 h-3" /> {c.phone}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 max-w-2xl mx-auto">
-          {[
-            { role: "E.A. to the Principal", phone: "+91 8979052222" } as { role: string; name?: string; phone: string },
-            { role: "Vice-Principal", phone: "+91 8755909037" } as { role: string; name?: string; phone: string },
-          ].map((c) => (
-            <div key={c.role} className="flex items-start gap-3 p-4 rounded-lg border border-primary/20 bg-secondary/30">
-              <User className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-              <div>
-                <p className="font-display text-xs text-primary tracking-wider">{c.role}</p>
-                {c.name && <p className="text-sm text-foreground">{c.name}</p>}
-                <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
-                  <Phone className="w-3 h-3" /> {c.phone}
-                </p>
+                </a>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-12 mb-8">
+      <div className="mt-12 mb-8 flex justify-center">
         <a href={PDF_URL} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" className="border-blue-accent text-blue-accent hover:bg-blue-accent/10 gap-2">
+          <Button
+            variant="outline"
+            className="border-blue-accent/60 text-blue-accent hover:bg-blue-accent hover:text-blue-accent-foreground gap-2 rounded-full px-6 cursor-none"
+          >
             <Download className="w-4 h-4" />
-            Download Schedule
+            Download Full Schedule
           </Button>
         </a>
       </div>

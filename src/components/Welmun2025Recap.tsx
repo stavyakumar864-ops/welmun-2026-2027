@@ -50,6 +50,19 @@ const Welmun2025Recap = () => {
           loading="lazy"
         />
       </motion.div>
+
+      <motion.a
+        href="https://youtu.be/VXu5pa1jDUg"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-6 text-primary/70 hover:text-primary text-xs md:text-sm tracking-[3px] uppercase transition-colors duration-300 cursor-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.4, delay: 0.45, ease: "easeOut" }}
+      >
+        Watch on YouTube ↗
+      </motion.a>
     </section>
   );
 };
