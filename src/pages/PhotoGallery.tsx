@@ -143,12 +143,8 @@ const PhotoGallery = () => {
 
       {/* Masonry grid */}
       <div
-        className="w-full max-w-[1400px] mx-auto grid gap-1.5 md:gap-2"
-        style={{
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gridAutoRows: "180px",
-          gridAutoFlow: "dense",
-        }}
+        className="w-full max-w-[1400px] mx-auto grid gap-1.5 md:gap-2 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 auto-rows-[120px] sm:auto-rows-[150px] md:auto-rows-[180px]"
+        style={{ gridAutoFlow: "dense" }}
       >
         {photos.map((photo, i) => (
           <motion.button

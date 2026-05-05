@@ -200,7 +200,7 @@ const Committees = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-primary tracking-[10px] md:tracking-[20px] uppercase text-center mb-4"
+        className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-primary tracking-[5px] sm:tracking-[8px] md:tracking-[15px] uppercase text-center mb-4 max-w-full break-words"
       >
         Committees
       </motion.h1>

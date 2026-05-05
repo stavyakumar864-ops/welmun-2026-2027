@@ -3,6 +3,7 @@ import { orderedCommittees } from "@/data/committees";
 import { ChevronLeft, ChevronRight, FileText, Grid3X3, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import PortraitCard from "@/components/PortraitCard";
 import CommitteeIntro from "@/components/CommitteeIntro";
 import Navbar from "@/components/Navbar";
 import ParticleCanvas from "@/components/ParticleCanvas";
@@ -241,31 +242,14 @@ const CommitteeDetail = () => {
                   style={{ background: "linear-gradient(to right, transparent, hsl(var(--gold)), transparent)" }}
                 />
               </div>
-              <div className="flex flex-wrap justify-center items-start gap-12">
+              <div className="flex flex-wrap justify-center items-start gap-8 md:gap-12">
                 {committee.eb.slice(1).map((member, i) => (
-                  <motion.div
+                  <PortraitCard
                     key={`${member.role}-${i}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.4, delay: i * 0.06, ease: "easeOut" }}
-                    className="flex flex-col items-center text-center gap-4 w-64"
-                  >
-                    <div className="w-64 h-80 rounded-xl border border-primary/20 bg-muted/30 overflow-hidden shadow-md">
-                      {member.image ? (
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-muted/30" />
-                      )}
-                    </div>
-                    <p className="text-primary text-base font-semibold leading-tight">{member.name}</p>
-                    <p className="text-accent text-sm italic">{member.role}</p>
-                  </motion.div>
+                    member={{ role: member.role, name: member.name, img: member.image ?? null }}
+                    size="md"
+                    delay={i * 0.06}
+                  />
                 ))}
               </div>
             </motion.div>

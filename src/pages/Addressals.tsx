@@ -109,9 +109,9 @@ const AddressalLetter = ({ data, index }: { data: Addressal; index: number }) =>
     </figure>
 
     {/* Body */}
-    <div className="space-y-5 text-muted-foreground leading-[1.85] text-[15px] md:text-base">
+    <div className="space-y-5 text-muted-foreground leading-[1.85] text-[15px] md:text-base text-center md:text-left">
       {data.body.map((para, i) => (
-        <p key={i} className={i === 0 ? "first-letter:font-display first-letter:text-5xl first-letter:float-left first-letter:mr-2 first-letter:leading-[0.9] first-letter:text-primary" : ""}>
+        <p key={i} className={i === 0 ? "md:first-letter:font-display md:first-letter:text-5xl md:first-letter:float-left md:first-letter:mr-2 md:first-letter:leading-[0.9] md:first-letter:text-primary" : ""}>
           {para}
         </p>
       ))}

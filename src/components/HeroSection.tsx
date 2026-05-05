@@ -39,41 +39,41 @@ const HeroSection = ({ animateIn = true }: HeroSectionProps) => {
       animate={animateIn ? "show" : "hidden"}
     >
       {/* Center content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 gap-3">
+      <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 gap-3 max-w-full">
         <motion.h1
           variants={fadeUp}
-          className="font-display text-7xl md:text-9xl lg:text-[10rem] text-primary tracking-wide leading-none uppercase"
+          className="font-display text-[3.5rem] sm:text-7xl md:text-9xl lg:text-[10rem] text-primary tracking-wide leading-none uppercase"
         >
           WELMUN
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
-          className="text-primary text-xl md:text-3xl italic font-display tracking-wider"
+          className="text-primary text-lg sm:text-xl md:text-3xl italic font-display tracking-wider"
         >
           'Ordo ab Chao'
         </motion.p>
 
         <motion.p
           variants={fadeUp}
-          className="text-muted-foreground text-sm md:text-lg tracking-wide"
+          className="text-muted-foreground text-xs sm:text-sm md:text-lg tracking-wide"
         >
           ~ Order out of Chaos ~
         </motion.p>
 
-        <motion.div variants={fadeUp} className="mt-6">
+        <motion.div variants={fadeUp} className="mt-6 max-w-full overflow-x-auto">
           <CountdownTimer />
         </motion.div>
 
         <motion.div
           variants={fadeIn}
-          className="mt-6 flex flex-col items-center gap-2"
+          className="mt-6 flex flex-col items-center gap-2 max-w-full"
         >
           <div className="h-px w-24 md:w-40 bg-primary/40" />
-          <h2 className="font-display text-lg sm:text-xl md:text-2xl text-primary uppercase tracking-[0.25em] whitespace-nowrap">
+          <h2 className="font-display text-base sm:text-xl md:text-2xl text-primary uppercase tracking-[0.18em] sm:tracking-[0.25em]">
             Welham Boys' School
           </h2>
-          <p className="font-display text-sm sm:text-base md:text-lg text-muted-foreground italic tracking-[0.2em] whitespace-nowrap">
+          <p className="font-display text-xs sm:text-base md:text-lg text-muted-foreground italic tracking-[0.15em] sm:tracking-[0.2em]">
             July 28 – 30, 2026
           </p>
         </motion.div>
