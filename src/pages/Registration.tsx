@@ -21,7 +21,7 @@ const Registration = () => {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.6 }}
           className="font-display text-5xl md:text-7xl text-primary tracking-[8px] uppercase text-center"
         >
           Registration

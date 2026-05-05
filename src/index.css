@@ -43,8 +43,8 @@
     --dark-brown: 20 30% 18%;
     --rich-brown: 18 25% 22%;
     --soft-brown: 18 20% 28%;
-    --blue-accent: 205 35% 52%;
-    --blue-accent-foreground: 0 0% 100%;
+    --blue-accent: 35 30% 72%;
+    --blue-accent-foreground: 20 30% 18%;
 
     --sidebar-background: 20 30% 18%;
     --sidebar-foreground: 40 20% 90%;
@@ -100,7 +100,7 @@
   [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   }
   [data-reveal][data-visible="true"] {
     opacity: 1;
@@ -111,7 +111,7 @@
   .reveal-section {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
   }
   .reveal-section[data-visible="true"] {
     opacity: 1;

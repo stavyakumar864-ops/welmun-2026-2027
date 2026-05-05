@@ -43,7 +43,7 @@ const CommitteeResourcePlaceholder = ({ resource }: Props) => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="w-full max-w-xl text-center flex flex-col items-center gap-6"
           >
             <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary">

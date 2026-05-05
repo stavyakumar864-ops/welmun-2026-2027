@@ -12,7 +12,7 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease },
+    transition: { duration: 0.4, delay: i * 0.06, ease },
   }),
 };
 
@@ -31,7 +31,7 @@ const RegistrationKameraObscura = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.6 }}
             className="font-display text-5xl md:text-7xl text-primary tracking-[8px] uppercase text-center"
           >
             Kamera Obscura
@@ -39,7 +39,7 @@ const RegistrationKameraObscura = () => {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="font-display text-lg text-primary/60 tracking-[4px] mt-2"
           >
             9.0
@@ -183,7 +183,7 @@ const RegistrationKameraObscura = () => {
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
+                      transition={{ delay: i * 0.04 }}
                       className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20 font-display"
                     >
                       {c}
@@ -253,7 +253,7 @@ const RegistrationKameraObscura = () => {
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
+                      transition={{ delay: i * 0.04 }}
                       className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20 font-display"
                     >
                       {c}

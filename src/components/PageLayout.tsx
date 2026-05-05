@@ -7,9 +7,11 @@ interface PageLayoutProps {
   children: React.ReactNode;
   backgroundImage?: string;
   hideParticles?: boolean;
+  /** Opacity (0-1) of the dark overlay over the background image. Defaults to 0.8. */
+  backgroundOverlayOpacity?: number;
 }
 
-const PageLayout = memo(({ children, backgroundImage, hideParticles }: PageLayoutProps) => {
+const PageLayout = memo(({ children, backgroundImage, hideParticles, backgroundOverlayOpacity = 0.8 }: PageLayoutProps) => {
   return (
     <>
       <CustomCursor isIntroVisible={false} />
@@ -24,7 +26,10 @@ const PageLayout = memo(({ children, backgroundImage, hideParticles }: PageLayou
             backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0 bg-background/80" />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: `hsl(var(--background) / ${backgroundOverlayOpacity})` }}
+          />
         </div>
       )}
       <main className={`pt-32 md:pt-36 min-h-screen px-4 sm:px-[5%] md:px-[8%] lg:px-[10%] xl:px-[12%] pb-16 md:pb-24 flex flex-col items-center ${backgroundImage ? "relative z-10" : ""}`}>

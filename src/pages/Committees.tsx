@@ -64,7 +64,7 @@ const CommitteeStrip = ({
         videoRef.current.currentTime = 0;
         videoRef.current.play().catch(() => {});
       }
-    }, 300);
+    }, 150);
   }, [onHover]);
 
   const handleMouseLeave = useCallback(() => {
@@ -78,13 +78,17 @@ const CommitteeStrip = ({
     }
   }, [onLeave]);
 
+  const EASE = "cubic-bezier(0.32, 0.72, 0, 1)";
+  const DUR = "0.7s";
+
   return (
     <Link
       to={`/committees/${committee.id}`}
       className="relative overflow-hidden cursor-none block h-full rounded-xl"
       style={{
         flex: isActive ? 20 : 1,
-        transition: "flex 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        transition: `flex ${DUR} ${EASE}`,
+        willChange: "flex",
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -96,7 +100,7 @@ const CommitteeStrip = ({
         loading="lazy"
         className="absolute inset-0 w-full h-full object-cover object-center"
         style={{
-          transition: "opacity 0.5s ease",
+          transition: `opacity ${DUR} ${EASE}`,
           opacity: isActive && videoSrc ? 0 : 1,
         }}
       />
@@ -113,18 +117,19 @@ const CommitteeStrip = ({
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: isActive ? 1 : 0,
-            transition: "opacity 0.5s ease",
+            transition: `opacity ${DUR} ${EASE}`,
           }}
         />
       )}
 
       {/* Overlay */}
       <div
-        className="absolute inset-0 transition-all duration-500"
+        className="absolute inset-0"
         style={{
+          transition: `background ${DUR} ${EASE}`,
           background: isActive
-            ? "linear-gradient(to top, hsl(var(--background) / 0.85) 0%, hsl(var(--background) / 0.3) 40%, transparent 100%)"
-            : "linear-gradient(to top, hsl(var(--background) / 0.9) 0%, hsl(var(--background) / 0.5) 100%)",
+            ? "linear-gradient(to top, hsl(var(--background) / 0.7) 0%, hsl(var(--background) / 0.15) 40%, transparent 100%)"
+            : "linear-gradient(to top, hsl(var(--background) / 0.7) 0%, hsl(var(--background) / 0.2) 100%)",
         }}
       />
 
@@ -135,25 +140,28 @@ const CommitteeStrip = ({
           <img
             src={committee.logo}
             alt={`${committee.shortName} logo`}
-            className="object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] transition-all duration-500"
+            className="object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] w-12 h-12"
             style={{
-              width: isActive ? "5rem" : "3rem",
-              height: isActive ? "5rem" : "3rem",
+              transition: `transform ${DUR} ${EASE}, opacity ${DUR} ${EASE}`,
+              transform: isActive ? "scale(1.7) translateZ(0)" : "scale(1) translateZ(0)",
+              transformOrigin: "center bottom",
               opacity: isActive ? 1 : 0.8,
+              willChange: "transform",
             }}
           />
         )}
 
         {/* Short name - rotated when collapsed */}
         <h2
-          className="font-display text-primary uppercase font-bold whitespace-nowrap transition-all duration-500"
+          className="font-display text-primary uppercase font-bold whitespace-nowrap"
           style={{
             textShadow: "0 2px 16px hsl(15 30% 12% / 0.95), 0 0 40px hsl(15 30% 12% / 0.7)",
             fontSize: isActive ? "2rem" : "1.25rem",
             letterSpacing: isActive ? "6px" : "3px",
             writingMode: isActive ? "horizontal-tb" : "vertical-rl",
-            textOrientation: isActive ? "mixed" : "mixed",
+            textOrientation: "mixed",
             transform: isActive ? "none" : "rotate(180deg)",
+            transition: `font-size ${DUR} ${EASE}, letter-spacing ${DUR} ${EASE}`,
           }}
         >
           {committee.shortName}
@@ -161,11 +169,13 @@ const CommitteeStrip = ({
 
         {/* Full name + agenda visible on hover */}
         <div
-          className="text-center max-w-md transition-all duration-500 overflow-hidden"
+          className="text-center max-w-md overflow-hidden"
           style={{
             opacity: isActive ? 1 : 0,
             maxHeight: isActive ? "200px" : "0",
-            transform: isActive ? "translateY(0)" : "translateY(20px)",
+            transform: isActive ? "translateY(0)" : "translateY(16px)",
+            transition: `opacity ${DUR} ${EASE}, max-height ${DUR} ${EASE}, transform ${DUR} ${EASE}`,
+            pointerEvents: isActive ? "auto" : "none",
           }}
         >
           <p className="text-muted-foreground text-sm tracking-wider uppercase mb-2">
@@ -184,12 +194,12 @@ const Committees = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   return (
-    <PageLayout backgroundImage="/images/committees-bg.jpg">
+    <PageLayout backgroundImage="/images/committees-bg.jpg" backgroundOverlayOpacity={0.65}>
       {/* Hero Title */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-primary tracking-[10px] md:tracking-[20px] uppercase text-center mb-4"
       >
         Committees
@@ -198,7 +208,7 @@ const Committees = () => {
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
         className="w-32 md:w-48 h-[2px] mb-10 origin-center"
         style={{ background: "linear-gradient(to right, transparent, hsl(var(--blue-accent)), hsl(var(--gold)), hsl(var(--blue-accent)), transparent)" }}
       />
@@ -209,7 +219,7 @@ const Committees = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
+        transition={{ duration: 0.5, delay: 0.35 }}
         className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden"
       >
         {orderedCommittees.map((c) => (
@@ -228,7 +238,7 @@ const Committees = () => {
             <div
               className="absolute inset-0"
               style={{
-                background: "linear-gradient(to top, hsl(var(--background) / 0.9) 0%, hsl(var(--background) / 0.4) 60%, transparent 100%)",
+                background: "linear-gradient(to top, hsl(var(--background) / 0.7) 0%, hsl(var(--background) / 0.2) 60%, transparent 100%)",
               }}
             />
             <div className="absolute inset-0 flex flex-col items-center justify-end p-4 pb-5 gap-2 z-10">
@@ -249,7 +259,7 @@ const Committees = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
+        transition={{ duration: 0.5, delay: 0.35 }}
         className="w-full max-w-6xl hidden md:flex gap-4 rounded-2xl overflow-hidden"
         style={{ height: "70vh", minHeight: "500px" }}
       >

@@ -36,7 +36,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
  * Each child with [data-reveal] gets data-visible with a stagger delay.
  */
 export function useStaggerReveal<T extends HTMLElement = HTMLDivElement>(
-  staggerMs = 100
+  staggerMs = 60
 ) {
   const ref = useRef<T>(null);
 

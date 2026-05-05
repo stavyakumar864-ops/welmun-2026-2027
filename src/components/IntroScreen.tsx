@@ -14,7 +14,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
     setTimeout(() => {
       setPhase("done");
       onEnter();
-    }, 1200);
+    }, 800);
   }, [onEnter, phase]);
 
   // Handle swipe up on touch
@@ -68,7 +68,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
         style={{
           transform: phase === "morphing" ? "scale(15)" : "scale(1)",
           opacity: phase === "morphing" ? 0 : 1,
-          transition: "transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease-out 0.4s",
+          transition: "transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease-out 0.25s",
         }}
       >
         <img
@@ -77,7 +77,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="w-40 h-40 md:w-56 md:h-56 mb-8 object-contain"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 1s ease-out 0.3s forwards",
+            animation: "introLogoFadeIn 0.6s ease-out 0.15s forwards",
             filter: "drop-shadow(0 0 40px hsl(40 20% 90% / 0.3))",
           }}
         />
@@ -85,7 +85,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="font-display text-5xl md:text-8xl tracking-[6px] text-primary"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 1s ease-out 0.8s forwards",
+            animation: "introLogoFadeIn 0.6s ease-out 0.5s forwards",
             textShadow: "0 0 40px hsl(40 20% 90% / 0.2)",
           }}
         >
@@ -95,7 +95,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="mt-3 text-lg md:text-2xl font-display italic tracking-wider text-muted-foreground"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.8s ease-out 1.3s forwards",
+            animation: "introLogoFadeIn 0.5s ease-out 0.85s forwards",
           }}
         >
           'Ordo ab Chao'
@@ -115,7 +115,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
           className="tracking-[3px] text-sm font-medium cursor-none text-primary"
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.6s ease-out 2s forwards",
+            animation: "introLogoFadeIn 0.5s ease-out 1.2s forwards",
           }}
         >
           SCROLL DOWN
@@ -123,7 +123,7 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
         <span
           style={{
             opacity: 0,
-            animation: "introLogoFadeIn 0.6s ease-out 2s forwards",
+            animation: "introLogoFadeIn 0.5s ease-out 1.2s forwards",
           }}
           className="text-3xl text-primary"
         >

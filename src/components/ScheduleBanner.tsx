@@ -6,14 +6,14 @@ const ScheduleBanner = () => {
     <section
       className="w-full h-full flex flex-col justify-center items-center overflow-hidden bg-background"
       style={{
-        backgroundImage: "linear-gradient(135deg, transparent 0%, hsl(205 35% 52% / 0.08) 45%, hsl(18 15% 25%) 55%, hsl(20 30% 18%) 100%)",
+        backgroundImage: "linear-gradient(135deg, transparent 0%, hsl(var(--blue-accent) / 0.08) 45%, hsl(18 15% 25%) 55%, hsl(20 30% 18%) 100%)",
       }}
     >
       <motion.h2
         initial={{ opacity: 0, rotateX: 65, y: 80, scale: 0.85 }}
         whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+        transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
         style={{ transformOrigin: "bottom center" }}
         className="font-display text-7xl md:text-9xl lg:text-[10rem] text-primary tracking-wide leading-none uppercase"
       >
@@ -24,7 +24,7 @@ const ScheduleBanner = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
         className="mt-6 font-display text-xl md:text-3xl text-primary/80 tracking-widest uppercase"
       >
         28 July – 30 July, 2026
@@ -34,7 +34,7 @@ const ScheduleBanner = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
       >
         <Link
           to="/schedule"

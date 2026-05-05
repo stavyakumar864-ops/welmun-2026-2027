@@ -56,7 +56,7 @@ const CommitteeIntro = ({ committeeId, committeeName }: CommitteeIntroProps) => 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="font-display text-5xl md:text-7xl lg:text-8xl text-primary tracking-[8px] uppercase text-center"
             style={{
               textShadow: "0 4px 20px hsl(15 30% 12% / 0.8), 0 0 60px hsl(15 30% 12% / 0.5)",
@@ -69,7 +69,7 @@ const CommitteeIntro = ({ committeeId, committeeName }: CommitteeIntroProps) => 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-none"
         >
           <p className="text-primary text-sm tracking-[3px] uppercase">

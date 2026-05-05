@@ -10,21 +10,22 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const allMembers = [
   { role: "Secretary General", name: "Ahan Sparsh", img: secGenPhoto },
-  { role: "Director General", name: "Tanveer Singh Madan", img: dirGenPhoto },
   { role: "Under Secretary General", name: "Koustabh Gupta", img: underSecPhoto },
+  { role: "Director General", name: "Tanveer Singh Madan", img: dirGenPhoto },
   { role: "Under Secretary General", name: "Aaryan Khanna", img: aaryanPhoto },
 ];
 
-const techDirectors = [
+const techDirectors: { role: string; name: string; img: string | null }[] = [
   { role: "Technical Director", name: "Arnav Mittal", img: techDirector1Photo },
   { role: "Technical Director", name: "Stavya Kumar", img: techDirector2Photo },
+  { role: "Technical Director", name: "Piyush Singhal", img: null },
 ];
 
 const headingVariant = {
   hidden: { opacity: 0, y: 30, scale: 0.9 },
   visible: {
     opacity: 1, y: 0, scale: 1,
-    transition: { duration: 0.8, ease: "easeOut" as const },
+    transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
 
@@ -32,7 +33,7 @@ const dividerVariant = {
   hidden: { scaleX: 0, opacity: 0 },
   visible: {
     scaleX: 1, opacity: 1,
-    transition: { duration: 0.6, delay: 0.3, ease: "easeOut" as const },
+    transition: { duration: 0.4, delay: 0.15, ease: "easeOut" as const },
   },
 };
 
@@ -40,7 +41,7 @@ const cardFromLeft = {
   hidden: { opacity: 0, x: -100, rotateY: 15, scale: 0.85 },
   visible: {
     opacity: 1, x: 0, rotateY: 0, scale: 1,
-    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
@@ -48,7 +49,7 @@ const cardFromRight = {
   hidden: { opacity: 0, x: 100, rotateY: -15, scale: 0.85 },
   visible: {
     opacity: 1, x: 0, rotateY: 0, scale: 1,
-    transition: { duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
@@ -56,21 +57,21 @@ const cardFromBottom = {
   hidden: { opacity: 0, y: 80, scale: 0.8 },
   visible: {
     opacity: 1, y: 0, scale: 1,
-    transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
 const staggerContainer = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.2, delayChildren: 0.4 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
 const techContainer = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.3, delayChildren: 0.4 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
   },
 };
 
@@ -202,10 +203,14 @@ const SecretariatSection = () => {
           {techDirectors.map((t, i) => (
             <motion.div
               key={t.name}
-              variants={i === 0 ? cardFromLeft : cardFromRight}
+              variants={i === 0 ? cardFromLeft : i === techDirectors.length - 1 ? cardFromRight : cardFromBottom}
               className="hover-lift img-zoom bg-card border border-blue-accent/10 p-6 text-center cursor-none overflow-hidden w-[80%] max-w-xs"
             >
-              <img src={t.img} alt={t.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
+              {t.img ? (
+                <img src={t.img} alt={t.name} className="w-full h-auto aspect-[3/4] object-cover object-top mb-5 bg-secondary" loading="lazy" />
+              ) : (
+                <div className="w-full aspect-[3/4] mb-5 bg-secondary" aria-label={t.name} />
+              )}
               <h3 className="font-display text-xl text-primary">{t.name}</h3>
               <p className="text-muted-foreground text-sm mt-1">{t.role}</p>
             </motion.div>

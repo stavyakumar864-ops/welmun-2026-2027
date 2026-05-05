@@ -5,6 +5,7 @@ import IntroScreen from "@/components/IntroScreen";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SecretariatSection from "@/components/SecretariatSection";
+import Welmun2025Recap from "@/components/Welmun2025Recap";
 import ScheduleBanner from "@/components/ScheduleBanner";
 import ContactBanner from "@/components/ContactBanner";
 
@@ -54,6 +55,7 @@ const Index = () => {
           <HeroSection animateIn={!introVisible} />
           <div className="relative z-10">
             <SecretariatSection />
+            <Welmun2025Recap />
           </div>
         </div>
         {/* Spacer reveals the fixed ScheduleBanner */}

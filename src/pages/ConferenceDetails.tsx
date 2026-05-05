@@ -6,8 +6,8 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const PDF_URLS = {
   policy: "../../public/docs/conference-policy.pdf",
   charter:
-    "https://www.welhammun.org/_files/ugd/9bbbe8_d5a06f62464948b281210257dc716a48.pdf",
-  rop: "/welmun-2026-2027/public/docs/rop.pdf",
+    "../../public/docs/uncharter.pdf",
+  rop: "../../public/docs/rop.pdf",
 };
 
 const importantDownloads = [

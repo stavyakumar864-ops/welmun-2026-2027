@@ -2,7 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { orderedCommittees } from "@/data/committees";
 import { ChevronLeft, ChevronRight, FileText, Grid3X3, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
-import { useScrollReveal, useStaggerReveal } from "@/hooks/useScrollReveal";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import CommitteeIntro from "@/components/CommitteeIntro";
 import Navbar from "@/components/Navbar";
 import ParticleCanvas from "@/components/ParticleCanvas";
@@ -17,7 +17,6 @@ const CommitteeDetail = () => {
   const nextCommittee = currentIndex < orderedCommittees.length - 1 ? orderedCommittees[currentIndex + 1] : null;
 
   const headerRef = useScrollReveal<HTMLDivElement>(0.1);
-  const ebRef = useStaggerReveal<HTMLDivElement>(100);
 
   if (!committee) {
     return (
@@ -92,7 +91,7 @@ const CommitteeDetail = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="w-full max-w-5xl text-center mb-14"
           >
             <img
@@ -124,7 +123,7 @@ const CommitteeDetail = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
               className="flex flex-col items-center gap-5"
             >
               {/* Chair Photo */}
@@ -192,7 +191,7 @@ const CommitteeDetail = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="flex flex-col"
             >
               <h2 className="font-display text-xl text-primary mb-5 tracking-wide">
@@ -230,7 +229,7 @@ const CommitteeDetail = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.45 }}
               className="w-full max-w-5xl"
             >
               <div className="text-center mb-10">
@@ -242,14 +241,17 @@ const CommitteeDetail = () => {
                   style={{ background: "linear-gradient(to right, transparent, hsl(var(--gold)), transparent)" }}
                 />
               </div>
-              <div ref={ebRef} className="flex flex-wrap justify-center gap-8">
+              <div className="flex flex-wrap justify-center items-start gap-12">
                 {committee.eb.slice(1).map((member, i) => (
-                  <div
+                  <motion.div
                     key={`${member.role}-${i}`}
-                    data-reveal={i}
-                    className="flex flex-col items-center text-center gap-2.5 w-32"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 0.4, delay: i * 0.06, ease: "easeOut" }}
+                    className="flex flex-col items-center text-center gap-4 w-64"
                   >
-                    <div className="w-32 h-40 rounded-xl border border-primary/20 bg-muted/30 overflow-hidden shadow-md">
+                    <div className="w-64 h-80 rounded-xl border border-primary/20 bg-muted/30 overflow-hidden shadow-md">
                       {member.image ? (
                         <img
                           src={member.image}
@@ -261,9 +263,9 @@ const CommitteeDetail = () => {
                         <div className="w-full h-full bg-muted/30" />
                       )}
                     </div>
-                    <p className="text-primary text-sm font-semibold leading-tight">{member.name}</p>
-                    <p className="text-accent text-xs italic">{member.role}</p>
-                  </div>
+                    <p className="text-primary text-base font-semibold leading-tight">{member.name}</p>
+                    <p className="text-accent text-sm italic">{member.role}</p>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
