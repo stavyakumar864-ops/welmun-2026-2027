@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
+import AmbientGlow from "@/components/AmbientGlow";
 import { ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -122,6 +123,7 @@ const PhotoGallery = () => {
 
   return (
     <PageLayout hideParticles>
+      <AmbientGlow />
       {/* Hero */}
       <motion.div
         className="flex flex-col items-center text-center mb-12"

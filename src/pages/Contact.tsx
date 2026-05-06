@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import PageLayout from "@/components/PageLayout";
+import AmbientGlow from "@/components/AmbientGlow";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
@@ -125,6 +126,7 @@ const Contact = () => {
 
   return (
     <PageLayout>
+      <AmbientGlow />
       {/* Hero */}
       <motion.div
         className="flex flex-col items-center text-center mb-14"
