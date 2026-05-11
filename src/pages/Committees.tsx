@@ -156,8 +156,12 @@ const CommitteeStrip = ({
           className="font-display text-primary uppercase font-bold whitespace-nowrap"
           style={{
             textShadow: "0 2px 16px hsl(15 30% 12% / 0.95), 0 0 40px hsl(15 30% 12% / 0.7)",
-            fontSize: isActive ? "2rem" : "1.25rem",
-            letterSpacing: isActive ? "6px" : "3px",
+            fontSize: isActive
+              ? committee.shortName.length > 10 ? "1.5rem" : "2rem"
+              : committee.shortName.length > 10 ? "0.85rem" : "1.25rem",
+            letterSpacing: isActive
+              ? committee.shortName.length > 10 ? "3px" : "6px"
+              : committee.shortName.length > 10 ? "1.5px" : "3px",
             writingMode: isActive ? "horizontal-tb" : "vertical-rl",
             textOrientation: "mixed",
             transform: isActive ? "none" : "rotate(180deg)",
@@ -246,14 +250,18 @@ const Committees = () => {
                 <img src={c.logo} alt={`${c.shortName} logo`} className="w-9 h-9 object-contain drop-shadow-lg mb-1" />
               )}
               <h2
-                className="font-display text-primary text-xl uppercase font-bold tracking-[4px]"
+                className={`font-display text-primary uppercase font-bold text-center ${
+                  c.shortName.length > 10 ? "text-sm tracking-[2px]" : "text-xl tracking-[4px]"
+                }`}
                 style={{ textShadow: "0 2px 12px hsl(15 30% 12% / 0.9)" }}
               >
                 {c.shortName}
               </h2>
-              <p className="text-primary/85 text-[10px] text-center tracking-[2px] uppercase">
-                {c.name}
-              </p>
+              {c.shortName !== c.name && (
+                <p className="text-primary/85 text-[10px] text-center tracking-[2px] uppercase">
+                  {c.name}
+                </p>
+              )}
               {c.agenda && (
                 <p className="text-muted-foreground text-[11px] text-center leading-snug line-clamp-2 mt-1 px-1 italic">
                   {c.agenda}

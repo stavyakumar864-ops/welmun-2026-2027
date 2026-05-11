@@ -141,9 +141,6 @@ const Contact = () => {
           Contact Us
         </h1>
         <div className="gold-divider mx-auto" />
-        <p className="text-muted-foreground max-w-2xl text-sm md:text-base mt-1 italic">
-          Reach the people behind WELMUN, or send us a message directly.
-        </p>
       </motion.div>
 
       {/* People cards */}
@@ -207,9 +204,7 @@ const Contact = () => {
               Send us a message
             </h2>
           </div>
-          <p className="text-muted-foreground text-xs md:text-sm mb-6">
-            We typically respond within 48 hours.
-          </p>
+          <div className="mb-6" />
 
           <AnimatePresence mode="wait">
             {submitted ? (

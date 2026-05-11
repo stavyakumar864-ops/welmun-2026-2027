@@ -3,7 +3,6 @@ import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MapPin, ArrowUpRig
 
 const QUICK_LINKS = [
   { label: "Committees", to: "/committees" },
-  { label: "Secretariat", to: "/#secretariat" },
   { label: "Schedule", to: "/schedule" },
   { label: "Registration", to: "/registration" },
   { label: "Gallery", to: "/gallery" },
