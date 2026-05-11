@@ -331,7 +331,7 @@ const Countdown = ({ targetAt, onUnlock }: Props) => {
               paddingLeft: "0.4em",
             }}
           >
-            XII May MMXXVI &nbsp;·&nbsp; Noon
+            XII May MMXXVI &nbsp;·&nbsp; 3 P.M.
           </div>
         </div>
 
