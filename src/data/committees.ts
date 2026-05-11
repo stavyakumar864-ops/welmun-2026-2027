@@ -311,7 +311,7 @@ export const committees: CommitteeData[] = [
       },
       {
         name: "Eshaan Tiwari",
-        role: "Naib Sadr-i-Majlis\n(Vice Chair)",
+        role: "Naib Sadr-i-Majlis\n(Vice Chairperson)",
         image: eshaanTiwariPhoto,
       },
       {
@@ -361,12 +361,12 @@ export const committees: CommitteeData[] = [
     matrixLink: "#",
     eb: [
       { name: "Neiyl Vasishta", role: "Editor-In-Chief", image: ipcNeiylPhoto },
-      { name: "Jai Gagaliya", role: "Senior Editor", image: ipcJaiPhoto },
       {
         name: "Vaibbhav Yadav",
         role: "Senior Editor",
         image: ipcVaibbhavPhoto,
       },
+      { name: "Jai Gagaliya", role: "Senior Editor", image: ipcJaiPhoto },
       {
         name: "Siddharth Jindal",
         role: "Creative Editor",
